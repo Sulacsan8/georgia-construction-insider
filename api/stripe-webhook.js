@@ -23,9 +23,10 @@ function verifySignature(payload, header, secret) {
 async function syncSubscription(sub) {
   const item = sub.items?.data?.[0];
   const plan = PLAN_BY_LOOKUP[item?.price?.lookup_key] || null;
-  const periodEnd = item?.current_period_end || sub.current_period_end;
+  const periodEnd = sub.cancel_at || item?.current_period_end || sub.current_period_end;
   let status = sub.status;
-  if (status === "active" && sub.cancel_at_period_end) status = "canceling";
+  // The billing portal may schedule a cancellation with cancel_at instead of cancel_at_period_end.
+  if (status === "active" && (sub.cancel_at_period_end || sub.cancel_at)) status = "canceling";
 
   const fields = {
     stripe_customer_id: sub.customer,
