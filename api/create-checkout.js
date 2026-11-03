@@ -39,6 +39,8 @@ export const POST = handle(async (request) => {
     subscription_data: { metadata: { user_id: user.id } },
     metadata: { user_id: user.id },
     allow_promotion_codes: "true",
+    // Plain Stripe checkout, matching Texas Construction Hub (no 3.5% merchant-of-record fee).
+    managed_payments: { enabled: "false" },
     success_url: `${origin}/?checkout=success#dashboard`,
     cancel_url: `${origin}/#membership`,
   });
