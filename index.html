@@ -440,6 +440,59 @@ body.bare header.site,body.bare footer.site{display:none}
 .sp-submit:disabled{opacity:.6;cursor:wait}
 .pour-band:has(.countdown){align-items:start}
 body{min-height:100vh;display:flex;flex-direction:column}main{flex:1 0 auto;min-width:0}
+.db-page{padding-block:24px 56px}
+.db-banner{background:#fff3b0;border-radius:8px;padding:10px 14px;font-size:14.5px}
+.db-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 20px;margin-top:20px}
+.db-head h1{font-size:clamp(30px,3.6vw,42px);font-weight:800}
+.db-head p{margin-top:4px}
+.db-badge{background:#f6c343;color:#000;font-weight:800;font-size:14px;padding:7px 14px;border-radius:99px}
+.db-layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:28px;margin-top:22px;align-items:start}
+.db-tabs{display:grid;gap:4px;border-right:1px solid var(--rule);padding-right:16px}
+.db-tabs button{background:none;border:0;border-radius:7px;padding:10px 12px;text-align:left;font-weight:600;font-size:15px;color:#000;cursor:pointer}
+.db-tabs button:hover{background:#f2f2f2}
+.db-tabs button[aria-current]{background:#000;color:#fff}
+.db-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:14px}
+.db-stat{border:1px solid var(--rule);border-radius:10px;padding:14px;display:grid;gap:2px}
+.db-stat span,.db-stat small{font-size:13px}
+.db-stat b{font-size:24px;font-weight:800}
+.db-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.db-wide{grid-column:1/-1}
+.db-card{border:1px solid var(--rule);border-radius:12px;padding:20px;min-width:0}
+.db-card h2{font-size:21px;font-weight:700;margin-bottom:6px}
+.db-launch{background:#000;color:#fff;border-color:#000}
+.db-launch h2{color:#fff}
+.db-launch .countdown{margin-top:14px}
+.db-list{list-style:none;margin:6px 0 0;padding:0}
+.db-list li{border-bottom:1px solid var(--rule);padding-block:10px}
+.db-list a{display:grid;gap:2px}
+.db-list a:hover b{color:#cc050d}
+.db-list b{font-weight:700;font-size:15.5px;line-height:1.3}
+.db-list span{font-size:13.5px}
+.db-link{background:none;border:0;padding:0;margin-top:12px;color:#cc050d;font-weight:700;font-size:14.5px;cursor:pointer}
+.db-link:hover{text-decoration:underline}
+.db-btn{display:inline-block;background:#cc050d;color:#fff;border:1.5px solid #cc050d;border-radius:7px;padding:11px 18px;font-weight:700;font-size:15px;cursor:pointer;margin-top:14px}
+.db-btn:hover{background:#a30409}
+.db-btn-line{background:#fff;color:#000;border-color:#000}
+.db-btn-line:hover{background:#000;color:#fff}
+.db-actions{display:flex;flex-wrap:wrap;gap:0 10px}
+.db-dl{gap:0}
+.db-dl div{display:flex;justify-content:space-between;gap:14px;border-bottom:1px solid var(--rule);padding-block:9px}
+.db-dl dt{margin:0;font-size:15px}
+.db-dl dd{text-align:right}
+.db-invoice{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 14px;font-size:14.5px;padding-top:6px}
+.db-invoice .db-link{margin:0}
+.db-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px}
+.db-form>label{display:grid;gap:6px;font-size:13.5px;font-weight:600;min-width:0}
+.db-form input:not([type=checkbox]){width:100%;min-width:0;padding:11px 12px;border:1px solid #bbb;border-radius:5px;background:#fff;color:#000;font:400 15px var(--body)}
+.db-form fieldset{grid-column:1/-1;border:0;margin:0;padding:0;display:grid;gap:8px}
+.db-form legend{font-weight:700;margin-bottom:8px}
+.db-check{display:flex;gap:9px;align-items:center;font-size:15px}
+.db-form .db-btn{grid-column:1/-1;justify-self:start;margin-top:0}
+.db-note{color:#cc050d;font-weight:600;font-size:14px;margin-top:12px}.db-note:empty{display:none}
+@media (max-width:900px){.db-layout{grid-template-columns:minmax(0,1fr)}.db-tabs{display:flex;overflow-x:auto;border-right:0;border-bottom:1px solid var(--rule);padding:0 0 8px}.db-tabs button{flex:none}.db-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.db-grid{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:520px){.db-form{grid-template-columns:minmax(0,1fr)}}
+.db-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.db-launch{grid-column:1/-1}@media (max-width:520px){.db-stats{grid-template-columns:minmax(0,1fr)}}
+.db-empty{margin-top:24px;text-align:center}.db-empty h1{font-size:28px;font-weight:800}.db-main>.db-note{margin:0 0 12px}.db-form input[readonly]{background:#f2f2f2}
 </style>
 
 
@@ -457,6 +510,7 @@ body{min-height:100vh;display:flex;flex-direction:column}main{flex:1 0 auto;min-
   </div>
   <div class="foot-base"><span>© 2026 Georgia Construction Insider. All Rights Reserved.</span><span class="foot-legal"><a href="#privacy" data-go="privacy">Privacy Policy</a><a href="#terms" data-go="terms">Terms &amp; Conditions</a><a href="#refunds" data-go="refunds">Refund Policy</a></span></div>
 </div></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 const STORIES=[
 {id:"story-effingham-water",scene:"water",sector:"Water",region:"Coastal",date:"2026",iso:"2026-02-01",value:null,valueLabel:"Not disclosed",status:"Planned",st:"plan",where:"Savannah River, Effingham County",who:"Effingham County",
@@ -590,7 +644,7 @@ const trackable=STORIES.filter(s=>s.status);
 const trackRow=s=>`<tr><td>${link(s,short(s))}</td><td>${s.where}</td><td>${s.who}</td><td class="val">${s.valueLabel}</td><td><span class="stage st-${s.st}">${s.status}</span></td></tr>`;
 const pastRow=s=>`<article class="past">${link(s,`<div class="row mono"><span class="cat">${s.sector}</span><span>${s.date}</span><span>${s.region}</span></div><h3>${s.title}</h3><p>${s.dek}</p>`)}</article>`;
 const inTopic=(s,t)=>t==="All"||TOPICS[t].includes(s.sector);
-const state={topic:"All",region:"All",nq:"",nsort:"new",q:"",tSector:"All",tRegion:"All",desc:true};
+const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMode:"signin",authNote:"",topic:"All",region:"All",nq:"",nsort:"new",q:"",tSector:"All",tRegion:"All",desc:true};
 
 function home(){
   const lead=byId["story-i285"];
@@ -681,23 +735,13 @@ function sponsors(){
     </form></section>
   <div class="sp-press"><div class="wrap"><p><b>Submitting a project announcement?</b> Press releases are reviewed editorially and are separate from paid sponsorships.</p><a href="#sponsors" data-scroll="sp-enquiry" data-option="Press release submission">Press release submissions ↗</a></div></div>`;
 }
-function signin(){return `<div class="si-page"><a class="si-back" href="#home" data-go="home">← Back to Georgia Construction Insider</a>
-  <div class="si-box"><span class="si-eyebrow">Member Access</span><h1>Welcome back.</h1><p class="si-lede">Sign in to access your Georgia Construction Insider account.</p>
-  <form class="si-form" data-sub autocomplete="off">
-    <label for="si-email">Email address</label><input id="si-email" type="email" required placeholder="Enter your email address" autocomplete="off">
-    <div class="si-row"><label for="si-pass">Password</label><button class="si-link" type="button" data-signin-note>Forgot password?</button></div>
-    <div class="si-pass"><input id="si-pass" type="password" required placeholder="Enter your password" autocomplete="off"><button type="button" data-show-pass>Show</button></div>
-    <button class="si-submit" type="submit">Sign in to your account →</button>
-    <button class="si-create" type="button" data-signin-note>Create a free account ↗</button>
-    <p class="sub-note si-note" role="status">Preview only: accounts aren't set up yet, so please don't enter a real password.</p>
-  </form></div></div>`}
 const memberBox=()=>`<section class="member"><div><span class="mono">GCI Membership</span><h2>Unlock Premium Access for Less Than $4 a Week.</h2><p>Go beyond the headlines. Get exclusive Georgia construction news, in-depth project coverage, contractor information and construction timelines.</p></div>
     <ul class="ticks"><li>Exclusive Georgia construction news and premium project coverage</li><li>Discover who's behind Georgia's biggest construction projects</li><li>Explore project investments, construction timelines and key milestones</li><li>Access members-only articles and project deep dives</li></ul>
     <a class="member-cta" href="#membership" data-go="membership">Explore Memberships</a></section>`;
 function membership(){
   const ic=d=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
   const I={doc:"M6 3h9l4 4v14H6zM9 10h7M9 14h7M9 18h4",city:"M3 21V9l6-3v15M9 21V4l8 3v14M3 21h18M12 10h2M12 14h2M5 12h2M5 16h2",hat:"M3 17h18M5 17a7 7 0 0 1 14 0M10 10.5V6h4v4.500",cal:"M4 6h16v15H4zM4 10h16M8 3v5M16 3v5M8 14h2M14 14h2M8 18h2",chart:"M4 21h16M6 21v-5M11 21v-9M16 21V8M4 11l6-5 4 3 6-6",news:"M4 5h13v15H6a2 2 0 0 1-2-2zM17 9h3v9a2 2 0 0 1-2 2M7 9h7M7 13h7M7 17h4",deal:"M3 11l5-4 4 2 4-2 5 4M6 13l4 4a2 2 0 0 0 3 0l5-5M9 9l-2 3"};
-  const plan=(cls,name,price,per,note,bullets,badge)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price"><b>${price}</b>/${per}</p><p class="mb-note">${note}</p><button class="mb-join" data-join>Join GCI ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul>${cls?`<p class="mb-lock">This founding member price is fixed for life.</p>`:""}</article>`;
+  const plan=(cls,name,price,per,note,bullets,badge)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price"><b>${price}</b>/${per}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">Join GCI ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul>${cls?`<p class="mb-lock">This founding member price is fixed for life.</p>`:""}</article>`;
   const benefit=(i,t,c)=>`<div class="mb-benefit">${ic(I[i])}<div><h4>${t}</h4><p>${c}</p></div></div>`;
   const faq=(q,a)=>`<details open><summary>${q}</summary><p>${a}</p></details>`;
  return `<section class="mb-hero"><div class="wrap mb-hero-grid"><div>
@@ -807,6 +851,49 @@ async function sendForm(form){
   }
   btn.disabled=false;btn.textContent=label;
 }
+function signin(){
+  const m=state.authMode||"signin";
+  const head={signin:["Welcome back.","Sign in to access your Georgia Construction Insider account."],signup:["Create your account.","Create an account to join GCI and manage your membership."],forgot:["Reset your password.","Enter your email and we'll send you a link to set a new password."]}[m];
+  const name=m==="signup"?`<label for="si-name">Full name</label><input id="si-name" required placeholder="Your name" autocomplete="name">`:"";
+  const pass=m==="forgot"?"":`<div class="si-row"><label for="si-pass">Password</label>${m==="signin"?'<button class="si-link" type="button" data-auth-mode="forgot">Forgot password?</button>':""}</div><div class="si-pass"><input id="si-pass" type="password" required${m==="signup"?' minlength="8"':""} placeholder="${m==="signup"?"At least 8 characters":"Enter your password"}" autocomplete="${m==="signup"?"new-password":"current-password"}"><button type="button" data-show-pass>Show</button></div>`;
+  const submit={signin:"Sign in to your account →",signup:"Create account →",forgot:"Email me a reset link →"}[m];
+  const alt=m==="signin"?`<button class="si-create" type="button" data-auth-mode="signup">Create an account ↗</button>`:`<button class="si-create" type="button" data-auth-mode="signin">Back to sign in</button>`;
+  const note=state.authNote||"";state.authNote="";
+  return `<div class="si-page"><a class="si-back" href="#home" data-go="home">← Back to Georgia Construction Insider</a>
+  <div class="si-box"><span class="si-eyebrow">Member Access</span><h1>${head[0]}</h1><p class="si-lede">${head[1]}</p>
+  <form class="si-form" data-auth>${name}<label for="si-email">Email address</label><input id="si-email" type="email" required placeholder="Enter your email address" autocomplete="email">${pass}
+    <button class="si-submit" type="submit">${submit}</button>${alt}
+    <p class="sub-note si-note" role="status" data-state="done">${esc(note)}</p>
+  </form></div></div>`;
+}
+function reset(){return `<div class="si-page"><a class="si-back" href="#home" data-go="home">← Back to Georgia Construction Insider</a>
+  <div class="si-box"><span class="si-eyebrow">Member Access</span><h1>Set a new password.</h1><p class="si-lede">Choose a new password for your account.</p>
+  <form class="si-form" data-reset><label for="rs-pass">New password</label><div class="si-pass"><input id="rs-pass" type="password" required minlength="8" placeholder="At least 8 characters" autocomplete="new-password"></div>
+    <button class="si-submit" type="submit">Save new password →</button><p class="sub-note si-note" role="status" data-state="done"></p></form></div></div>`}
+function dashboard(){
+  if(state.db!=="ready"){
+    const off=state.db==="unavailable";
+    return `<div class="wrap db-page"><div class="db-card db-empty"><h1>${off?"Member accounts are on our main site":"Loading your dashboard..."}</h1><p>${off?"Sign in at georgiaconstructioninsider.com to see your membership.":"One moment."}</p></div></div>`;
+  }
+  const m=state.member||{status:"none"},active=isMember(m),plan=PLAN_INFO[m.plan];
+  const first=esc((m.full_name||"").trim().split(/\s+/)[0]);
+  const ends=m.status==="canceling"||m.status==="canceled";
+  const dateLine=m.current_period_end?`${ends?"Ends":"Renews"} ${fmtDate(m.current_period_end)}`:"";
+  const stat=(l,v,n)=>`<div class="db-stat"><span>${l}</span><b>${v}</b><small>${n}</small></div>`;
+  const joinCard=`<section class="db-card db-launch"><h2>You don't have an active membership</h2><p>Join to get premium Georgia construction coverage and full Project Tracker access.</p><a class="db-btn" href="#membership" data-go="membership">View membership plans</a></section>`;
+  const tracker=`<section class="db-card db-launch"><h2>Project Tracker Opens November 29</h2><p>Your membership includes tracker access from launch day.</p><div class="countdown" data-countdown data-target="2026-11-29T17:00:00Z"><div class="cd-boxes"><div><b data-cd="d">0</b><span>Days</span></div><div><b data-cd="h">00</b><span>Hours</span></div><div><b data-cd="m">00</b><span>Minutes</span></div><div><b data-cd="s">00</b><span>Seconds</span></div></div></div></section>`;
+  const tabs=[["overview","Overview"],["billing","Billing"],["account","Account"]];
+  const panels={
+    overview:`<div class="db-stats">${stat("Plan",plan?plan.name:"None",m.founding_member?"Founding Member":"&nbsp;")}${stat("Status",STATUS_TEXT[m.status]||esc(m.status),dateLine||"&nbsp;")}${stat("Next Newsletter","Nov 15","Sunday at 12 p.m. ET")}</div><div class="db-grid">${active?tracker:joinCard}</div>`,
+    billing:m.stripe_customer_id?`<div class="db-grid"><section class="db-card"><h2>Your Plan</h2><dl class="db-dl"><div><dt>Plan</dt><dd>${plan?plan.name+(m.founding_member&&m.plan==="annual"?", Founding Member":""):"None"}</dd></div><div><dt>Price</dt><dd>${plan?plan.price:"None"}</dd></div><div><dt>Status</dt><dd>${STATUS_TEXT[m.status]||esc(m.status)}</dd></div>${dateLine?`<div><dt>${ends?"Ends":"Renews"}</dt><dd>${fmtDate(m.current_period_end)}</dd></div>`:""}</dl><div class="db-actions"><button class="db-btn" data-portal>Manage Billing</button>${active&&!ends?'<button class="db-btn db-btn-line" data-portal>Cancel Membership</button>':""}</div></section>
+      <section class="db-card"><h2>Invoices</h2><p>View and download your receipts and invoices on your secure billing page.</p><button class="db-btn db-btn-line" data-portal>View Invoices</button></section></div>`
+      :`<div class="db-grid"><section class="db-card"><h2>No billing details yet</h2><p>Your plan, payment method and invoices will appear here once you join.</p><a class="db-btn" href="#membership" data-go="membership">View membership plans</a></section></div>`,
+    account:`<section class="db-card"><h2>Account Details</h2><form class="db-form" data-db-form><label for="db-name">Full name<input id="db-name" value="${esc(m.full_name)}" autocomplete="name"></label><label for="db-email">Email<input id="db-email" type="email" value="${esc(session&&session.user.email)}" readonly></label><label for="db-company">Company<input id="db-company" value="${esc(m.company)}" autocomplete="organization"></label><button class="db-btn" type="submit">Save Changes</button></form></section>`
+  };
+  return `<div class="wrap db-page"><div class="db-head"><div><h1>Welcome back${first?", "+first:""}.</h1><p>Your Georgia Construction Insider membership.</p></div>${m.founding_member?'<span class="db-badge">★ Founding Member</span>':""}</div>
+  <div class="db-layout"><nav class="db-tabs" aria-label="Dashboard">${tabs.map(t=>`<button data-dtab="${t[0]}"${state.dtab===t[0]?' aria-current="page"':""}>${t[1]}</button>`).join("")}<button data-signout>Sign Out</button></nav>
+  <div class="db-main"><p class="db-note" role="status">${esc(state.dbMsg||"")}</p>${panels[state.dtab]||panels.overview}</div></div></div>`;
+}
 function newsletters(){return `<div class="wrap"><section class="pour-band"><div><span class="mono">The Peach State Pour · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div><div>${countdownHTML().replace("data-countdown","data-countdown data-target=\"2026-11-15T17:00:00Z\"").replace("Next edition:","First edition:")}${subForm("sub-page")}</div></section></div>`}
 function story(s){
   const related=sorted.filter(x=>x!==s&&(x.sector===s.sector||x.region===s.region)).slice(0,3);
@@ -846,14 +933,156 @@ function tickCountdown(){
   });
 }
 setInterval(tickCountdown,1000);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
+const fmtDate=iso=>iso?new Intl.DateTimeFormat("en-US",{month:"long",day:"numeric",year:"numeric"}).format(new Date(iso)):"";
+const PLAN_INFO={monthly:{name:"Monthly",price:"$12.99/month"},annual:{name:"Annual",price:"$109.99/year"}};
+const STATUS_TEXT={active:"Active",trialing:"Active",canceling:"Active until period ends",past_due:"Payment due",unpaid:"Payment due",canceled:"Canceled",incomplete:"Payment incomplete",incomplete_expired:"Expired",paused:"Paused",none:"No membership"};
+const isMember=m=>!!m&&["active","trialing","past_due","canceling"].includes(m.status);
+let sb=null,session=null,currentRoute="";
+const PENDING_KEY="gci_pending_plan";
+const getPending=()=>{try{return sessionStorage.getItem(PENDING_KEY)}catch(e){return null}};
+const setPending=p=>{try{p?sessionStorage.setItem(PENDING_KEY,p):sessionStorage.removeItem(PENDING_KEY)}catch(e){}};
+const authInit=(async()=>{
+  try{
+    const res=await fetch("/api/config");
+    if(!res.ok)throw new Error("no config");
+    const cfg=await res.json();
+    if(!cfg.supabaseUrl||!cfg.supabaseAnonKey||!window.supabase)throw new Error("no config");
+    sb=window.supabase.createClient(cfg.supabaseUrl,cfg.supabaseAnonKey,{auth:{flowType:"pkce",detectSessionInUrl:true,persistSession:true,autoRefreshToken:true}});
+    const {data}=await sb.auth.getSession();
+    session=data.session;
+    sb.auth.onAuthStateChange((event,s)=>{session=s;if(!s){state.member=null;state.db="loading"}updateAuthUI()});
+  }catch(e){sb=null}
+  updateAuthUI();
+  return sb;
+})();
+function updateAuthUI(){
+  const pill=document.querySelector('.util a[data-go="signin"],.util a[data-go="dashboard"]');
+  if(!pill)return;
+  const route=session?"dashboard":"signin";
+  pill.dataset.go=route;pill.href="#"+route;pill.textContent=session?"Dashboard":"Sign in";
+}
+const friendly=e=>{const m=(e&&e.message)||"";return /invalid login/i.test(m)?"That email and password don't match. Please try again.":/already registered|already been registered/i.test(m)?"An account with that email already exists. Please sign in instead.":/email not confirmed/i.test(m)?"Please confirm your email first, using the link we sent you.":/rate limit|too many/i.test(m)?"Too many attempts. Please wait a few minutes and try again.":m||"Something went wrong. Please try again."};
+async function freshToken(){const {data}=await sb.auth.getSession();session=data.session;return session&&session.access_token}
+function afterSignIn(){updateAuthUI();const plan=getPending();if(plan){setPending(null);startCheckout(plan)}else go("dashboard")}
+async function handleAuth(form){
+  const note=form.querySelector(".si-note"),btn=form.querySelector('button[type="submit"]'),label=btn.textContent;
+  note.dataset.state="done";
+  const sbc=await authInit;
+  if(!sbc){note.textContent="Sign-in works on georgiaconstructioninsider.com.";return}
+  const val=id=>{const el=document.getElementById(id);return el?el.value.trim():""};
+  const password=(document.getElementById("si-pass")||{}).value||"";
+  btn.disabled=true;btn.textContent="Please wait...";note.textContent="";
+  try{
+    if(state.authMode==="signup"){
+      const {data,error}=await sbc.auth.signUp({email:val("si-email"),password,options:{data:{full_name:val("si-name")},emailRedirectTo:location.origin+"/?confirmed=1#dashboard"}});
+      if(error)throw error;
+      if(data.session){session=data.session;afterSignIn()}
+      else note.textContent="Check your email to confirm your account, then sign in.";
+    }else if(state.authMode==="forgot"){
+      const {error}=await sbc.auth.resetPasswordForEmail(val("si-email"),{redirectTo:location.origin+"/?recovery=1#reset"});
+      if(error)throw error;
+      note.textContent="If that email has an account, we've sent a link to reset your password.";
+    }else{
+      const {data,error}=await sbc.auth.signInWithPassword({email:val("si-email"),password});
+      if(error)throw error;
+      session=data.session;afterSignIn();
+    }
+  }catch(err){note.textContent=friendly(err)}
+  const pw=document.getElementById("si-pass");if(pw)pw.value="";
+  btn.disabled=false;btn.textContent=label;
+}
+async function handleReset(form){
+  const note=form.querySelector(".si-note"),btn=form.querySelector('button[type="submit"]');
+  note.dataset.state="done";
+  const sbc=await authInit;
+  if(!sbc||!session){note.textContent="This reset link has expired. Please request a new one from the sign-in page.";return}
+  btn.disabled=true;
+  const {error}=await sbc.auth.updateUser({password:document.getElementById("rs-pass").value});
+  document.getElementById("rs-pass").value="";
+  btn.disabled=false;
+  if(error){note.textContent=friendly(error);return}
+  state.dbMsg="Your password has been updated.";
+  go("dashboard");
+}
+async function startCheckout(plan,statusEl){
+  const say=msg=>{const el=statusEl&&document.contains(statusEl)?statusEl:document.querySelector(".si-note,.db-note,.mb-status");if(el){el.dataset.state="done";el.textContent=msg}};
+  const sbc=await authInit;
+  if(!sbc){say("Membership checkout works on georgiaconstructioninsider.com.");return}
+  if(!session){setPending(plan);state.authMode="signin";state.authNote="Sign in or create an account to continue to checkout.";go("signin");return}
+  say("Taking you to secure checkout...");
+  try{
+    const token=await freshToken();
+    const res=await fetch("/api/create-checkout",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+token},body:JSON.stringify({plan})});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok||!data.url)throw new Error(data.error||"Checkout couldn't start. Please try again.");
+    location.href=data.url;
+  }catch(err){
+    if(/already have a membership/i.test(err.message)){state.dbMsg=err.message;go("dashboard");return}
+    say(err.message);
+  }
+}
+async function openPortal(btn){
+  const note=document.querySelector(".db-note");
+  const sbc=await authInit;
+  if(!sbc||!session)return go("signin");
+  btn.disabled=true;note.textContent="Opening your billing page...";
+  try{
+    const token=await freshToken();
+    const res=await fetch("/api/billing-portal",{method:"POST",headers:{Authorization:"Bearer "+token}});
+    const data=await res.json().catch(()=>({}));
+    if(!res.ok||!data.url)throw new Error(data.error||"Your billing page couldn't open. Please try again.");
+    location.href=data.url;
+  }catch(err){note.textContent=err.message;btn.disabled=false}
+}
+async function signOut(){
+  const sbc=await authInit;
+  if(sbc)await sbc.auth.signOut();
+  session=null;state.member=null;state.db="loading";state.dtab="overview";
+  updateAuthUI();go("home");
+}
+async function saveAccount(form){
+  const note=document.querySelector(".db-note");
+  const sbc=await authInit;
+  if(!sbc||!session)return go("signin");
+  const fields={full_name:form.querySelector("#db-name").value.trim(),company:form.querySelector("#db-company").value.trim()};
+  const {error}=await sbc.from("members").update(fields).eq("id",session.user.id);
+  if(error){note.textContent="We couldn't save your changes. Please try again.";return}
+  Object.assign(state.member,fields);
+  note.textContent="Your changes have been saved.";
+}
+function renderDash(){if(currentRoute!=="dashboard")return;app.innerHTML=dashboard();tickCountdown()}
+async function loadDashboard(){
+  const sbc=await authInit;
+  if(currentRoute!=="dashboard")return;
+  if(!sbc){state.db="unavailable";return renderDash()}
+  if(!session){state.authMode="signin";state.authNote="Sign in to see your dashboard.";return go("signin")}
+  const fromCheckout=new URLSearchParams(location.search).get("checkout")==="success";
+  if(!fromCheckout&&state.member&&state.member.id===session.user.id&&Date.now()-state.memberAt<30000){state.db="ready";return renderDash()}
+  for(let i=0;i<(fromCheckout?8:1);i++){
+    const {data,error}=await sbc.from("members").select("*").eq("id",session.user.id).maybeSingle();
+    if(error){state.dbMsg="We couldn't load your membership. Please refresh the page.";break}
+    state.member=data||{id:session.user.id,status:"none"};state.memberAt=Date.now();
+    if(!fromCheckout||isMember(state.member))break;
+    state.db="ready";state.dbMsg="Payment received. Activating your membership...";renderDash();
+    await new Promise(r=>setTimeout(r,2000));
+  }
+  if(fromCheckout){
+    history.replaceState(null,"",location.pathname+"#dashboard");
+    state.dbMsg=isMember(state.member)?"Welcome to GCI membership!":"Your payment is being processed. Refresh this page in a minute if your plan doesn't appear.";
+  }
+  state.db="ready";renderDash();
+}
 function go(route,keep){
   if(route==="insights")route="tracker";
-  const views={home,privacy,terms,refunds,contact,membership,tracker,newsletters,archives,sponsors,signin};
+  const views={dashboard,reset,home,privacy,terms,refunds,contact,membership,tracker,newsletters,archives,sponsors,signin};
   if(!views[route]&&!byId[route])route="home";
   app.innerHTML=byId[route]?story(byId[route]):views[route]();
   if(route==="archives"){document.getElementById("a-q").value=state.nq;newsRows()}
   tickCountdown();
-  document.body.classList.toggle("bare",route==="signin");
+  document.body.classList.toggle("bare",route==="signin"||route==="reset");
+  currentRoute=route;
+  if(route==="dashboard")loadDashboard();
   document.querySelectorAll("#nav>a").forEach(a=>{a.dataset.go===route?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
   document.getElementById("dd-news").dataset.on=route==="archives"?"1":"0";
   document.querySelectorAll("#nav details").forEach(d=>d.open=false);
@@ -862,10 +1091,16 @@ function go(route,keep){
 }
 document.addEventListener("click",e=>{
   document.querySelectorAll("#nav details[open]").forEach(d=>{if(!d.contains(e.target))d.open=false});
-  const t=e.target.closest("[data-go],[data-topic],[data-scroll],[data-join],[data-show-pass],[data-signin-note]");
+  const t=e.target.closest("[data-go],[data-topic],[data-scroll],[data-join],[data-show-pass],[data-signin-note],[data-dtab],[data-dnote],[data-plan],[data-auth-mode],[data-portal],[data-signout]");
   if(!t)return;
   if(t.tagName==="A")e.preventDefault();
-  if(t.hasAttribute("data-show-pass")){const i=document.getElementById("si-pass"),h=i.type==="password";i.type=h?"text":"password";t.textContent=h?"Hide":"Show"}
+  if(t.dataset.authMode){state.authMode=t.dataset.authMode;state.authNote="";go("signin",true)}
+  else if(t.hasAttribute("data-portal")){openPortal(t)}
+  else if(t.hasAttribute("data-signout")){signOut()}
+  else if(t.dataset.plan){startCheckout(t.dataset.plan,t.nextElementSibling)}
+  else if(t.dataset.dtab){state.dtab=t.dataset.dtab;state.dbMsg="";go("dashboard",true)}
+  else if(t.hasAttribute("data-dnote")){document.querySelector(".db-note").textContent="Preview only: billing isn't connected yet, so nothing has changed."}
+  else if(t.hasAttribute("data-show-pass")){const i=document.getElementById("si-pass"),h=i.type==="password";i.type=h?"text":"password";t.textContent=h?"Hide":"Show"}
   else if(t.hasAttribute("data-signin-note")){const n=document.querySelector(".si-note");n.dataset.state="done";n.textContent="Preview only: accounts aren't set up yet, so this isn't available."}
   else if(t.hasAttribute("data-join")){t.nextElementSibling.textContent="Preview only: payments aren't connected yet, so nothing was charged."}
   else if(t.dataset.scroll){if(t.dataset.option)document.getElementById("sp-interest").value=t.dataset.option;document.getElementById(t.dataset.scroll).scrollIntoView({behavior:"smooth"})}
@@ -880,6 +1115,9 @@ document.addEventListener("change",e=>{
 document.addEventListener("submit",e=>{
   e.preventDefault();
   if(e.target.dataset.mail){sendForm(e.target);return}
+  if(e.target.hasAttribute("data-auth")){handleAuth(e.target);return}
+  if(e.target.hasAttribute("data-reset")){handleReset(e.target);return}
+  if(e.target.hasAttribute("data-db-form")){saveAccount(e.target);return}
   const pw=document.getElementById("si-pass");if(pw&&e.target.contains(pw))pw.value="";
   const n=e.target.querySelector(".sub-note");
   n.dataset.state="done";
