@@ -1,5 +1,6 @@
 import crypto from "node:crypto";
-import { handle, json, stripe, updateMembers } from "./_lib.js";
+import { handle, json, stripe, updateMembers, sendEmail } from "./_lib.js";
+import { cancellationScheduled, membershipEnded } from "./_emails.js";
 
 const PLAN_BY_LOOKUP = { gci_monthly: "monthly", gci_annual_founding: "annual" };
 
@@ -43,6 +44,27 @@ async function syncSubscription(sub) {
     : `stripe_customer_id=eq.${encodeURIComponent(sub.customer)}`;
   const rows = await updateMembers(filter, fields);
   if (!rows.length) console.warn("No member matched subscription", sub.id);
+  return rows[0] || null;
+}
+
+// True when this update is the moment a cancellation was scheduled (not a later, unrelated update).
+function justScheduledCancel(event) {
+  const sub = event.data.object;
+  const prev = event.data.previous_attributes || {};
+  const nowCanceling = sub.status === "active" && (sub.cancel_at_period_end || sub.cancel_at);
+  const wasCanceling = ("cancel_at" in prev ? prev.cancel_at : sub.cancel_at) ||
+    ("cancel_at_period_end" in prev ? prev.cancel_at_period_end : sub.cancel_at_period_end);
+  return Boolean(nowCanceling && !wasCanceling);
+}
+
+// Email failures are logged but never fail the webhook, so Stripe doesn't retry the membership update.
+async function notify(member, message) {
+  if (!member?.email) return;
+  try {
+    await sendEmail({ to: member.email, ...message });
+  } catch (err) {
+    console.error("Membership email failed", member.id, err.message);
+  }
 }
 
 export const POST = handle(async (request) => {
@@ -65,10 +87,20 @@ export const POST = handle(async (request) => {
       break;
     }
     case "customer.subscription.created":
-    case "customer.subscription.updated":
-    case "customer.subscription.deleted":
       await syncSubscription(event.data.object);
       break;
+    case "customer.subscription.updated": {
+      const member = await syncSubscription(event.data.object);
+      if (justScheduledCancel(event) && member?.current_period_end) {
+        await notify(member, cancellationScheduled({ name: member.full_name, endsAt: member.current_period_end }));
+      }
+      break;
+    }
+    case "customer.subscription.deleted": {
+      const member = await syncSubscription(event.data.object);
+      await notify(member, membershipEnded({ name: member?.full_name }));
+      break;
+    }
   }
   return json(200, { received: true });
 });

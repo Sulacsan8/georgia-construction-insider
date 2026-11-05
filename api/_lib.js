@@ -65,6 +65,21 @@ export async function stripe(method, path, params) {
   return data;
 }
 
+// Sends a transactional email through Resend from the site's verified domain.
+export async function sendEmail({ to, subject, html }) {
+  const res = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${setting("RESEND_API_KEY")}`, "Content-Type": "application/json" },
+    body: JSON.stringify({
+      from: "Georgia Construction Insider <noreply@georgiaconstructioninsider.com>",
+      to: [to],
+      subject,
+      html,
+    }),
+  });
+  if (!res.ok) throw new Error(`Resend error ${res.status}: ${await res.text()}`);
+}
+
 // Works with both legacy service_role JWTs and newer sb_secret_ keys.
 function adminHeaders() {
   const key = setting("SUPABASE_SERVICE_ROLE_KEY");
