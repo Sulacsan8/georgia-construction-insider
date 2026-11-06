@@ -923,7 +923,7 @@ function home(){
   const lead=byId["story-audi"];
   const tops=["story-walmart-carnesville","story-gainesville-inland-port","story-yancey","story-guildhouse","story-selig-ponce","story-macon-costco","story-agc-jobs","story-jefferson-dc","story-js-link","story-beltline-nw","story-savannah-fairgrounds","story-sr21","story-thomasville-shelter","story-srs","story-i285"].map(i=>byId[i]);
   return `<div class="wrap"><section class="front">
-    <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span>${lead.img&&lead.credit?`<span class="hero-credit">Photo: ${lead.credit}</span>`:""}<div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title}</h1><div class="hero-foot"><p class="dek">${lead.dek}</p><span class="hero-btn">Read the full story →</span></div></div>`)}</article>
+    <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span>${lead.img&&lead.credit?`<span class="hero-credit">Photo: ${lead.credit}</span>`:""}<div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title}</h1><div class="hero-foot"><span class="hero-btn">Read the full story →</span></div></div>`)}</article>
       ${pourBox()}</div>
     <div><h2 class="bar-head">Top Construction Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol></div>
   </section>
