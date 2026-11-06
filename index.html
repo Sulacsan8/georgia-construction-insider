@@ -166,6 +166,21 @@ td a:hover{color:var(--gray)}
 .nc-go{margin-top:auto;padding-top:6px;font-size:14px;font-weight:700;color:#cc050d}
 .see-more{display:flex;justify-content:center;margin-top:24px}
 .see-more .pill{background:#cc050d;border-color:#cc050d;color:#fff}
+/* News page: Latest News heading, grey filter bar with a red edge, photo card grid */
+.news-page{padding-block:24px 56px}
+.np-head{padding-bottom:16px;border-bottom:1px solid var(--rule);margin-bottom:18px}
+.np-head h1{display:inline-block;font-size:clamp(26px,3vw,34px);text-transform:uppercase;letter-spacing:.01em;margin:0;padding-bottom:6px;border-bottom:3px solid #cc050d}
+.np-head p{margin:10px 0 0;color:var(--gray);font-size:15px}
+.np-filters{display:grid;grid-template-columns:1.3fr 1fr 1fr .9fr auto;gap:12px 16px;align-items:end;background:#6b717a;border-left:5px solid #cc050d;border-radius:12px;padding:16px 18px 14px}
+.np-filters label{display:flex;flex-direction:column;gap:6px;color:#fff;font-weight:700;font-size:14px}
+.np-filters input,.np-filters select{font:inherit;font-weight:400;font-size:14px;color:#000;background:#fff;border:1px solid #d4d4d4;border-radius:8px;padding:9px 10px;width:100%;min-width:0}
+.np-clear{font:700 13px/1 var(--body);color:#fff;background:transparent;border:1px solid #c9ccd1;border-radius:99px;padding:10px 16px;cursor:pointer;white-space:nowrap}
+.np-clear:hover{background:rgba(255,255,255,.12)}
+.np-sum{grid-column:1/-1;margin:0;color:#fff;font-size:13px;font-weight:600}
+.news-page .news-grid{margin-top:18px}
+.news-page .empty{margin-top:24px}
+@media (max-width:900px){.np-filters{grid-template-columns:1fr 1fr}.np-filters label:first-child{grid-column:1/-1}.np-clear{justify-self:start}}
+@media (max-width:520px){.np-filters{grid-template-columns:1fr}}
 /* Homepage: lead headline fills its column; newsletter box in grey and red; room above the footer */
 .lead h1{text-wrap:pretty;max-width:none}
 /* Homepage newsletter box (The Georgia Build), charcoal grey with red accents */
@@ -985,7 +1000,7 @@ const trackable=STORIES.filter(s=>s.status);
 const trackRow=s=>`<tr><td>${link(s,short(s))}</td><td>${s.where}</td><td>${s.who}</td><td class="val">${s.valueLabel}</td><td><span class="stage st-${s.st}">${s.status}</span></td></tr>`;
 const pastRow=s=>`<article class="past">${link(s,`<div class="row mono"><span class="cat">${s.sector}</span><span>${s.date}</span><span>${s.region}</span></div><h3>${s.title}</h3><p>${s.dek}</p>`)}</article>`;
 const inTopic=(s,t)=>t==="All"||TOPICS[t].includes(s.sector);
-const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMode:"signin",authNote:"",topic:"All",region:"All",nq:"",nsort:"new",q:"",tSector:"All",tRegion:"All",desc:true};
+const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMode:"signin",authNote:"",topic:"All",region:"All",nq:"",nsort:"new",nlimit:24,q:"",tSector:"All",tRegion:"All",desc:true};
 
 function home(){
   const lead=byId["story-audi"];
@@ -999,23 +1014,36 @@ function home(){
     <div class="see-more"><a class="pill" href="/news" data-go="archives">View All Latest News →</a></div></section>
   <div class="home-end">${memberBox()}</div></div>`;
 }
+const NEWS_PAGE=24;
+const REGIONS=[...new Set(STORIES.map(s=>s.region).filter(Boolean))].sort();
 function newsRows(){
   const q=state.nq.trim().toLowerCase();
-  const list=STORIES.filter(s=>inTopic(s,state.topic)&&(!q||[s.title,s.dek,s.sector,s.region,s.where,s.who,...s.body].join(" ").toLowerCase().includes(q)));
+  const list=STORIES.filter(s=>inTopic(s,state.topic)&&(state.region==="All"||s.region===state.region)&&(!q||[s.title,s.dek,s.sector,s.region,s.where,s.who,...s.body].join(" ").toLowerCase().includes(q)));
   list.sort((a,b)=>state.nsort==="new"?b.iso.localeCompare(a.iso):a.iso.localeCompare(b.iso));
-  document.getElementById("a-list").innerHTML=list.length?list.map(pastRow).join(""):`<p class="empty">No stories match. Clear the search or choose another sector.</p>`;
-  document.getElementById("a-sum").textContent=`${list.length} ${list.length===1?"story":"stories"}`;
+  const shown=list.slice(0,state.nlimit);
+  document.getElementById("a-list").innerHTML=shown.length?`<div class="news-grid">${shown.map(newsCard).join("")}</div>`:`<p class="empty">No stories match. Clear the filters or try another search.</p>`;
+  document.getElementById("a-sum").textContent=list.length?`Showing 1–${shown.length} of ${list.length} ${list.length===1?"story":"stories"}`:"Showing 0 stories";
+  document.getElementById("a-more").hidden=shown.length>=list.length;
 }
 function archives(){
   const opts=(arr,cur)=>arr.map(o=>`<option value="${o[0]}"${o[0]===cur?" selected":""}>${o[1]}</option>`).join("");
-  return `<div class="wrap"><div class="page-head"><h1>${state.topic!=="All"?state.topic:"Latest Construction News"}</h1><p>Read the latest Georgia construction news, industry updates, project announcements and more.</p></div><div class="page-body">
-    <div class="filters">
-      <label class="mono" for="a-q">Search<input id="a-q" type="search" placeholder="Search stories, companies or places"></label>
-      <label class="mono" for="a-sector">Sector<select id="a-sector">${opts([["All","All Sectors"],...Object.keys(TOPICS).map(t=>[t.replace(/&/g,"&amp;"),t])],state.topic.replace(/&/g,"&amp;"))}</select></label>
-      <label class="mono" for="a-sort">Sort by<select id="a-sort">${opts([["new","Newest to Oldest"],["old","Oldest to Newest"]],state.nsort)}</select></label>
+  return `<div class="wrap news-page"><header class="np-head"><h1>Latest News</h1><p>Browse the latest Georgia construction stories, project developments and market updates.</p></header>
+    <div class="np-filters">
+      <label for="a-q">Search<input id="a-q" type="search" placeholder="Search stories"></label>
+      <label for="a-region">Region<select id="a-region">${opts([["All","All Regions"],...REGIONS.map(r=>[r,r])],state.region)}</select></label>
+      <label for="a-sector">Industry<select id="a-sector">${opts([["All","All Industries"],...Object.keys(TOPICS).map(t=>[t.replace(/&/g,"&amp;"),t])],state.topic.replace(/&/g,"&amp;"))}</select></label>
+      <label for="a-sort">Sort By Date<select id="a-sort">${opts([["new","Newest to Oldest"],["old","Oldest to Newest"]],state.nsort)}</select></label>
+      <button type="button" class="np-clear" data-nclear>Clear filters</button>
+      <p id="a-sum" class="np-sum"></p>
     </div>
-    <p id="a-sum" style="font-size:14px;margin-bottom:6px"></p><div id="a-list"></div></div></div>`;
+    <div id="a-list"></div>
+    <div class="see-more"><button type="button" class="pill" id="a-more" data-nmore hidden>Load more stories</button></div></div>`;
 }
+document.addEventListener("click",e=>{
+  if(e.target.closest("[data-nclear]")){state.topic="All";state.region="All";state.nq="";state.nsort="new";state.nlimit=NEWS_PAGE;go("archives",true)}
+  else if(e.target.closest("[data-nmore]")){state.nlimit+=NEWS_PAGE;newsRows()}
+});
+document.addEventListener("change",e=>{if(e.target.id==="a-region"){state.region=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}});
 function tracker(){
   const peek=[...trackable].filter(s=>s.value).sort((a,b)=>b.value-a.value).slice(0,4);
   return `<div class="wrap"><section class="launch">
@@ -1479,13 +1507,13 @@ document.addEventListener("click",e=>{
   else if(t.hasAttribute("data-signin-note")){const n=document.querySelector(".si-note");n.dataset.state="done";n.textContent="Preview only: accounts aren't set up yet, so this isn't available."}
   else if(t.hasAttribute("data-join")){t.nextElementSibling.textContent="Preview only: payments aren't connected yet, so nothing was charged."}
   else if(t.dataset.scroll){if(t.dataset.option)document.getElementById("sp-interest").value=t.dataset.option;document.getElementById(t.dataset.scroll).scrollIntoView({behavior:"smooth"})}
-  else if(t.dataset.topic){state.topic=t.dataset.topic;state.nq="";go("archives",false,"push")}
-  else{if(t.dataset.go==="archives"){state.topic="All";state.nq=""}go(t.dataset.go,false,"push")}
+  else if(t.dataset.topic){state.topic=t.dataset.topic;state.region="All";state.nq="";state.nlimit=NEWS_PAGE;go("archives",false,"push")}
+  else{if(t.dataset.go==="archives"){state.topic="All";state.region="All";state.nq="";state.nlimit=NEWS_PAGE}go(t.dataset.go,false,"push")}
 });
-document.addEventListener("input",e=>{if(e.target.id==="a-q"){state.nq=e.target.value;newsRows()}});
+document.addEventListener("input",e=>{if(e.target.id==="a-q"){state.nq=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}});
 document.addEventListener("change",e=>{
-  if(e.target.id==="a-sector"){state.topic=e.target.value;go("archives",true)}
-  if(e.target.id==="a-sort"){state.nsort=e.target.value;newsRows()}
+  if(e.target.id==="a-sector"){state.topic=e.target.value;state.nlimit=NEWS_PAGE;go("archives",true)}
+  if(e.target.id==="a-sort"){state.nsort=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}
 });
 document.addEventListener("submit",e=>{
   e.preventDefault();
