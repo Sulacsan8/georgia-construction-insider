@@ -64,7 +64,7 @@ INSIGHTS.push({
   sections: [
     { h: "Project overview", body: [
       "Amazon Web Services announced in January 2025 that it would invest at least $11 billion in Georgia data centers across two counties. Butts County sits south of Atlanta on the I-75 corridor. Douglas County is west of the city. AWS said the campuses will support cloud computing and artificial intelligence workloads, and will add at least 550 high-skilled jobs plus thousands of construction and supply-chain jobs.",
-      "The Butts County campus is the larger and further along. State filings call it ATL086, part of an \"ATL 086/286 Campus.\" Locally it was known as Project Lighthouse. It sits on 543 acres AWS leases from the Development Authority of Butts County in the River Park Industrial Park, off Ga. 16 East near I-75. Aerial images from October 2026 show large-scale grading, and the campus's state air permit is now under review.",
+      "The Butts County campus is further along. State filings call it ATL086, part of an \"ATL 086/286 Campus.\" Locally it was known as Project Lighthouse. It sits on 543 acres AWS leases from the Development Authority of Butts County in the River Park Industrial Park, off Ga. 16 East near I-75. Aerial images from October 2026 show large-scale grading, and the campus's state air permit is now under review.",
       "In Douglas County, which gets at least $5 billion of the total, Amazon owns two tracts: 118 acres off Echo Road in the unincorporated county, and roughly 129 to 132 acres on West Strickland Street in Douglasville. No construction start has been confirmed at either Douglas site."
     ]},
     { h: "Project components", sub: [
