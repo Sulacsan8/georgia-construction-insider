@@ -140,6 +140,20 @@ td a:hover{color:var(--gray)}
 .article .art{margin-top:20px}
 .prose{display:grid;gap:16px;font-size:18.5px;line-height:1.6;margin-top:22px;max-width:66ch}
 .prose p{margin:0}
+.news-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:18px}
+.news-card a{display:flex;flex-direction:column;height:100%;border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:var(--paper);color:var(--ink);text-decoration:none}
+.news-card a:hover h3{text-decoration:underline}
+.news-card .art{display:block;aspect-ratio:16/10;overflow:hidden}
+.news-card .art svg{width:100%;height:100%;display:block}
+.nc-body{display:flex;flex-direction:column;gap:8px;padding:14px 16px 18px;flex:1}
+.nc-meta{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#cc050d}
+.news-card h3{font-size:18px;line-height:1.25;margin:0}
+.news-card p{font-size:14px;line-height:1.5;color:var(--gray);margin:0}
+.nc-go{margin-top:auto;padding-top:6px;font-size:14px;font-weight:700;color:#cc050d}
+.see-more{display:flex;justify-content:center;margin-top:24px}
+.see-more .pill{background:#cc050d;border-color:#cc050d;color:#fff}
+@media (max-width:1000px){.news-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.news-grid{grid-template-columns:1fr}}
 .byline{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:14px 0 16px;padding-bottom:14px;border-bottom:1px solid var(--rule);font-size:14px;color:var(--gray)}
 .byline-meta,.byline-share{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
 .byline-where,.byline-label{display:inline-flex;align-items:center;gap:5px}
@@ -851,6 +865,7 @@ const metric=s=>[s.valueLabel!=="Not disclosed"?s.valueLabel:"",s.where].filter(
 const subForm=id=>`<form class="sub-form" data-sub><label class="sr" for="${id}">Email address</label><input id="${id}" type="email" required placeholder="Enter your email" autocomplete="email"><button class="pill" type="submit">Subscribe for free</button><p class="sub-note" role="status">Free to join. Unsubscribe anytime.</p></form>`;
 const pourBand=id=>`<section class="pour-band"><div><span class="mono">The Peach State Pour · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div>${subForm(id)}</section>`;
 const insight=s=>link(s,`${art(s,"i")}<span class="metric">${metric(s)}</span><h3>${s.title}</h3><p>${s.dek}</p><span class="go">Read more →</span>`,"insight");
+const newsCard=s=>`<article class="news-card">${link(s,`${art(s,"n")}<div class="nc-body"><span class="nc-meta">${s.sector} · ${s.date}</span><h3>${s.title}</h3><p>${s.dek}</p><span class="nc-go">Read Story →</span></div>`)}</article>`;
 const trackable=STORIES.filter(s=>s.status);
 const trackRow=s=>`<tr><td>${link(s,short(s))}</td><td>${s.where}</td><td>${s.who}</td><td class="val">${s.valueLabel}</td><td><span class="stage st-${s.st}">${s.status}</span></td></tr>`;
 const pastRow=s=>`<article class="past">${link(s,`<div class="row mono"><span class="cat">${s.sector}</span><span>${s.date}</span><span>${s.region}</span></div><h3>${s.title}</h3><p>${s.dek}</p>`)}</article>`;
@@ -867,9 +882,10 @@ function home(){
     <div><h2 class="bar-head">Top Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol>
       <a class="btn-line top-all" href="#archives" data-go="archives">View all latest news</a></div>
   </section>
+  <section class="module latest-news"><h2 class="bar-head">Latest News</h2><div class="news-grid">${sorted.filter(s=>s!==lead).slice(0,8).map(newsCard).join("")}</div>
+    <div class="see-more"><a class="pill" href="#archives" data-go="archives">See more →</a></div></section>
   <section class="module"><div class="mod-head"><div><h2>Project Tracker</h2></div><a class="see" href="#tracker" data-go="tracker">View Project Tracker →</a></div><div class="insights">${ins.map(insight).join("")}</div></section>
-  ${memberBox()}
-  ${pourBand("sub-band")}</div>`;
+  ${memberBox()}</div>`;
 }
 function newsRows(){
   const q=state.nq.trim().toLowerCase();
