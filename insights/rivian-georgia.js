@@ -35,7 +35,6 @@ INSIGHTS.push({
   glance: [
     ["Owner", "Rivian Automotive"],
     ["General contractor", "Clayco / JE Dunn Construction"],
-    ["Civil and paint shop scopes", "Clayco / JE Dunn Construction and LJC"],
     ["Design architect", "Skidmore, Owings & Merrill"],
     ["Engineer", "Affiliated Engineers, Inc."],
     ["Structural steel", "Steel, LLC"],
@@ -83,7 +82,7 @@ INSIGHTS.push({
       "<ul><li>Vehicle assembly, paint, stamping, drive-unit and body and battery buildings.</li><li>Two large stamping presses, which Rivian calls the most complex part of the build.</li><li>An on-site wastewater treatment plant.</li><li>A 13,000-sq-ft Rivian museum, a vehicle sales building, charging and service facilities.</li><li>Cabins, a timber bridge, ponds and roughly 1,000 forested acres kept for driving trails, camping and recreation.</li></ul>",
     ]},
     { h: "Project team", body: [
-      "<ul><li><b>General contractor:</b> a joint venture of Clayco and JE Dunn Construction. Clayco was first chosen in December 2023, and the paint shop is being delivered as design-build.</li><li><b>Civil and paint shop:</b> the Clayco / JE Dunn joint venture and LJC.</li><li><b>Design architect:</b> Skidmore, Owings & Merrill.</li><li><b>Engineer:</b> Affiliated Engineers, Inc.</li><li><b>Structural steel:</b> Steel, LLC.</li><li><b>Other contractors:</b> ACS Group and Stock & Associates Consulting Engineers, Inc.</li><li><b>Public infrastructure:</b> GDOT is building a new I-20 interchange and a four-lane frontage road. CSX will serve the plant by rail spur.</li></ul>"
+      "<ul><li><b>General contractor:</b> a joint venture of Clayco and JE Dunn Construction. Clayco was first chosen in December 2023, and the paint shop is being delivered as design-build.</li><li><b>Design architect:</b> Skidmore, Owings & Merrill.</li><li><b>Engineer:</b> Affiliated Engineers, Inc.</li><li><b>Structural steel:</b> Steel, LLC.</li><li><b>Other contractors:</b> ACS Group and Stock & Associates Consulting Engineers, Inc.</li><li><b>Public infrastructure:</b> GDOT is building a new I-20 interchange and a four-lane frontage road. CSX will serve the plant by rail spur.</li></ul>"
     ]},
     { h: "Financing", body: [
       "Rivian's federal support has been resized. The Department of Energy closed a loan of up to $6.6 billion in January 2025: up to $3.4 billion for Phase 1 and $2.6 billion for Phase 2, plus interest. In April 2026 the loan was amended to roughly $4.5 billion, and Phase 2 was dropped from its scope. Phase 1 capacity rose from 200,000 to 300,000 vehicles a year at the same time. Rivian expects its first draw by early 2027.",
