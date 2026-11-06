@@ -178,6 +178,42 @@ td a:hover{color:var(--gray)}
 .pour-x .cd-boxes b{color:#fff}
 .pour-x .cd-boxes span{color:#f1f2f4;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
 .pour-x .px-when{font-size:12px;color:#f1f2f4;margin:10px 0 0}
+/* Article pages: headline across the top, facts beside the body, Texas-style footer blocks */
+.art-head{padding-top:14px}
+.art-head .art-kicker{color:var(--accent);margin:0}
+.art-head h1{font-size:clamp(30px,3.7vw,46px);margin:6px 0 12px}
+.art-head .dek{font-size:20px;line-height:1.4;color:var(--body-gray);margin:0}
+.article{padding-block:6px 16px}
+.article .art{margin-top:4px}
+.next-story{margin-top:32px}
+.next-story a{display:flex;align-items:center;gap:18px;background:#f1f2f4;border:1px solid var(--rule);border-radius:12px;padding:14px;color:inherit;text-decoration:none}
+.next-story .art{width:128px;flex:none;aspect-ratio:4/3;border-radius:8px}
+.next-story .ns-text{flex:1;min-width:0}
+.next-story .ns-label{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#cc050d;margin-bottom:4px}
+.next-story h3{font-size:18px;line-height:1.3;margin:0}
+.next-story .ns-btn{flex:none;background:#cc050d;color:#fff;font-weight:700;font-size:14px;padding:10px 18px;border-radius:99px}
+.next-story a:hover .ns-btn{background:#a30409}
+.news-bar{margin-top:16px;background:#6b717a;border-radius:12px;padding:16px 20px}
+.news-bar p{color:#fff;font-weight:700;font-size:15px;margin:0}
+.news-bar .sub-form{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.news-bar .sub-form input{flex:1;min-width:180px;background:#7f858e;border:1px solid #959ba3;color:#fff}
+.news-bar .sub-form input::placeholder{color:#eceef0}
+.news-bar .sub-form .pill{flex:none;padding:10px 22px}
+.news-bar .sub-note{flex-basis:100%;color:#fff;text-align:left}.news-bar .sub-note:empty{display:none}
+.more-news{background:#f1f2f4;border-top:1px solid var(--rule);margin-top:40px;padding:30px 0 44px}
+.more-news h2{text-align:center;font-size:clamp(24px,2.6vw,30px);margin:0 0 20px}
+.more-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.more-card a{display:block;height:100%;background:#fff;border-radius:10px;overflow:hidden;color:var(--ink);text-decoration:none;border:1px solid var(--rule)}
+.more-card .art{aspect-ratio:16/10;border-radius:0}
+.more-card h3{font-size:17px;line-height:1.3;margin:0;padding:12px 14px 16px}
+.more-card a:hover h3{text-decoration:underline}
+@media (max-width:760px){.more-grid{grid-template-columns:1fr}.next-story .ns-btn{display:none}.next-story .art{width:96px}}
+/* Newsletter page band matches the homepage newsletter grey */
+.pour-band{background:#6b717a}
+.pour-band .mono,.pour-band p{color:#fff}
+.pour-band .cd-boxes div{background:#7f858e;border-color:#959ba3}
+.pour-band .sub-form input{background:#7f858e;border-color:#959ba3}
+.pour-band .sub-form input::placeholder{color:#eceef0}
 /* Homepage main story: photo card with the headline over it */
 .lead-hero a{position:relative;display:block;border-radius:14px;overflow:hidden;color:#fff;background:#000}
 .lead-hero .art{aspect-ratio:4/3;border-radius:0}
@@ -1171,14 +1207,18 @@ function dashboard(){
 }
 function newsletters(){return `<div class="wrap"><section class="pour-band"><div><span class="mono">The Georgia Build · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div><div>${countdownHTML().replace("data-countdown","data-countdown data-target=\"2026-11-15T17:00:00Z\"").replace("Next edition:","First edition:")}${subForm("sub-page")}</div></section></div>`}
 function story(s){
-  const related=sorted.filter(x=>x!==s&&(x.sector===s.sector||x.region===s.region)).slice(0,3);
   const facts=[["Value",s.valueLabel],["Location",s.where],["Lead",s.who],["Stage",s.status]].filter(f=>f[1]);
-  return `<div class="wrap"><div class="article"><article>
-    <div class="row mono" style="color:var(--accent)">${s.sector}</div><h1>${s.title}</h1><p class="dek">${s.dek}</p>${byline(s)}
+  const next=sorted[(sorted.indexOf(s)+1)%sorted.length];
+  const more=sorted.filter(x=>x!==s&&x!==next).slice(0,3);
+  return `<div class="wrap"><header class="art-head"><div class="row mono art-kicker">${s.sector}</div><h1>${s.title}</h1><p class="dek">${s.dek}</p>${byline(s)}</header>
+  <div class="article"><article>
     ${art(s,"a")}<p class="caption">${s.img?(s.credit?`Photo: ${s.credit}`:""):"Illustration of the project type, not a site photograph."}</p>
     <div class="prose">${s.body.map(p=>p.startsWith("<")?p:`<p>${p}</p>`).join("")}</div>
   </article><aside class="sheet">${facts.length?`<h2>Project facts</h2><dl>${facts.map(f=>`<div><dt class="mono">${f[0]}</dt><dd>${f[1]}</dd></div>`).join("")}</dl>`:""}</aside></div>
-  <section class="module" style="margin-top:32px"><div class="mod-head"><h2>Keep reading</h2></div>${related.map(pastRow).join("")}</section>${pourBand("sub-story")}</div>`;
+  <section class="next-story">${link(next,`${art(next,"x")}<div class="ns-text"><span class="ns-label">Next story</span><h3>${next.title}</h3></div><span class="ns-btn">Next story →</span>`)}</section>
+  <section class="news-bar"><p>Subscribe to The Georgia Build, our free newsletter, delivered to your inbox every week.</p>${subForm("sub-story","Subscribe","","Enter your email")}</section></div>
+  <section class="more-news"><div class="wrap"><h2>More Georgia Construction News</h2><div class="more-grid">${more.map(x=>`<article class="more-card">${link(x,`${art(x,"m")}<h3>${x.title}</h3>`)}</article>`).join("")}</div>
+    <div class="see-more"><a class="pill" href="#archives" data-go="archives">View All Latest News →</a></div></div></section>`;
 }
 const app=document.getElementById("app");
 document.getElementById("nav").innerHTML=`<a href="#home" data-go="home">Home</a>
