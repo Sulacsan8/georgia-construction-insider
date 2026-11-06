@@ -188,17 +188,17 @@ td a:hover{color:var(--gray)}
 .ind-head h1{font-size:clamp(34px,4.6vw,54px);font-weight:800;letter-spacing:-.02em;margin:4px 0 8px}
 .ind-head p{margin:0;color:#555;font-size:16px;max-width:80ch}
 .ind-top{display:grid;grid-template-columns:minmax(0,2.15fr) minmax(0,1fr);gap:20px;align-items:stretch}
-.ind-lead a{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);height:100%;min-height:340px;border-radius:12px;overflow:hidden;background:#111;color:#fff;text-decoration:none}
+.ind-lead a{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);height:100%;min-height:280px;border-radius:12px;overflow:hidden;background:#111;color:#fff;text-decoration:none}
 .ind-lead-img{position:relative;min-height:240px}
-.ind-lead-img .art{position:absolute;inset:0;display:block}
+.ind-lead-img .art{position:absolute;inset:0;display:block;aspect-ratio:auto;width:100%;height:100%}
 .ind-lead-img .art img,.ind-lead-img .art svg{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
 .ind-lead a:hover .art img{transform:scale(1.04)}
 .ind-tag{position:absolute;left:14px;top:14px;background:#cc050d;color:#fff;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:5px}
-.ind-lead-text{display:flex;flex-direction:column;justify-content:center;gap:12px;padding:28px}
+.ind-lead-text{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:22px 24px}
 .ind-meta{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#d0d0d0}
-.ind-lead h2{color:#fff;font-size:clamp(22px,2.2vw,30px);line-height:1.2;font-weight:800}
-.ind-lead p{margin:0;color:#e6e6e6;font-size:15px;line-height:1.5}
-.ind-btn{align-self:flex-start;margin-top:6px;background:#cc050d;color:#fff;font-weight:700;font-size:15px;padding:12px 18px;border-radius:7px}
+.ind-lead h2{color:#fff;font-size:clamp(19px,1.7vw,24px);line-height:1.22;font-weight:800}
+.ind-lead p{margin:0;color:#e6e6e6;font-size:14px;line-height:1.5}
+.ind-btn{align-self:flex-start;margin-top:4px;background:#cc050d;color:#fff;font-weight:700;font-size:14px;padding:10px 16px;border-radius:7px}
 .ind-lead a:hover .ind-btn{background:#a30409}
 .ind-tops{border:1px solid var(--rule);border-radius:12px;padding:16px 18px;background:#fff}
 .ind-tops-head,.ind-box-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--rule);padding-bottom:10px}
@@ -345,13 +345,14 @@ td a:hover{color:var(--gray)}
 .lead-hero .hero-credit{position:absolute;top:10px;right:10px;font-size:11px;color:#fff;background:rgba(0,0,0,.5);padding:3px 9px;border-radius:99px}
 .lead-hero .hero-text{position:absolute;left:0;right:0;bottom:0;padding:18px 20px 14px}
 .lead-hero .hero-meta{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#e9e9e9}
-.lead-hero h1{color:#fff;font-size:clamp(24px,2.5vw,33px);margin:8px 0 0;line-height:1.15;display:flow-root;text-wrap:pretty;max-width:none}
-.lead-hero a:hover h1{color:#fff}
+.lead-hero h1{position:relative;color:#fff;font-size:clamp(24px,2.5vw,33px);margin:8px 0 0;line-height:1.15;text-wrap:pretty;max-width:none}
+.lead-hero .hero-gap{display:inline-block;width:196px;height:1px}
+.lead.lead-hero a:hover h1{color:#fff}
 .lead-hero .hero-foot{display:flex;align-items:flex-end;justify-content:flex-end;gap:16px}
 .lead-hero p.dek{color:#e6e6e6;font-size:15px;margin:0;max-width:60ch}
-.lead-hero .hero-btn{float:right;position:relative;top:4px;margin:0 0 0 20px;background:#cc050d;color:#fff;font:700 14px/1.2 var(--body);letter-spacing:0;padding:11px 16px;border-radius:6px;white-space:nowrap}
+.lead-hero .hero-btn{position:absolute;right:0;bottom:-3px;margin:0;background:#cc050d;color:#fff;font:700 14px/1.2 var(--body);letter-spacing:0;padding:11px 16px;border-radius:6px;white-space:nowrap}
 .lead-hero a:hover .hero-btn{background:#a30409}
-@media (max-width:640px){.lead-hero .art{aspect-ratio:16/10}.lead-hero .hero-shade{display:none}.lead-hero .hero-text{position:static;padding:18px 18px 20px}.lead-hero .hero-btn{float:none;position:static;display:block;width:fit-content;margin:14px 0 0}}
+@media (max-width:640px){.lead-hero .art{aspect-ratio:16/10}.lead-hero .hero-shade{display:none}.lead-hero .hero-text{position:static;padding:18px 18px 20px}.lead-hero .hero-btn{position:static;display:block;width:fit-content;margin:14px 0 0}.lead-hero .hero-gap{display:none}}
 .home-end{margin-bottom:56px}
 /* Gentle zoom on the homepage lead and Latest News images when hovered */
 .lead .art>*,.news-card .art>*{transition:transform .45s ease}
@@ -1163,7 +1164,7 @@ function home(){
   const lead=byId["story-audi"];
   const tops=["story-walmart-carnesville","story-gainesville-inland-port","story-yancey","story-guildhouse","story-selig-ponce","story-macon-costco","story-agc-jobs","story-jefferson-dc","story-js-link","story-beltline-nw","story-savannah-fairgrounds","story-sr21","story-thomasville-shelter","story-srs","story-i285"].map(i=>byId[i]);
   return `<div class="wrap"><section class="front">
-    <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title}<span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
+    <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title}<span class="hero-gap" aria-hidden="true"></span><span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
       ${pourBox()}</div>
     <div><h2 class="bar-head">Top Construction Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol></div>
   </section>
@@ -1216,7 +1217,6 @@ function indRows(){
 function industry(t){
   const list=sorted.filter(s=>s.sector===t),lead=list[0],tops=list.slice(1,5);
   const regions=[...new Set(list.map(s=>s.region))].sort();
-  const major=[...STORIES].filter(s=>s.value).sort((a,b)=>b.value-a.value).slice(0,5);
   const opt=(v,l,cur)=>`<option value="${esc(v)}"${v===cur?" selected":""}>${esc(l)}</option>`;
   return `<div class="wrap ind-page"><header class="ind-head"><span class="ind-eyebrow">Industry</span><h1>${t}</h1><p>${IND_DESC[t]}</p></header>
   ${lead?`<section class="ind-top"><article class="ind-lead">${link(lead,`<div class="ind-lead-img">${art(lead,"il")}<span class="ind-tag">${t}</span></div><div class="ind-lead-text"><span class="ind-meta">${t} · ${lead.date}</span><h2>${lead.title}</h2><p>${lead.dek}</p><span class="ind-btn">Read full story →</span></div>`)}</article>
@@ -1228,7 +1228,6 @@ function industry(t){
       <div id="i-list"></div><div class="see-more"><button type="button" class="pill" id="i-more" data-imore hidden>View More Stories →</button></div></section>
     <aside class="ind-side">
       <div class="ind-box ind-sub"><h3>Get the latest in ${t}</h3><p>News, major projects and market insights delivered to your inbox.</p>${subForm("sub-ind","Subscribe","","Enter your email")}</div>
-      <div class="ind-box"><div class="ind-box-head"><h3>Major Projects Across Georgia</h3><a href="/project-tracker" data-go="tracker">View All →</a></div><ul class="ind-major">${major.map(s=>`<li>${link(s,`${s.img?`<img src="${s.img}" alt="" loading="lazy">`:`<span class="mj-ph"></span>`}<span><b>${short(s)}</b><small>${s.valueLabel} · ${s.sector}</small></span>`)}</li>`).join("")}</ul></div>
       <div class="ind-offer"><span>Limited Time Offer</span><h3>Upgrade to GCI Premium</h3><p>Go beyond the headlines with detailed project insights, contractor information and construction timelines.</p>
         <div class="ind-prices"><div><b>$11.99</b>/month<small>Previously <s>$19.99</s></small></div><div><b>$109.99</b>/year<small>Previously <s>$199</s></small></div></div><a class="ind-offer-btn" href="/membership" data-go="membership">Explore the Offer →</a></div>
       <div class="ind-box"><h3>View Other Industries</h3><ul class="ind-others">${INDUSTRIES.filter(x=>x!==t).map(x=>`<li><a href="/industry/${indSlug(x)}" data-go="ind-${indSlug(x)}">${x}<span>→</span></a></li>`).join("")}</ul></div>
