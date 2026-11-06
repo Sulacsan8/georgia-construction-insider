@@ -505,11 +505,11 @@ footer.site{margin-top:0}
 .mb-plan ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:8px;font-size:15px}
 .mb-plan li{position:relative;padding-left:26px}
 .mb-plan li::before{content:"";position:absolute;left:5px;top:3px;width:7px;height:12px;border:solid #cc050d;border-width:0 2.4px 2.4px 0;transform:rotate(40deg)}
-.mb-plan-dark{background:#000;border-color:#000;color:#fff;padding-top:42px}
-.mb-plan-dark h3{color:#fff}
-.mb-plan-dark .mb-status{color:#ff8a8d}
-.mb-plan-dark li::before{border-color:#ff5a5f}
-.mb-founding{position:absolute;left:24px;top:-13px;background:#f6c343;color:#000;font-weight:800;font-size:14px;padding:5px 14px;border-radius:99px}
+.mb-plan-best{background:#f7f7f7;border:2px solid #cc050d;padding-top:0;overflow:hidden}
+.mb-banner{display:block;margin:0 -28px 18px;background:#cc050d;color:#fff;text-align:center;font-weight:800;font-size:13px;letter-spacing:.08em;padding:9px 12px}
+.mb-kicker{display:block;color:#cc050d;font-weight:800;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:2px}
+.mb-plan .mb-save.mb-save-best{display:block;background:#fff;border:1px solid #f0c4c6;border-left:4px solid #cc050d;font-weight:500;line-height:1.45}
+.mb-save-best b{display:block;font-weight:800;color:#cc050d}
 .mb-ribbon{position:absolute;right:20px;top:-1px;width:112px;background:#cc050d;color:#fff;text-align:center;font-weight:800;font-size:13px;line-height:1.2;padding:12px 8px 20px;clip-path:polygon(0 0,100% 0,100% 100%,50% 86%,0 100%)}
 .mb-lock{border:1.5px solid #f6c343;color:#f6c343;font-weight:700;font-size:14px;text-align:center;border-radius:99px;padding:7px 12px;margin-top:16px}
 .mb-benefits{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:24px;background:#f4f4f4;border-radius:14px;padding:24px 26px}
@@ -548,9 +548,9 @@ footer.site{margin-top:0}
 @media (max-width:900px){.mb-hero-grid,.mb-plan-grid,.mb-benefits,.mb-faq-grid{grid-template-columns:minmax(0,1fr)}.mb-benefits-head{border-right:0;padding-right:0}.mb-benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.mb-benefit-grid{grid-template-columns:minmax(0,1fr)}.mb-band li{flex:1 1 40%;justify-content:center;transform:none}.mb-band li>*{transform:none}.mb-band li+li{border-left:0}.mb-ribbon{position:static;width:auto;clip-path:none;padding:6px 10px;border-radius:6px;margin-bottom:10px}.mb-sample-top span+span{display:none}}
 .mb-hero-grid{grid-template-columns:minmax(0,1fr);text-align:center;padding-block:40px}.mb-lede{max-width:44em;margin-inline:auto}
-.mb-save{background:#f6c343;color:#000;font-weight:800;font-size:15px;border-radius:6px;padding:7px 11px;margin-top:10px}
+.mb-save{background:#f0f0f0;color:#000;font-weight:800;font-size:15px;border-radius:6px;padding:7px 11px;margin-top:10px}
 .mb-faq-grid{grid-template-columns:minmax(0,1fr);gap:0;margin-top:8px}.mb-faq details{border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:14px 0}.mb-faq summary{font-size:18px}.mb-faq details p{font-size:16px;line-height:1.5;margin-top:6px;max-width:75ch}
-.mb-plan-dark{padding-top:26px}.mb-save{min-height:62px;display:flex;align-items:center}.mb-save-plain{background:#f0f0f0;font-weight:600}
+.mb-save{min-height:62px;display:flex;align-items:center}.mb-save-plain{background:#f0f0f0;font-weight:600}
 body.bare header.site,body.bare footer.site{display:none}
 .si-page{min-height:100vh;background:#fff;padding:28px max(24px,env(safe-area-inset-left,0px)) 48px;display:flex;flex-direction:column}
 .si-back{align-self:flex-start;font-size:12.5px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;color:#000}
@@ -1070,7 +1070,7 @@ function tracker(){
     <div class="countdown launch-cd" data-countdown data-target="2026-11-29T17:00:00Z"><div class="cd-boxes"><div><b data-cd="d">0</b><span>Days</span></div><div><b data-cd="h">00</b><span>Hours</span></div><div><b data-cd="m">00</b><span>Minutes</span></div><div><b data-cd="s">00</b><span>Seconds</span></div></div></div>
     <div class="launch-form launch-join"><p>Full Project Tracker access is exclusive to annual members.</p>
       <button type="button" class="launch-btn" data-plan="annual">Sign Up as an Annual Member →</button><p class="launch-status" role="status"></p>
-      <p class="launch-note">$109.99/year · Limited Time Offer · Price fixed for life</p></div>
+      <p class="launch-note">$109.99/year · Founding Member Offer · Renewal price locked in</p></div>
   </section></div>`;
 }
 function sponsors(){
@@ -1125,7 +1125,7 @@ const COMPARE=[
   ["Georgia Project Tracker access",0,"Limited","Full"],
   ["Exclusive market reports and analysis",0,0,1],
   ["Priority access to new features and coverage",0,0,1],
-  ["Limited Time Offer price, fixed for life",0,0,1]
+  ["Founding-member rate locked in for renewals",0,0,1]
 ];
 const TICK=`<svg class="mbc-yes" viewBox="0 0 24 24" width="18" height="18" aria-label="Included"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#cc050d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const memberBox=()=>`<section class="member"><div><span class="mono">GCI Membership</span><h2>Unlock Premium Access for Less Than $4 a Week.</h2><p>Go beyond the headlines. Get exclusive Georgia construction news, in-depth project coverage, contractor information and construction timelines.</p></div>
@@ -1134,7 +1134,7 @@ const memberBox=()=>`<section class="member"><div><span class="mono">GCI Members
 function membership(){
   const ic=d=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
   const I={doc:"M6 3h9l4 4v14H6zM9 10h7M9 14h7M9 18h4",city:"M3 21V9l6-3v15M9 21V4l8 3v14M3 21h18M12 10h2M12 14h2M5 12h2M5 16h2",hat:"M3 17h18M5 17a7 7 0 0 1 14 0M10 10.5V6h4v4.500",cal:"M4 6h16v15H4zM4 10h16M8 3v5M16 3v5M8 14h2M14 14h2M8 18h2",chart:"M4 21h16M6 21v-5M11 21v-9M16 21V8M4 11l6-5 4 3 6-6",news:"M4 5h13v15H6a2 2 0 0 1-2-2zM17 9h3v9a2 2 0 0 1-2 2M7 9h7M7 13h7M7 17h4",deal:"M3 11l5-4 4 2 4-2 5 4M6 13l4 4a2 2 0 0 0 3 0l5-5M9 9l-2 3"};
-  const plan=(cls,name,price,per,note,bullets,badge,was)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price"><b>${price}</b>/${per}${was?` <s class="mb-was">${was}</s>`:""}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">Join GCI ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul>${cls?`<p class="mb-lock">This price is fixed for life.</p>`:""}</article>`;
+  const plan=(cls,name,price,per,note,bullets,badge,cta)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price"><b>${price}</b>/${per}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">${cta} ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul></article>`;
   const benefit=(i,t,c)=>`<div class="mb-benefit">${ic(I[i])}<div><h4>${t}</h4><p>${c}</p></div></div>`;
   const faq=(q,a)=>`<details open><summary>${q}</summary><p>${a}</p></details>`;
  return `<section class="mb-hero"><div class="wrap mb-hero-grid"><div>
@@ -1146,8 +1146,8 @@ function membership(){
   <div class="mb-band"><ul class="wrap">${[["news","News"],["hat","Projects"],["city","Companies"],["deal","M&amp;A"]].map(x=>`<li>${ic(I[x[0]])}${x[1]}</li>`).join("")}</ul></div>
   <section class="wrap mb-plans" id="mb-plans"><h2>Choose Your Membership</h2><p class="mb-plans-sub">Get full access to Georgia Construction Insider's premium content, project coverage and market intelligence.</p>
     <div class="mb-plan-grid">
-      ${plan("","Monthly","$12.99","month","Premium access. Cancel anytime.</p><p class=\"mb-save mb-save-plain\">Pay monthly, with no annual commitment.",["Full access to premium articles and project coverage","Contractor, developer and design team information","Construction timelines and key milestones","Limited access to the Project Tracker","Georgia construction news and market updates"],"")}
-      ${plan("mb-plan-dark","Annual","$109.99","year","Full access, at a lower annual price.</p><p class=\"mb-save\">Save 29%: more than 3 months free compared to monthly.",["<strong>Save $50 a year with the Limited Time Offer (31% off $159.99)</strong>","Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage"],`<span class="mb-founding">★ Limited Time Offer</span><span class="mb-ribbon">Lock in this price for life</span>`,"$159.99")}
+      ${plan("","Monthly Membership","$12.99","month","Premium access. Cancel anytime.</p><p class=\"mb-save mb-save-plain\">Pay monthly, with no annual commitment.",["Full access to premium articles and project coverage","Contractor, developer and design team information","Construction timelines and key milestones","Limited access to the Project Tracker","Georgia construction news and market updates"],"","Choose Monthly")}
+      ${plan("mb-plan-best","Annual Membership","$109.99","year","Just $9.17 per month, billed annually.</p><p class=\"mb-save mb-save-best\"><b>Lock in your founding-member rate.</b>Keep your $109.99 annual renewal price for as long as your membership remains active, under the founding-member terms.",["<strong>Save 29% compared with paying monthly</strong>","Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage"],`<span class="mb-banner">BEST VALUE · FOUNDING MEMBER</span><span class="mb-kicker">Founding Member Offer</span>`,"Become a Founding Member")}
     </div></section>
   <section class="wrap mb-compare"><h2>What's Included with Each Membership?</h2>
     <div class="mbc-scroll"><table class="mbc"><thead><tr><th>Features &amp; Access</th><th>Free</th><th>Monthly</th><th class="mbc-annual">Annual</th></tr></thead><tbody>${COMPARE.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v===1?TICK:v===0?`<span class="mbc-no" aria-label="Not included">–</span>`:`<span class="mbc-txt">${v}</span>`}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>
