@@ -509,7 +509,7 @@ footer.site{margin-top:0}
 .mb-plan-dark h3{color:#fff}
 .mb-plan-dark .mb-status{color:#ff8a8d}
 .mb-plan-dark li::before{border-color:#ff5a5f}
-.mb-founding{position:absolute;left:24px;top:-13px;background:#f6c343;color:#000;font-weight:800;font-size:14px;padding:5px 14px;border-radius:99px}
+.mb-founding{position:absolute;left:24px;top:-13px;background:#cc050d;color:#fff;font-weight:800;font-size:14px;padding:5px 14px;border-radius:99px}
 .mb-ribbon{position:absolute;right:20px;top:-1px;width:112px;background:#cc050d;color:#fff;text-align:center;font-weight:800;font-size:13px;line-height:1.2;padding:12px 8px 20px;clip-path:polygon(0 0,100% 0,100% 100%,50% 86%,0 100%)}
 .mb-lock{border:1.5px solid #f6c343;color:#f6c343;font-weight:700;font-size:14px;text-align:center;border-radius:99px;padding:7px 12px;margin-top:16px}
 .mb-benefits{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.2fr);gap:24px;background:#f4f4f4;border-radius:14px;padding:24px 26px}
@@ -547,8 +547,8 @@ footer.site{margin-top:0}
 .mb-faq details p{font-size:14.5px;line-height:1.4;margin-top:4px}
 @media (max-width:900px){.mb-hero-grid,.mb-plan-grid,.mb-benefits,.mb-faq-grid{grid-template-columns:minmax(0,1fr)}.mb-benefits-head{border-right:0;padding-right:0}.mb-benefit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:520px){.mb-benefit-grid{grid-template-columns:minmax(0,1fr)}.mb-band li{flex:1 1 40%;justify-content:center;transform:none}.mb-band li>*{transform:none}.mb-band li+li{border-left:0}.mb-ribbon{position:static;width:auto;clip-path:none;padding:6px 10px;border-radius:6px;margin-bottom:10px}.mb-sample-top span+span{display:none}}
-.mb-hero-grid{grid-template-columns:minmax(0,1fr);text-align:center;padding-block:22px 40px}.mb-lede{max-width:44em;margin-inline:auto}
-.mb-save{background:#f6c343;color:#000;font-weight:800;font-size:15px;border-radius:6px;padding:7px 11px;margin-top:10px}
+.mb-hero-grid{grid-template-columns:minmax(0,1fr);text-align:center;padding-block:14px 40px}.mb-lede{max-width:44em;margin-inline:auto}
+.mb-save{background:#f0f0f0;color:#000;font-weight:800;font-size:15px;border-radius:6px;padding:7px 11px;margin-top:10px}
 .mb-faq-grid{grid-template-columns:minmax(0,1fr);gap:0;margin-top:8px}.mb-faq details{border:0;border-bottom:1px solid var(--rule);border-radius:0;padding:14px 0}.mb-faq summary{font-size:18px}.mb-faq details p{font-size:16px;line-height:1.5;margin-top:6px}
 .mb-plan-dark{padding-top:26px}.mb-save{min-height:62px;display:flex;align-items:center}.mb-save-plain{background:#f0f0f0;font-weight:600}
 body.bare header.site,body.bare footer.site{display:none}
@@ -1134,11 +1134,10 @@ const memberBox=()=>`<section class="member"><div><span class="mono">GCI Members
 function membership(){
   const ic=d=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
   const I={doc:"M6 3h9l4 4v14H6zM9 10h7M9 14h7M9 18h4",city:"M3 21V9l6-3v15M9 21V4l8 3v14M3 21h18M12 10h2M12 14h2M5 12h2M5 16h2",hat:"M3 17h18M5 17a7 7 0 0 1 14 0M10 10.5V6h4v4.500",cal:"M4 6h16v15H4zM4 10h16M8 3v5M16 3v5M8 14h2M14 14h2M8 18h2",chart:"M4 21h16M6 21v-5M11 21v-9M16 21V8M4 11l6-5 4 3 6-6",news:"M4 5h13v15H6a2 2 0 0 1-2-2zM17 9h3v9a2 2 0 0 1-2 2M7 9h7M7 13h7M7 17h4",deal:"M3 11l5-4 4 2 4-2 5 4M6 13l4 4a2 2 0 0 0 3 0l5-5M9 9l-2 3"};
-  const plan=(cls,name,price,per,note,bullets,badge,was)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price"><b>${price}</b>/${per}${was?` <s class="mb-was">${was}</s>`:""}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">Join GCI ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul>${cls?`<p class="mb-lock">This price is fixed for life.</p>`:""}</article>`;
+  const plan=(cls,name,price,per,note,bullets,badge,was)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price"><b>${price}</b>/${per}${was?` <s class="mb-was">${was}</s>`:""}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">${cls?"Choose Annual":"Choose Monthly"} ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul></article>`;
   const benefit=(i,t,c)=>`<div class="mb-benefit">${ic(I[i])}<div><h4>${t}</h4><p>${c}</p></div></div>`;
   const faq=(q,a)=>`<details open><summary>${q}</summary><p>${a}</p></details>`;
  return `<section class="mb-hero"><div class="wrap mb-hero-grid"><div>
-      <span class="mb-eyebrow">GCI Membership</span>
       <h1>Know the Projects.<br>Know the Players.<br><em>Become a Member.</em></h1>
       <p class="mb-lede">Members get premium Georgia construction reporting, project insights, contractor information, timelines and market intelligence.</p>
       <a class="mb-cta" href="/membership" data-scroll="mb-plans">Join GCI Today ↗</a>
@@ -1147,7 +1146,7 @@ function membership(){
   <section class="wrap mb-plans" id="mb-plans"><h2>Choose Your Membership</h2><p class="mb-plans-sub">Get full access to Georgia Construction Insider's premium content, project coverage and market intelligence.</p>
     <div class="mb-plan-grid">
       ${plan("","Monthly","$12.99","month","Premium access. Cancel anytime.</p><p class=\"mb-save mb-save-plain\">Pay monthly, with no annual commitment.",["Full access to premium articles and project coverage","Contractor, developer and design team information","Construction timelines and key milestones","Limited access to the Project Tracker","Georgia construction news and market updates"],"")}
-      ${plan("mb-plan-dark","Annual","$109.99","year","Full access, at a lower annual price.</p><p class=\"mb-save\">Save 29%: more than 3 months free compared to monthly.",["<strong>Save $50 a year with the Limited Time Offer (31% off $159.99)</strong>","Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage"],`<span class="mb-founding">★ Limited Time Offer</span><span class="mb-ribbon">Lock in this price for life</span>`,"$159.99")}
+      ${plan("mb-plan-dark","Annual","$109.99","year","Just $9.17 per month, billed annually.</p><p class=\"mb-save\">More than 3 months free compared to monthly.",["<strong>Save $50 a year with the Limited Time Offer</strong>","Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage"],`<span class="mb-founding">★ Limited Time Offer</span><span class="mb-ribbon">Lock in this price for life</span>`,"$159.99")}
     </div></section>
   <section class="wrap mb-compare"><h2>Compare Membership Plans</h2>
     <div class="mbc-scroll"><table class="mbc"><thead><tr><th>Features &amp; Access</th><th>Free</th><th>Monthly</th><th class="mbc-annual">Annual</th></tr></thead><tbody>${COMPARE.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v===1?TICK:v===0?`<span class="mbc-no" aria-label="Not included">–</span>`:`<span class="mbc-txt">${v}</span>`}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>
