@@ -185,6 +185,9 @@ td a:hover{color:var(--gray)}
 .art-head .dek{font-size:20px;line-height:1.4;color:var(--body-gray);margin:0}
 .article{padding-block:6px 16px}
 .article .art{margin-top:4px}
+.article .sheet{background:#f1f2f4;border:0;border-radius:14px}
+.sheet-label{display:block;font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#cc050d;margin-bottom:4px}
+.sheet-head h2{margin:0}
 .next-story{margin-top:32px}
 .next-story a{display:flex;align-items:center;gap:18px;background:#f1f2f4;border:1px solid var(--rule);border-radius:12px;padding:14px;color:inherit;text-decoration:none}
 .next-story .art{width:128px;flex:none;aspect-ratio:4/3;border-radius:8px}
@@ -1214,7 +1217,7 @@ function story(s){
   <div class="article"><article>
     ${art(s,"a")}<p class="caption">${s.img?(s.credit?`Photo: ${s.credit}`:""):"Illustration of the project type, not a site photograph."}</p>
     <div class="prose">${s.body.map(p=>p.startsWith("<")?p:`<p>${p}</p>`).join("")}</div>
-  </article><aside class="sheet">${facts.length?`<h2>Project facts</h2><dl>${facts.map(f=>`<div><dt class="mono">${f[0]}</dt><dd>${f[1]}</dd></div>`).join("")}</dl>`:""}</aside></div>
+  </article><aside class="sheet">${facts.length?`<div class="sheet-head"><span class="sheet-label">Overview</span><h2>Key Facts</h2></div><dl>${facts.map(f=>`<div><dt class="mono">${f[0]}</dt><dd>${f[1]}</dd></div>`).join("")}</dl>`:""}</aside></div>
   <section class="next-story">${link(next,`${art(next,"x")}<div class="ns-text"><span class="ns-label">Next story</span><h3>${next.title}</h3></div><span class="ns-btn">Next story →</span>`)}</section>
   <section class="news-bar"><p>Subscribe to The Georgia Build, our free newsletter, delivered to your inbox every week.</p>${subForm("sub-story","Subscribe","","Enter your email")}</section></div>
   <section class="more-news"><div class="wrap"><h2>More Georgia Construction News</h2><div class="more-grid">${more.map(x=>`<article class="more-card">${link(x,`${art(x,"m")}<h3>${x.title}</h3>`)}</article>`).join("")}</div>
