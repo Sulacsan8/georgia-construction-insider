@@ -346,7 +346,7 @@ td a:hover{color:var(--gray)}
 .lead-hero .hero-text{position:absolute;left:0;right:0;bottom:0;padding:18px 20px 14px}
 .lead-hero .hero-meta{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#e9e9e9}
 .lead-hero h1{position:relative;color:#fff;font-size:clamp(24px,2.5vw,33px);margin:8px 0 0;line-height:1.15;text-wrap:pretty;max-width:none}
-.lead-hero .hero-gap{display:inline-block;width:196px;height:1px}
+.lead-hero .hero-last{white-space:nowrap}.lead-hero .hero-gap{display:inline-block;width:184px;height:1px}
 .lead.lead-hero a:hover h1{color:#fff}
 .lead-hero .hero-foot{display:flex;align-items:flex-end;justify-content:flex-end;gap:16px}
 .lead-hero p.dek{color:#e6e6e6;font-size:15px;margin:0;max-width:60ch}
@@ -1164,7 +1164,7 @@ function home(){
   const lead=byId["story-audi"];
   const tops=["story-walmart-carnesville","story-gainesville-inland-port","story-yancey","story-guildhouse","story-selig-ponce","story-macon-costco","story-agc-jobs","story-jefferson-dc","story-js-link","story-beltline-nw","story-savannah-fairgrounds","story-sr21","story-thomasville-shelter","story-srs","story-i285"].map(i=>byId[i]);
   return `<div class="wrap"><section class="front">
-    <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title}<span class="hero-gap" aria-hidden="true"></span><span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
+    <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title.replace(/\s(\S+)$/,' <span class="hero-last">$1<span class="hero-gap" aria-hidden="true"></span></span>')}<span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
       ${pourBox()}</div>
     <div><h2 class="bar-head">Top Construction Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol></div>
   </section>
