@@ -1,0 +1,7 @@
+{
+  "buildCommand": "node scripts/build-pages.mjs",
+  "outputDirectory": "public",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
+}
