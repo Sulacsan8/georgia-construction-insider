@@ -374,6 +374,7 @@ footer.site{margin-top:0}
 .mb-plan{position:relative;border:1px solid #bbb;border-radius:12px;padding:26px 28px;display:flex;flex-direction:column}
 .mb-plan h3{font-size:26px}
 .mb-price{font-size:17px;margin-top:2px}.mb-price b{font-size:38px;font-weight:800}
+.mb-was{font-size:24px;font-weight:600;opacity:.6;text-decoration:line-through;text-decoration-thickness:2px;margin-right:6px}
 .mb-note{font-size:15px;margin-top:2px}
 .mb-join{background:#cc050d;color:#fff;border:0;border-radius:7px;padding:12px;font-weight:700;font-size:16px;cursor:pointer;margin-top:14px}
 .mb-join:hover{background:#a30409}
@@ -968,7 +969,7 @@ const memberBox=()=>`<section class="member"><div><span class="mono">GCI Members
 function membership(){
   const ic=d=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
   const I={doc:"M6 3h9l4 4v14H6zM9 10h7M9 14h7M9 18h4",city:"M3 21V9l6-3v15M9 21V4l8 3v14M3 21h18M12 10h2M12 14h2M5 12h2M5 16h2",hat:"M3 17h18M5 17a7 7 0 0 1 14 0M10 10.5V6h4v4.500",cal:"M4 6h16v15H4zM4 10h16M8 3v5M16 3v5M8 14h2M14 14h2M8 18h2",chart:"M4 21h16M6 21v-5M11 21v-9M16 21V8M4 11l6-5 4 3 6-6",news:"M4 5h13v15H6a2 2 0 0 1-2-2zM17 9h3v9a2 2 0 0 1-2 2M7 9h7M7 13h7M7 17h4",deal:"M3 11l5-4 4 2 4-2 5 4M6 13l4 4a2 2 0 0 0 3 0l5-5M9 9l-2 3"};
-  const plan=(cls,name,price,per,note,bullets,badge)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price"><b>${price}</b>/${per}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">Join GCI ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul>${cls?`<p class="mb-lock">This founding member price is fixed for life.</p>`:""}</article>`;
+  const plan=(cls,name,price,per,note,bullets,badge,was)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price">${was?`<s class="mb-was">${was}</s> `:""}<b>${price}</b>/${per}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">Join GCI ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul>${cls?`<p class="mb-lock">This price is fixed for life.</p>`:""}</article>`;
   const benefit=(i,t,c)=>`<div class="mb-benefit">${ic(I[i])}<div><h4>${t}</h4><p>${c}</p></div></div>`;
   const faq=(q,a)=>`<details open><summary>${q}</summary><p>${a}</p></details>`;
  return `<section class="mb-hero"><div class="wrap mb-hero-grid"><div>
@@ -981,7 +982,7 @@ function membership(){
   <section class="wrap mb-plans" id="mb-plans"><h2>Choose Your Membership</h2><p class="mb-plans-sub">Get full access to Georgia Construction Insider's premium content, project coverage and market intelligence.</p>
     <div class="mb-plan-grid">
       ${plan("","Monthly","$12.99","month","Premium access. Cancel anytime.</p><p class=\"mb-save mb-save-plain\">Pay monthly, with no annual commitment.",["Full access to premium articles and project coverage","Contractor, developer and design team information","Construction timelines and key milestones","Limited access to the Project Tracker","Georgia construction news and market updates"],"")}
-      ${plan("mb-plan-dark","Annual","$109.99","year","Full access, at a lower annual price.</p><p class=\"mb-save\">Save 29%: more than 3 months free compared to monthly.",["Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage"],`<span class="mb-founding">★ Founding Member Price</span><span class="mb-ribbon">Lock in this price for life</span>`)}
+      ${plan("mb-plan-dark","Annual","$109.99","year","Full access, at a lower annual price.</p><p class=\"mb-save\">Save 29%: more than 3 months free compared to monthly.",["Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage"],`<span class="mb-founding">★ Limited Time Offer</span><span class="mb-ribbon">Lock in this price for life</span>`,"$159.99")}
     </div></section>
   <section class="wrap"><div class="mb-benefits"><div class="mb-benefits-head"><span class="mb-eyebrow">Member Benefits</span><h2>More Insight.<br>More Context.<br>A Clearer View of <em>Georgia Construction.</em></h2></div><div class="mb-benefit-grid">
     ${benefit("doc","Premium Articles","In-depth coverage and analysis you won't find anywhere else.")}${benefit("city","Project Insights","Detailed looks at Georgia's largest and most impactful construction projects.")}${benefit("hat","Contractor Information","Verified details on general contractors, developers and design teams.")}${benefit("cal","Construction Timelines","Key milestones, schedules and what's happening next.")}${benefit("chart","Major Project Tracking","Follow high-value projects across the state in one place.")}${benefit("doc","Exclusive Reports","Member-only market reports, trends and industry intelligence.")}
