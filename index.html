@@ -152,6 +152,20 @@ td a:hover{color:var(--gray)}
 .nc-go{margin-top:auto;padding-top:6px;font-size:14px;font-weight:700;color:#cc050d}
 .see-more{display:flex;justify-content:center;margin-top:24px}
 .see-more .pill{background:#cc050d;border-color:#cc050d;color:#fff}
+/* Homepage: lead headline fills its column; newsletter box in grey and red; room above the footer */
+.lead h1{text-wrap:pretty;max-width:none}
+.front .pour{background:#f1f1f1;color:#000;border:1px solid #dddddd;border-top:4px solid #cc050d}
+.front .pour h2{color:#000}
+.front .pour .mono{color:#cc050d}
+.front .pour p,.front .pour p.cd-title{color:#333}
+.front .pour .cd-boxes div{background:#fff;border-color:#dddddd}
+.front .pour .cd-boxes b{color:#cc050d}
+.front .pour .cd-boxes span{color:#555}
+.front .pour .sub-form input{background:#fff;border-color:#cfcfcf;color:#000}
+.front .pour .sub-form input::placeholder{color:#777}
+.front .pour .sub-note{color:#555}
+.front .pour .sub-note[data-state="done"]{color:#000}
+.home-end{margin-bottom:56px}
 @media (max-width:1000px){.news-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.news-grid{grid-template-columns:1fr}}
 .byline{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;margin:14px 0 16px;padding-bottom:14px;border-bottom:1px solid var(--rule);font-size:14px;color:var(--gray)}
@@ -876,17 +890,14 @@ const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMo
 function home(){
   const lead=byId["story-audi"];
   const tops=["story-walmart-carnesville","story-gainesville-inland-port","story-yancey","story-guildhouse","story-selig-ponce","story-macon-costco","story-agc-jobs","story-jefferson-dc","story-js-link","story-beltline-nw","story-savannah-fairgrounds","story-sr21","story-thomasville-shelter","story-srs","story-i285"].map(i=>byId[i]);
-  const ins=["story-hutchinson","story-srs","story-centennial","story-spalding","story-blue-bird","story-vdl"].map(i=>byId[i]);
   return `<div class="wrap"><section class="front">
     <div><article class="lead">${link(lead,`${art(lead,"l")}<p class="caption">${lead.img?(lead.credit?`Photo: ${lead.credit}`:""):"Illustration of the project type, not a site photograph."}</p><h1>${lead.title}</h1><p class="dek">${lead.dek}</p><span class="more">Read more →</span>`)}</article>
       <aside class="pour"><span class="mono">The Peach State Pour · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p>${countdownHTML()}${subForm("sub-side")}</aside></div>
-    <div><h2 class="bar-head">Top Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol>
-      <a class="btn-line top-all" href="#archives" data-go="archives">View all latest news</a></div>
+    <div><h2 class="bar-head">Top Construction Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol></div>
   </section>
   <section class="module latest-news"><h2 class="bar-head">Latest News</h2><div class="news-grid">${sorted.filter(s=>s!==lead).slice(0,8).map(newsCard).join("")}</div>
-    <div class="see-more"><a class="pill" href="#archives" data-go="archives">See more →</a></div></section>
-  <section class="module"><div class="mod-head"><div><h2>Project Tracker</h2></div><a class="see" href="#tracker" data-go="tracker">View Project Tracker →</a></div><div class="insights">${ins.map(insight).join("")}</div></section>
-  ${memberBox()}</div>`;
+    <div class="see-more"><a class="pill" href="#archives" data-go="archives">View All Latest News →</a></div></section>
+  <div class="home-end">${memberBox()}</div></div>`;
 }
 function newsRows(){
   const q=state.nq.trim().toLowerCase();
