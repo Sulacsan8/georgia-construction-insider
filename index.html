@@ -1147,7 +1147,7 @@ const PAGE_TITLES={home:"Georgia Construction Insider | Georgia Construction New
 const link=(s,inner,cls)=>`<a href="${pathOf(s.id)}" data-go="${s.id}"${cls?` class="${cls}"`:""}>${inner}</a>`;
 const short=s=>s.title.split(": ").pop();
 const metric=s=>[s.valueLabel!=="Not disclosed"?s.valueLabel:"",s.where].filter(Boolean).join(" · ");
-const subForm=(id,btn="Subscribe for free",note="Free to join. Unsubscribe anytime.",placeholder="Enter your email")=>`<form class="sub-form" data-sub><label class="sr" for="${id}">Email address</label><input id="${id}" type="email" required placeholder="${placeholder}" autocomplete="email"><button class="pill" type="submit">${btn}</button><p class="sub-note" role="status">${note}</p></form>`;
+const subForm=(id,btn="Subscribe for free",note="Free to join. Unsubscribe anytime.",placeholder="Enter your email")=>`<form class="sub-form" data-sub data-newsletter><input type="text" name="company" hidden tabindex="-1" autocomplete="off"><label class="sr" for="${id}">Email address</label><input id="${id}" type="email" required placeholder="${placeholder}" autocomplete="email"><button class="pill" type="submit">${btn}</button><p class="sub-note" role="status">${note}</p></form>`;
 const pourBox=()=>`<aside class="pour pour-x"><span class="px-rule" aria-hidden="true"></span><h2>The Georgia Build</h2><p class="px-sub">Get the Free Newsletter</p>
   <p class="px-desc">Georgia construction news, projects and industry updates, delivered every week.</p>
   <ul class="px-list"><li>The latest Georgia construction headlines</li><li>Major project announcements and milestones</li><li>Industry news, delivered free to your inbox</li></ul>
@@ -1428,6 +1428,21 @@ async function sendForm(form){
     form.reset();note.dataset.state="done";note.textContent="Thanks, your message was sent. We'll be in touch soon.";
   }catch(err){
     note.dataset.state="done";note.textContent="Sorry, your message didn't send. Please try again in a few minutes.";
+  }
+  btn.disabled=false;btn.textContent=label;
+}
+// The Georgia Build signup boxes: add the email to Beehiiv through /api/subscribe.
+async function subscribe(form){
+  const note=form.querySelector(".sub-note"),btn=form.querySelector('button[type="submit"]'),label=btn.textContent,input=form.querySelector('input[type="email"]');
+  const say=t=>{note.dataset.state="done";note.textContent=t};
+  btn.disabled=true;btn.textContent="Subscribing...";
+  try{
+    const res=await fetch("/api/subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:input.value,company:form.querySelector('[name="company"]').value,page:location.pathname})});
+    const out=await res.json().catch(()=>({}));
+    if(!res.ok)throw new Error(out.error||"");
+    form.reset();say("Thanks for subscribing! Check your inbox for a welcome email from The Georgia Build.");
+  }catch(err){
+    say(err.message||"Sorry, we couldn't subscribe you just now. Please try again in a few minutes.");
   }
   btn.disabled=false;btn.textContent=label;
 }
@@ -1900,6 +1915,7 @@ document.addEventListener("submit",e=>{
   if(e.target.hasAttribute("data-auth")){handleAuth(e.target);return}
   if(e.target.hasAttribute("data-reset")){handleReset(e.target);return}
   if(e.target.hasAttribute("data-db-form")){saveAccount(e.target);return}
+  if(e.target.hasAttribute("data-newsletter")){subscribe(e.target);return}
   const pw=document.getElementById("si-pass");if(pw&&e.target.contains(pw))pw.value="";
   const n=e.target.querySelector(".sub-note");
   n.dataset.state="done";
