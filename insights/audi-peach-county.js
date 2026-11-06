@@ -67,7 +67,7 @@ INSIGHTS.push({
   ],
   sections: [
     { h: "Project overview", body: [
-      "Audi has never built cars in the United States. Every Audi sold here today is shipped in from Europe or Mexico, which leaves the brand exposed to tariffs and currency swings. The Peach County plant would change that. Audi says the factory will build premium SUVs for North American customers, up to 200,000 a year, with the first phase costing roughly $4 billion and employing 4,500 people.",
+      "Audi has never built cars in the United States. Every Audi sold here today is imported, which leaves the brand exposed to tariffs and currency swings. The Peach County plant would be its first U.S. production site. Audi says the factory will build premium SUVs for North American customers, up to 200,000 a year, with the first phase costing roughly $4 billion and employing 4,500 people.",
       "The site is the Middle Georgia Megasite, a state-owned tract on the east side of Fort Valley, just north of Ga. 96 and a few miles west of I-75. Georgia bought the land in 2022 and has spent four years marketing it with three neighboring counties. Audi is the first major tenant, which makes Middle Georgia the third region in the state to land an automotive megaproject, after Hyundai near Savannah and Rivian east of Atlanta.",
       "The deal is not final. The incentive contracts were unsigned when the plant was announced, and Audi's supervisory board still has to approve the investment. If it does, grading would begin in 2027, buildings would rise from 2028, and the plant would reach full production in 2031."
     ]},

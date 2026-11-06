@@ -1404,8 +1404,8 @@ function insightPage(p){
   <div class="pi-body"><article class="pi-main">
     <figure class="pi-fig">${piArt(p,"a")}<figcaption class="caption">${p.img?(p.credit?`Photo: ${p.credit}`:""):"Illustration of the project type, not a site photograph."}</figcaption></figure>
     <p class="pi-dek">${p.dek}</p>
-    ${sec(first)}${glance}
-    ${locked?gate:`${updates}${rest.map(sec).join("")}`}
+    ${sec(first)}
+    ${locked?gate:`${glance}${updates}${rest.map(sec).join("")}`}
     ${rel.length?`<section class="pi-sec pi-rel"><h2>Related GCI coverage</h2><ul>${rel.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ul></section>`:""}
   </article>
   <aside class="pi-side"><div class="sheet pi-facts"><div class="sheet-head"><span class="sheet-label">Overview</span><h2>Key Facts</h2></div><ul class="kf-list">${p.facts.map(f=>`<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul></div>
