@@ -168,9 +168,9 @@ td a:hover{color:var(--gray)}
 .see-more .pill{background:#cc050d;border-color:#cc050d;color:#fff}
 /* News page: Latest News heading, grey filter bar with a red edge, photo card grid */
 .news-page{padding-block:24px 56px}
-.np-head{padding-bottom:16px;border-bottom:1px solid var(--rule);margin-bottom:18px}
+.np-head{padding-bottom:8px;border-bottom:1px solid var(--rule);margin-bottom:18px}
 .np-head h1{display:inline-block;font-size:clamp(26px,3vw,34px);text-transform:uppercase;letter-spacing:.01em;margin:0;padding-bottom:6px;border-bottom:3px solid #cc050d}
-.np-head p{margin:10px 0 0;color:var(--gray);font-size:15px}
+.np-head p{margin:10px 0 0;color:#222;font-size:16px;font-weight:600}
 .np-filters{display:grid;grid-template-columns:1.3fr 1fr 1fr .9fr auto;gap:12px 16px;align-items:end;background:#6b717a;border-left:5px solid #cc050d;border-radius:12px;padding:16px 18px 14px}
 .np-filters label{display:flex;flex-direction:column;gap:6px;color:#fff;font-weight:700;font-size:14px}
 .np-filters input,.np-filters select{font:inherit;font-weight:400;font-size:14px;color:#000;background:#fff;border:1px solid #d4d4d4;border-radius:8px;padding:9px 10px;width:100%;min-width:0}
@@ -1027,7 +1027,7 @@ function newsRows(){
 }
 function archives(){
   const opts=(arr,cur)=>arr.map(o=>`<option value="${o[0]}"${o[0]===cur?" selected":""}>${o[1]}</option>`).join("");
-  return `<div class="wrap news-page"><header class="np-head"><h1>Latest News</h1><p>Browse the latest Georgia construction stories, project developments and market updates.</p></header>
+  return `<div class="wrap news-page"><header class="np-head"><h1>Latest News</h1><p>The latest Georgia construction news, project announcements and market updates, all in one place.</p></header>
     <div class="np-filters">
       <label for="a-q">Search<input id="a-q" type="search" placeholder="Search stories"></label>
       <label for="a-region">Region<select id="a-region">${opts([["All","All Regions"],...NEWS_REGIONS.map(r=>[r,r])],state.region)}</select></label>
