@@ -154,17 +154,40 @@ td a:hover{color:var(--gray)}
 .see-more .pill{background:#cc050d;border-color:#cc050d;color:#fff}
 /* Homepage: lead headline fills its column; newsletter box in grey and red; room above the footer */
 .lead h1{text-wrap:pretty;max-width:none}
-.front .pour{background:#f1f1f1;color:#000;border:1px solid #dddddd;border-top:4px solid #cc050d}
-.front .pour h2{color:#000}
-.front .pour .mono{color:#cc050d}
-.front .pour p,.front .pour p.cd-title{color:#333}
-.front .pour .cd-boxes div{background:#fff;border-color:#dddddd}
-.front .pour .cd-boxes b{color:#cc050d}
-.front .pour .cd-boxes span{color:#555}
-.front .pour .sub-form input{background:#fff;border-color:#cfcfcf;color:#000}
-.front .pour .sub-form input::placeholder{color:#777}
-.front .pour .sub-note{color:#555}
-.front .pour .sub-note[data-state="done"]{color:#000}
+/* Homepage newsletter box (The Peach State Pour), charcoal grey with red accents */
+.front .pour-x{background:#2e3136;color:#fff;border:0;border-radius:14px;padding:24px;display:block;flex:none}
+.pour-x .px-rule{display:block;width:44px;height:3px;background:#cc050d;margin-bottom:12px}
+.pour-x h2{color:#fff;font:800 26px/1.15 var(--display);margin:0}
+.pour-x .px-sub{color:#c9ccd1;font-size:13px;font-weight:700;margin:6px 0 12px}
+.pour-x .px-desc{color:#fff;font-size:15px;margin:0 0 8px}
+.pour-x .px-list{margin:0 0 4px;padding:0;list-style:none;display:grid;gap:6px}
+.pour-x .px-list li{position:relative;padding-left:16px;font-size:15px;color:#fff}
+.pour-x .px-list li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:#cc050d}
+.pour-x .sub-form{margin-top:14px}
+.pour-x .sub-form input{background:#3c4047;border:1px solid #565b63;color:#fff;border-radius:10px}
+.pour-x .sub-form input::placeholder{color:#b9bdc3}
+.pour-x .sub-form .pill{border-radius:10px;background:#cc050d;color:#fff}
+.pour-x .sub-note{color:#e5e5e5;text-align:left}.pour-x .sub-note:empty{display:none}
+.pour-x .px-next{margin-top:18px;padding-top:16px;border-top:1px solid #4a4f57}
+.pour-x .px-label{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin:0 0 10px}
+.pour-x .cd-boxes div{background:#3c4047;border:0;border-radius:8px}
+.pour-x .cd-boxes b{color:#fff}
+.pour-x .cd-boxes span{color:#c9ccd1;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.pour-x .px-when{font-size:12px;color:#b9bdc3;margin:10px 0 0}
+/* Homepage main story: photo card with the headline over it */
+.lead-hero a{position:relative;display:block;border-radius:14px;overflow:hidden;color:#fff;background:#000}
+.lead-hero .art{aspect-ratio:4/3;border-radius:0}
+.lead-hero .hero-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.6) 38%,rgba(0,0,0,0) 68%);pointer-events:none}
+.lead-hero .hero-credit{position:absolute;top:10px;right:10px;font-size:11px;color:#fff;background:rgba(0,0,0,.5);padding:3px 9px;border-radius:99px}
+.lead-hero .hero-text{position:absolute;left:0;right:0;bottom:0;padding:22px 24px}
+.lead-hero .hero-meta{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#e9e9e9}
+.lead-hero h1{color:#fff;font-size:clamp(26px,2.9vw,38px);margin:8px 0 10px}
+.lead-hero a:hover h1{color:#fff}
+.lead-hero .hero-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:16px}
+.lead-hero p.dek{color:#e6e6e6;font-size:15px;margin:0;max-width:60ch}
+.lead-hero .hero-btn{flex:none;background:#cc050d;color:#fff;font-weight:700;font-size:14px;padding:11px 16px;border-radius:6px;white-space:nowrap}
+.lead-hero a:hover .hero-btn{background:#a30409}
+@media (max-width:640px){.lead-hero .art{aspect-ratio:3/4}.lead-hero .hero-foot{flex-direction:column;align-items:flex-start}}
 .home-end{margin-bottom:56px}
 /* Gentle zoom on the homepage lead and Latest News images when hovered */
 .lead .art>*,.news-card .art>*{transition:transform .45s ease}
@@ -881,7 +904,12 @@ const TOPICS=Object.fromEntries(["Civil","Commercial","Data Center","Energy & So
 const link=(s,inner,cls)=>`<a href="#${s.id}" data-go="${s.id}"${cls?` class="${cls}"`:""}>${inner}</a>`;
 const short=s=>s.title.split(": ").pop();
 const metric=s=>[s.valueLabel!=="Not disclosed"?s.valueLabel:"",s.where].filter(Boolean).join(" · ");
-const subForm=id=>`<form class="sub-form" data-sub><label class="sr" for="${id}">Email address</label><input id="${id}" type="email" required placeholder="Enter your email" autocomplete="email"><button class="pill" type="submit">Subscribe for free</button><p class="sub-note" role="status">Free to join. Unsubscribe anytime.</p></form>`;
+const subForm=(id,btn="Subscribe for free",note="Free to join. Unsubscribe anytime.",placeholder="Enter your email")=>`<form class="sub-form" data-sub><label class="sr" for="${id}">Email address</label><input id="${id}" type="email" required placeholder="${placeholder}" autocomplete="email"><button class="pill" type="submit">${btn}</button><p class="sub-note" role="status">${note}</p></form>`;
+const pourBox=()=>`<aside class="pour pour-x"><span class="px-rule" aria-hidden="true"></span><h2>The Peach State Pour</h2><p class="px-sub">Get the Free Newsletter</p>
+  <p class="px-desc">Georgia construction news, projects and industry updates, delivered every week.</p>
+  <ul class="px-list"><li>The latest Georgia construction headlines</li><li>Major project announcements and milestones</li><li>Industry news, delivered free to your inbox</li></ul>
+  ${subForm("sub-side","Subscribe","","Enter your email address")}
+  <div class="countdown px-next" data-countdown><p class="px-label">Next Newsletter</p><div class="cd-boxes"><div><b data-cd="d">0</b><span>Days</span></div><div><b data-cd="h">00</b><span>Hours</span></div><div><b data-cd="m">00</b><span>Mins</span></div><div><b data-cd="s">00</b><span>Secs</span></div></div><p class="px-when"><span data-cd="when"></span> · Scheduled edition</p></div></aside>`;
 const pourBand=id=>`<section class="pour-band"><div><span class="mono">The Peach State Pour · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div>${subForm(id)}</section>`;
 const insight=s=>link(s,`${art(s,"i")}<span class="metric">${metric(s)}</span><h3>${s.title}</h3><p>${s.dek}</p><span class="go">Read more →</span>`,"insight");
 const newsCard=s=>`<article class="news-card">${link(s,`${art(s,"n")}<div class="nc-body"><span class="nc-meta">${s.sector} · ${s.date}</span><h3>${s.title}</h3><p>${s.dek}</p><span class="nc-go">Read Story →</span></div>`)}</article>`;
@@ -895,8 +923,8 @@ function home(){
   const lead=byId["story-audi"];
   const tops=["story-walmart-carnesville","story-gainesville-inland-port","story-yancey","story-guildhouse","story-selig-ponce","story-macon-costco","story-agc-jobs","story-jefferson-dc","story-js-link","story-beltline-nw","story-savannah-fairgrounds","story-sr21","story-thomasville-shelter","story-srs","story-i285"].map(i=>byId[i]);
   return `<div class="wrap"><section class="front">
-    <div><article class="lead">${link(lead,`${art(lead,"l")}<p class="caption">${lead.img?(lead.credit?`Photo: ${lead.credit}`:""):"Illustration of the project type, not a site photograph."}</p><h1>${lead.title}</h1><p class="dek">${lead.dek}</p><span class="more">Read more →</span>`)}</article>
-      <aside class="pour"><span class="mono">The Peach State Pour · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p>${countdownHTML()}${subForm("sub-side")}</aside></div>
+    <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span>${lead.img&&lead.credit?`<span class="hero-credit">Photo: ${lead.credit}</span>`:""}<div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title}</h1><div class="hero-foot"><p class="dek">${lead.dek}</p><span class="hero-btn">Read the full story →</span></div></div>`)}</article>
+      ${pourBox()}</div>
     <div><h2 class="bar-head">Top Construction Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol></div>
   </section>
   <section class="module latest-news"><h2 class="bar-head">Latest News</h2><div class="news-grid">${sorted.filter(s=>s!==lead).slice(0,8).map(newsCard).join("")}</div>
