@@ -50,6 +50,7 @@ const write = (file, content) => {
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });
 cpSync("images", `${OUT}/images`, { recursive: true });
+for (const f of ["favicon.ico", "site.webmanifest"]) cpSync(f, `${OUT}/${f}`);
 
 const DESC = "Georgia construction news, major projects and industry updates, from Metro Atlanta to the coast.";
 const SECTIONS = [
