@@ -663,7 +663,7 @@ body.bare header.site,body.bare footer.site{display:none}
 .si-create{background:#fff;color:#000;border:1px solid #c4c4c4;margin-top:28px}.si-create:hover{border-color:#000}
 .si-form .si-note{color:#000;font-size:13px;line-height:1.4;text-align:left;margin-top:16px}
 .si-form .si-note[data-state="done"]{color:#cc050d;font-weight:600}
-@media (min-width:1241px){nav.main{margin-left:24px}}
+@media (min-width:1241px){.head-row{flex-wrap:nowrap}.brand{width:clamp(220px,19vw,300px)}nav.main{flex-wrap:nowrap;gap:0 clamp(14px,1.5vw,24px);margin-left:clamp(10px,1.5vw,24px)}nav.main>a,nav.main summary{font-size:clamp(15px,1.25vw,17px);white-space:nowrap}}
 .ct-top{padding-block:44px 52px}
 .ct-top h1{font-size:clamp(36px,4.4vw,54px);font-weight:800;letter-spacing:-.02em;line-height:1.06;margin-top:16px}
 .ct-ways{background:#f5f5f5;border-top:1px solid var(--rule);padding-block:40px 48px}
@@ -1870,7 +1870,7 @@ const app=document.getElementById("app");
 document.getElementById("nav").innerHTML=`<a href="/" data-go="home">Home</a>
   <a href="/news" data-go="archives">News</a>
   <details id="dd-ind"><summary>Industry</summary><div class="menu">${INDUSTRIES.map(t=>`<a href="/industry/${indSlug(t)}" data-go="ind-${indSlug(t)}">${t}</a>`).join("")}</div></details>
-  <a href="/project-tracker" data-go="tracker">Project Tracker</a><a href="/project-insights" data-go="insights">Project Insights</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/sponsors" data-go="sponsors">Sponsors</a><a href="/contact" data-go="contact">Contact Us</a>`;
+  <a href="/project-tracker" data-go="tracker">Project Tracker</a><a href="/project-insights" data-go="insights">Project Insights</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/sponsors" data-go="sponsors">Sponsors</a>`;
 const EDITION_TZ="America/New_York",FIRST_EDITION=Date.UTC(2026,10,15,17);
 function etParts(date){
   const p=Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:EDITION_TZ,hourCycle:"h23",year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric",second:"numeric",weekday:"short"}).formatToParts(date).map(x=>[x.type,x.value]));
