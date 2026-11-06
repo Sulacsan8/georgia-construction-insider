@@ -65,6 +65,12 @@ const SECTIONS = [
   ["/terms", "Terms and Conditions | Georgia Construction Insider", DESC],
   ["/refunds", "Refund Policy | Georgia Construction Insider", DESC],
 ];
+// One page per industry at /industry/<slug>, matching INDUSTRIES and indSlug in index.html.
+const INDUSTRIES = ["Civil", "Commercial", "Data Center", "Energy & Solar", "Federal & Government", "Healthcare", "Industrial", "Market Intelligence", "Semi-Conductor & Manufacturing", "Transportation", "Water"];
+const indSlug = (t) => t.toLowerCase().replace(/&/g, "").replace(/[^a-z]+/g, "-").replace(/^-|-$/g, "");
+for (const t of INDUSTRIES) {
+  SECTIONS.push([`/industry/${indSlug(t)}`, `${t} Construction News | Georgia Construction Insider`, `The latest Georgia ${t.toLowerCase()} construction news, projects and industry updates.`]);
+}
 const PRIVATE = [["/sign-in", "Sign In"], ["/dashboard", "Dashboard"], ["/reset-password", "Reset Password"], ["/welcome", "Welcome"]];
 
 for (const [path, title, description] of SECTIONS) {

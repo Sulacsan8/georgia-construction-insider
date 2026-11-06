@@ -181,6 +181,92 @@ td a:hover{color:var(--gray)}
 .news-page .empty{margin-top:24px}
 @media (max-width:900px){.np-filters{grid-template-columns:1fr 1fr}.np-filters label:first-child{grid-column:1/-1}.np-clear{justify-self:start}}
 @media (max-width:520px){.np-filters{grid-template-columns:1fr}}
+/* Industry pages: heading, lead story beside Top Stories, search bar, card grid with a sidebar */
+.ind-page{padding-block:22px 56px}
+.ind-head{margin-bottom:18px}
+.ind-eyebrow{display:block;color:#cc050d;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.ind-head h1{font-size:clamp(34px,4.6vw,54px);font-weight:800;letter-spacing:-.02em;margin:4px 0 8px}
+.ind-head p{margin:0;color:#555;font-size:16px;max-width:80ch}
+.ind-top{display:grid;grid-template-columns:minmax(0,2.15fr) minmax(0,1fr);gap:20px;align-items:stretch}
+.ind-lead a{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);height:100%;min-height:340px;border-radius:12px;overflow:hidden;background:#111;color:#fff;text-decoration:none}
+.ind-lead-img{position:relative;min-height:240px}
+.ind-lead-img .art{position:absolute;inset:0;display:block}
+.ind-lead-img .art img,.ind-lead-img .art svg{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.ind-lead a:hover .art img{transform:scale(1.04)}
+.ind-tag{position:absolute;left:14px;top:14px;background:#cc050d;color:#fff;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:5px 10px;border-radius:5px}
+.ind-lead-text{display:flex;flex-direction:column;justify-content:center;gap:12px;padding:28px}
+.ind-meta{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#d0d0d0}
+.ind-lead h2{color:#fff;font-size:clamp(22px,2.2vw,30px);line-height:1.2;font-weight:800}
+.ind-lead p{margin:0;color:#e6e6e6;font-size:15px;line-height:1.5}
+.ind-btn{align-self:flex-start;margin-top:6px;background:#cc050d;color:#fff;font-weight:700;font-size:15px;padding:12px 18px;border-radius:7px}
+.ind-lead a:hover .ind-btn{background:#a30409}
+.ind-tops{border:1px solid var(--rule);border-radius:12px;padding:16px 18px;background:#fff}
+.ind-tops-head,.ind-box-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;border-bottom:1px solid var(--rule);padding-bottom:10px}
+.ind-tops-head h2{font-size:22px;font-weight:800}
+.ind-tops-head a,.ind-box-head a{color:#cc050d;font-size:13px;font-weight:700;white-space:nowrap}
+.ind-tops ol{list-style:none;margin:0;padding:0}
+.ind-tops li+li{border-top:1px solid #ececec}
+.ind-tops li a{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:start;padding:12px 0;color:var(--ink);text-decoration:none}
+.it-num{color:#cc050d;font-weight:800;font-size:15px}
+.it-text b{display:block;font-size:15px;line-height:1.3}
+.it-text small{display:block;margin-top:4px;color:#777;font-size:11.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+.ind-tops li a:hover b{text-decoration:underline}
+.ind-tops img{width:84px;height:60px;object-fit:cover;border-radius:6px}
+.ind-filter{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2.4fr) auto auto;gap:12px;align-items:center;background:#111;border-radius:12px;padding:12px;margin:20px 0 24px}
+.ind-filter select,.ind-search input{font:inherit;font-size:14px;color:#000;background:#fff;border:1px solid #d4d4d4;border-radius:8px;padding:10px 12px;width:100%;min-width:0}
+.ind-search{position:relative;display:block}
+.ind-search input{padding-left:36px}
+.ind-search svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#666}
+.ind-go{font:700 14px/1 var(--body);background:#cc050d;color:#fff;border:0;border-radius:8px;padding:12px 30px;cursor:pointer}
+.ind-go:hover{background:#a30409}
+.ind-clear{font:700 13px/1 var(--body);background:none;border:0;color:#fff;text-decoration:underline;cursor:pointer;padding:8px 10px}
+.ind-body{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+.ind-main-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ind-main-head h2{font-size:clamp(22px,2.4vw,28px);font-weight:800}
+.ind-main-head select{font:inherit;font-size:13px;border:1px solid #d4d4d4;border-radius:8px;padding:8px 10px;background:#fff}
+.ind-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:16px}
+.ind-card a{display:flex;flex-direction:column;height:100%;border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:#fff;color:var(--ink);text-decoration:none}
+.ind-card .art{display:block;aspect-ratio:16/10;overflow:hidden}
+.ind-card .art img,.ind-card .art svg{width:100%;height:100%;object-fit:cover;display:block}
+.ind-card .ic-body{display:flex;flex-direction:column;gap:7px;padding:12px 14px 16px;flex:1}
+.ind-card small{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#777}
+.ind-card h3{font-size:16.5px;line-height:1.25;margin:0}
+.ind-card p{font-size:13.5px;line-height:1.5;color:var(--gray);margin:0}
+.ind-card .nc-go{font-size:13.5px}
+.ind-card a:hover h3{text-decoration:underline}
+.ind-side{display:grid;gap:18px}
+.ind-box{border:1px solid var(--rule);border-radius:12px;padding:16px 18px;background:#fff}
+.ind-box h3{font-size:19px;font-weight:800}
+.ind-sub{background:#f1f2f4;border-color:#f1f2f4}
+.ind-sub p{margin:6px 0 12px;font-size:14px;color:#444}
+.ind-sub .sub-form{display:flex;gap:8px;flex-wrap:wrap}
+.ind-sub .sub-form input{flex:1 1 150px;min-width:0;border-radius:8px}
+.ind-sub .sub-form .pill{background:#cc050d;border-color:#cc050d;color:#fff;border-radius:8px}
+.ind-major{list-style:none;margin:0;padding:0}
+.ind-major li+li{border-top:1px solid #ececec}
+.ind-major a{display:grid;grid-template-columns:64px minmax(0,1fr);gap:12px;align-items:center;padding:10px 0;color:var(--ink);text-decoration:none}
+.ind-major img,.ind-major .mj-ph{width:64px;height:46px;object-fit:cover;border-radius:6px;background:#e5e5e5}
+.ind-major b{display:block;font-size:14px;line-height:1.3}
+.ind-major small{display:block;color:#777;font-size:12px;margin-top:2px}
+.ind-major a:hover b{text-decoration:underline}
+.ind-offer{background:#111;color:#fff;border-radius:12px;padding:20px}
+.ind-offer>span{color:#ff6b70;font-size:11.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.ind-offer h3{color:#fff;font-size:24px;font-weight:800;margin:6px 0 8px}
+.ind-offer p{margin:0 0 14px;font-size:14px;color:#e2e2e2}
+.ind-prices{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.ind-prices b{font-size:24px;font-weight:800}
+.ind-prices small{display:block;color:#bdbdbd;font-size:12px;margin-top:2px}
+.ind-offer-btn{display:block;text-align:center;background:#cc050d;color:#fff;font-weight:700;border-radius:8px;padding:12px}
+.ind-offer-btn:hover{background:#a30409}
+.ind-others{list-style:none;margin:6px 0 0;padding:0}
+.ind-others li+li{border-top:1px solid #ececec}
+.ind-others a{display:flex;justify-content:space-between;padding:11px 0;color:var(--ink);font-size:14.5px;font-weight:600;text-decoration:none}
+.ind-others a span{color:#cc050d}
+.ind-others a:hover{color:#cc050d}
+@media (max-width:1250px){.ind-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:1000px){.ind-top,.ind-body{grid-template-columns:minmax(0,1fr)}.ind-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ind-side{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}}
+@media (max-width:700px){.ind-lead a{grid-template-columns:minmax(0,1fr)}.ind-filter{grid-template-columns:minmax(0,1fr)}.ind-go{width:100%}.ind-clear{justify-self:start}}
+@media (max-width:520px){.ind-grid{grid-template-columns:minmax(0,1fr)}}
 /* Homepage: lead headline fills its column; newsletter box in grey and red; room above the footer */
 .lead h1{text-wrap:pretty;max-width:none}
 /* Homepage newsletter box (The Georgia Build), charcoal grey with red accents */
@@ -1052,8 +1138,8 @@ function byline(s){
 const TOPICS=Object.fromEntries(["Civil","Commercial","Data Center","Energy & Solar","Federal & Government","Healthcare","Industrial","Semi-Conductor & Manufacturing","Transportation","Water"].map(t=>[t,[t]]));
 // Clean page addresses. Articles live at /news/<slug>, where the slug is the story id without "story-".
 const PATHS={home:"/",archives:"/news",tracker:"/project-tracker",newsletters:"/newsletter",sponsors:"/sponsors",membership:"/membership",contact:"/contact",privacy:"/privacy",terms:"/terms",refunds:"/refunds",signin:"/sign-in",dashboard:"/dashboard",reset:"/reset-password",welcome:"/welcome"};
-const pathOf=r=>r.startsWith("story-")?"/news/"+r.slice(6):(PATHS[r]||"/");
-const routeOf=p=>{p=p.replace(/\/+$/,"")||"/";if(p.startsWith("/news/"))return "story-"+p.slice(6);return Object.keys(PATHS).find(k=>PATHS[k]===p)||"home"};
+const pathOf=r=>r.startsWith("story-")?"/news/"+r.slice(6):r.startsWith("ind-")?"/industry/"+r.slice(4):(PATHS[r]||"/");
+const routeOf=p=>{p=p.replace(/\/+$/,"")||"/";if(p.startsWith("/news/"))return "story-"+p.slice(6);if(p.startsWith("/industry/"))return "ind-"+p.slice(10);return Object.keys(PATHS).find(k=>PATHS[k]===p)||"home"};
 const PAGE_TITLES={home:"Georgia Construction Insider | Georgia Construction News and Projects",archives:"Latest Georgia Construction News",tracker:"Project Tracker",newsletters:"The Georgia Build Newsletter",sponsors:"Sponsors and Advertising",membership:"Membership",contact:"Contact Us",privacy:"Privacy Policy",terms:"Terms and Conditions",refunds:"Refund Policy",signin:"Sign In",dashboard:"Dashboard",reset:"Reset Password",welcome:"Welcome to GCI"};
 const link=(s,inner,cls)=>`<a href="${pathOf(s.id)}" data-go="${s.id}"${cls?` class="${cls}"`:""}>${inner}</a>`;
 const short=s=>s.title.split(": ").pop();
@@ -1071,7 +1157,7 @@ const trackable=STORIES.filter(s=>s.status);
 const trackRow=s=>`<tr><td>${link(s,short(s))}</td><td>${s.where}</td><td>${s.who}</td><td class="val">${s.valueLabel}</td><td><span class="stage st-${s.st}">${s.status}</span></td></tr>`;
 const pastRow=s=>`<article class="past">${link(s,`<div class="row mono"><span class="cat">${s.sector}</span><span>${s.date}</span><span>${s.region}</span></div><h3>${s.title}</h3><p>${s.dek}</p>`)}</article>`;
 const inTopic=(s,t)=>t==="All"||TOPICS[t].includes(s.sector);
-const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMode:"signin",authNote:"",topic:"All",region:"All",nq:"",nsort:"new",nlimit:24,q:"",tSector:"All",tRegion:"All",desc:true};
+const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMode:"signin",authNote:"",topic:"All",region:"All",nq:"",nsort:"new",nlimit:24,iq:"",ireg:"All",isort:"new",ilimit:12,q:"",tSector:"All",tRegion:"All",desc:true};
 
 function home(){
   const lead=byId["story-audi"];
@@ -1087,34 +1173,79 @@ function home(){
 }
 const NEWS_PAGE=24;
 const NEWS_REGIONS=[...new Set(STORIES.map(s=>s.region).filter(Boolean))].sort();
+// News page: every story, newest first, with a Load more button.
 function newsRows(){
-  const q=state.nq.trim().toLowerCase();
-  const list=STORIES.filter(s=>inTopic(s,state.topic)&&(state.region==="All"||s.region===state.region)&&(!q||[s.title,s.dek,s.sector,s.region,s.where,s.who,...s.body].join(" ").toLowerCase().includes(q)));
-  list.sort((a,b)=>state.nsort==="new"?b.iso.localeCompare(a.iso):a.iso.localeCompare(b.iso));
-  const shown=list.slice(0,state.nlimit);
-  document.getElementById("a-list").innerHTML=shown.length?`<div class="news-grid">${shown.map(newsCard).join("")}</div>`:`<p class="empty">No stories match. Clear the filters or try another search.</p>`;
-  document.getElementById("a-sum").textContent=list.length?`Showing 1–${shown.length} of ${list.length} ${list.length===1?"story":"stories"}`:"Showing 0 stories";
-  document.getElementById("a-more").hidden=shown.length>=list.length;
+  const shown=sorted.slice(0,state.nlimit);
+  document.getElementById("a-list").innerHTML=`<div class="news-grid">${shown.map(newsCard).join("")}</div>`;
+  document.getElementById("a-more").hidden=shown.length>=sorted.length;
 }
 function archives(){
-  const opts=(arr,cur)=>arr.map(o=>`<option value="${o[0]}"${o[0]===cur?" selected":""}>${o[1]}</option>`).join("");
   return `<div class="wrap news-page"><header class="np-head"><h1>Latest News</h1><p>The latest Georgia construction news, project announcements and market updates, all in one place.</p></header>
-    <div class="np-filters">
-      <label for="a-q">Search<input id="a-q" type="search" placeholder="Search stories"></label>
-      <label for="a-region">Region<select id="a-region">${opts([["All","All Regions"],...NEWS_REGIONS.map(r=>[r,r])],state.region)}</select></label>
-      <label for="a-sector">Industry<select id="a-sector">${opts([["All","All Industries"],...Object.keys(TOPICS).map(t=>[t.replace(/&/g,"&amp;"),t])],state.topic.replace(/&/g,"&amp;"))}</select></label>
-      <label for="a-sort">Sort By Date<select id="a-sort">${opts([["new","Newest to Oldest"],["old","Oldest to Newest"]],state.nsort)}</select></label>
-      <button type="button" class="np-clear" data-nclear>Clear filters</button>
-      <p id="a-sum" class="np-sum"></p>
-    </div>
     <div id="a-list"></div>
     <div class="see-more"><button type="button" class="pill" id="a-more" data-nmore hidden>Load more stories</button></div></div>`;
 }
+// Industry pages live at /industry/<slug>; their route ids are "ind-<slug>".
+const INDUSTRIES=["Civil","Commercial","Data Center","Energy & Solar","Federal & Government","Healthcare","Industrial","Market Intelligence","Semi-Conductor & Manufacturing","Transportation","Water"];
+const indSlug=t=>t.toLowerCase().replace(/&/g,"").replace(/[^a-z]+/g,"-").replace(/^-|-$/g,"");
+const IND_BY_SLUG=Object.fromEntries(INDUSTRIES.map(t=>[indSlug(t),t]));
+const IND_DESC={
+  "Civil":"The latest Georgia civil construction news, road and bridge projects, contracts and public works across the state.",
+  "Commercial":"The latest Georgia commercial construction news: mixed-use, multifamily, retail, office, hotel and entertainment projects.",
+  "Data Center":"The latest Georgia data center construction news: new campuses, rezonings, power deals and approvals across the state.",
+  "Energy & Solar":"The latest Georgia energy construction news: power plants, solar farms, battery storage and transmission projects.",
+  "Federal & Government":"The latest Georgia public construction news: military, courthouse, jail, school, university and public building projects.",
+  "Healthcare":"The latest Georgia healthcare construction news: hospitals, medical offices, surgery centers and certificate-of-need approvals.",
+  "Industrial":"The latest Georgia industrial construction news: warehouses, distribution centers, logistics parks and industrial sites.",
+  "Market Intelligence":"Georgia construction market intelligence: jobs and spending data, contractor news, acquisitions and workforce programs.",
+  "Semi-Conductor & Manufacturing":"The latest Georgia manufacturing construction news: new plants, factory expansions and advanced industry projects.",
+  "Transportation":"The latest Georgia transportation construction news: ports, airports, rail, transit and freight projects.",
+  "Water":"The latest Georgia water construction news: water and wastewater plants, sewer lines, reservoirs and stormwater projects."
+};
+const IND_PAGE=12;
+const SEARCH_ICON='<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></g></svg>';
+const indCard=s=>`<article class="ind-card">${link(s,`${art(s,"c")}<div class="ic-body"><small>${s.date}</small><h3>${s.title}</h3><p>${s.dek}</p><span class="nc-go">Read more →</span></div>`)}</article>`;
+function indRows(){
+  const t=IND_BY_SLUG[currentRoute.slice(4)];if(!t)return;
+  const q=state.iq.trim().toLowerCase();
+  const list=sorted.filter(s=>s.sector===t&&(state.ireg==="All"||s.region===state.ireg)&&(!q||[s.title,s.dek,s.region,s.where,s.who,...s.body].join(" ").toLowerCase().includes(q)));
+  if(state.isort==="old")list.reverse();
+  const shown=list.slice(0,state.ilimit);
+  document.getElementById("i-list").innerHTML=shown.length?`<div class="ind-grid">${shown.map(indCard).join("")}</div>`:`<p class="empty">No stories match. Clear the filters or try another search.</p>`;
+  document.getElementById("i-more").hidden=shown.length>=list.length;
+}
+function industry(t){
+  const list=sorted.filter(s=>s.sector===t),lead=list[0],tops=list.slice(1,5);
+  const regions=[...new Set(list.map(s=>s.region))].sort();
+  const major=[...STORIES].filter(s=>s.value).sort((a,b)=>b.value-a.value).slice(0,5);
+  const opt=(v,l,cur)=>`<option value="${esc(v)}"${v===cur?" selected":""}>${esc(l)}</option>`;
+  return `<div class="wrap ind-page"><header class="ind-head"><span class="ind-eyebrow">Industry</span><h1>${t}</h1><p>${IND_DESC[t]}</p></header>
+  ${lead?`<section class="ind-top"><article class="ind-lead">${link(lead,`<div class="ind-lead-img">${art(lead,"il")}<span class="ind-tag">${t}</span></div><div class="ind-lead-text"><span class="ind-meta">${t} · ${lead.date}</span><h2>${lead.title}</h2><p>${lead.dek}</p><span class="ind-btn">Read full story →</span></div>`)}</article>
+    <aside class="ind-tops"><div class="ind-tops-head"><h2>Top Stories</h2><a href="#ind-latest" data-ilatest>View All Stories →</a></div><ol>${tops.map((s,i)=>`<li>${link(s,`<span class="it-num">${String(i+1).padStart(2,"0")}</span><span class="it-text"><b>${s.title}</b><small>${s.date}</small></span>${s.img?`<img src="${s.img}" alt="" loading="lazy">`:""}`)}</li>`).join("")}</ol></aside></section>`:""}
+  <div class="ind-filter"><select id="i-region" aria-label="Select region">${opt("All","Select Region",state.ireg)}${regions.map(r=>opt(r,r,state.ireg)).join("")}</select>
+    <label class="ind-search">${SEARCH_ICON}<span class="sr">Search</span><input id="i-q" type="search" placeholder="Search news, projects, companies..." value="${esc(state.iq)}"></label>
+    <button type="button" class="ind-go" data-isearch>Search</button><button type="button" class="ind-clear" data-iclear>Clear filters</button></div>
+  <div class="ind-body"><section class="ind-main" id="ind-latest"><div class="ind-main-head"><h2>Latest ${t} News</h2><select id="i-sort" aria-label="Sort stories">${opt("new","Newest first",state.isort)}${opt("old","Oldest first",state.isort)}</select></div>
+      <div id="i-list"></div><div class="see-more"><button type="button" class="pill" id="i-more" data-imore hidden>View More Stories →</button></div></section>
+    <aside class="ind-side">
+      <div class="ind-box ind-sub"><h3>Get the latest in ${t}</h3><p>News, major projects and market insights delivered to your inbox.</p>${subForm("sub-ind","Subscribe","","Enter your email")}</div>
+      <div class="ind-box"><div class="ind-box-head"><h3>Major Projects Across Georgia</h3><a href="/project-tracker" data-go="tracker">View All →</a></div><ul class="ind-major">${major.map(s=>`<li>${link(s,`${s.img?`<img src="${s.img}" alt="" loading="lazy">`:`<span class="mj-ph"></span>`}<span><b>${short(s)}</b><small>${s.valueLabel} · ${s.sector}</small></span>`)}</li>`).join("")}</ul></div>
+      <div class="ind-offer"><span>Limited Time Offer</span><h3>Upgrade to GCI Premium</h3><p>Go beyond the headlines with detailed project insights, contractor information and construction timelines.</p>
+        <div class="ind-prices"><div><b>$11.99</b>/month</div><div><b>$109.99</b>/year<small>Previously <s>$159.99</s></small></div></div><a class="ind-offer-btn" href="/membership" data-go="membership">Explore the Offer →</a></div>
+      <div class="ind-box"><h3>View Other Industries</h3><ul class="ind-others">${INDUSTRIES.filter(x=>x!==t).map(x=>`<li><a href="/industry/${indSlug(x)}" data-go="ind-${indSlug(x)}">${x}<span>→</span></a></li>`).join("")}</ul></div>
+    </aside></div></div>`;
+}
 document.addEventListener("click",e=>{
-  if(e.target.closest("[data-nclear]")){state.topic="All";state.region="All";state.nq="";state.nsort="new";state.nlimit=NEWS_PAGE;go("archives",true)}
-  else if(e.target.closest("[data-nmore]")){state.nlimit+=NEWS_PAGE;newsRows()}
+  if(e.target.closest("[data-nmore]")){state.nlimit+=NEWS_PAGE;newsRows()}
+  else if(e.target.closest("[data-imore]")){state.ilimit+=IND_PAGE;indRows()}
+  else if(e.target.closest("[data-isearch]")){state.iq=document.getElementById("i-q").value;state.ilimit=IND_PAGE;indRows()}
+  else if(e.target.closest("[data-iclear]")){state.iq="";state.ireg="All";state.isort="new";state.ilimit=IND_PAGE;go(currentRoute,true)}
+  else if(e.target.closest("[data-ilatest]")){e.preventDefault();document.getElementById("ind-latest").scrollIntoView({behavior:"smooth"})}
 });
-document.addEventListener("change",e=>{if(e.target.id==="a-region"){state.region=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}});
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="i-q"){state.iq=e.target.value;state.ilimit=IND_PAGE;indRows()}});
+document.addEventListener("change",e=>{
+  if(e.target.id==="i-region"){state.ireg=e.target.value;state.ilimit=IND_PAGE;indRows()}
+  if(e.target.id==="i-sort"){state.isort=e.target.value;indRows()}
+});
 function tracker(){
   return `<div class="wrap"><section class="launch">
     <span class="launch-tag">Launching November 29</span>
@@ -1198,8 +1329,8 @@ function membership(){
   <div class="mb-band"><ul class="wrap">${[["news","News"],["hat","Projects"],["city","Companies"],["deal","M&amp;A"]].map(x=>`<li>${ic(I[x[0]])}${x[1]}</li>`).join("")}</ul></div>
   <section class="wrap mb-plans" id="mb-plans"><h2>Your Insider Access Starts Here</h2><p class="mb-plans-sub">Get full access to Georgia Construction Insider's premium content, project coverage and market intelligence.</p>
     <div class="mb-plan-grid">
-      ${plan("","Monthly","$12.99","month","Premium access. Cancel anytime.</p><p class=\"mb-save mb-save-plain\">Pay monthly, with no annual commitment.",["Full access to premium articles and project coverage","Contractor, developer and design team information","Construction timelines and key milestones","Limited access to the Project Tracker","Georgia construction news and market updates"],"")}
-      ${plan("mb-plan-dark","Annual","$109.99","year","Just $9.17 per month, billed annually.</p><p class=\"mb-save\">More than 3 months free compared to monthly.",["<strong>Save $50 a year with the Limited Time Offer</strong>","Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage","This price is fixed for life"],`<span class="mb-founding">★ Become a Founding Member</span><span class="mb-ribbon">Lock in this price for life</span>`,"$159.99")}
+      ${plan("","Monthly","$11.99","month","Premium access. Cancel anytime.</p><p class=\"mb-save mb-save-plain\">Pay monthly, with no annual commitment.",["Full access to premium articles and project coverage","Contractor, developer and design team information","Construction timelines and key milestones","Limited access to the Project Tracker","Georgia construction news and market updates"],"")}
+      ${plan("mb-plan-dark","Annual","$109.99","year","Just $9.17 per month, billed annually.</p><p class=\"mb-save\">Almost 3 months free compared to monthly.",["<strong>Save $50 a year with the Limited Time Offer</strong>","Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage","This price is fixed for life"],`<span class="mb-founding">★ Become a Founding Member</span><span class="mb-ribbon">Lock in this price for life</span>`,"$159.99")}
     </div></section>
   <section class="wrap mb-compare"><h2>See What's Included</h2>
     <div class="mbc-scroll"><table class="mbc"><thead><tr><th>Features &amp; Access</th><th>Free</th><th>Monthly</th><th class="mbc-annual">Annual</th></tr></thead><tbody>${COMPARE.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v===1?TICK:v===0?`<span class="mbc-no" aria-label="Not included">–</span>`:`<span class="mbc-txt">${v}</span>`}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>
@@ -1209,7 +1340,7 @@ function membership(){
   <section class="wrap mb-faq"><div class="mb-faq-head"><h2>Frequently Asked Questions</h2></div><div class="mb-faq-grid">
     ${faq("What does a GCI membership include?","Full access to premium articles, project coverage, contractor information, construction timelines, the Project Tracker and exclusive reports. Monthly members get limited Project Tracker access, and annual members get full access.")}
     ${faq("Can I cancel my membership anytime?","Yes. You can cancel at any time, and you'll retain access through the end of your current billing period.")}
-    ${faq("Is there a savings benefit with an annual plan?","Yes. The annual plan is $109.99/year, which saves you 29% compared to the monthly plan. That's more than 3 months free.")}
+    ${faq("Is there a savings benefit with an annual plan?","Yes. The annual plan is $109.99/year, which saves you 24% compared to paying monthly. That's almost 3 months free.")}
     ${faq("What does the Project Tracker cover?","A regularly updated listing of major Georgia construction projects, including project details, estimated values, key milestones and the latest developments.")}
     ${faq("Can I upgrade from monthly to annual?","Yes. Please contact us through the <a href=\"/contact\" data-go=\"contact\">Contact Us page</a> with the email address on your membership, and we'll move you to the annual plan.")}
     ${faq("How does the founding member lifetime price work?","If you join the annual plan during the Limited Time Offer, you keep the $109.99 yearly price at every renewal for as long as your membership stays active without interruption. If you cancel and rejoin later, the annual price at that time applies.")}
@@ -1548,7 +1679,8 @@ function story(s){
 }
 const app=document.getElementById("app");
 document.getElementById("nav").innerHTML=`<a href="/" data-go="home">Home</a>
-  <details id="dd-news"><summary>News</summary><div class="menu"><a class="menu-all" href="/news" data-go="archives">View All</a><div><span class="mono">Industry</span>${Object.keys(TOPICS).map(t=>`<a href="/news" data-topic="${t}">${t}</a>`).join("")}</div></div></details>
+  <a href="/news" data-go="archives">News</a>
+  <details id="dd-ind"><summary>Industry</summary><div class="menu">${INDUSTRIES.map(t=>`<a href="/industry/${indSlug(t)}" data-go="ind-${indSlug(t)}">${t}</a>`).join("")}</div></details>
   <a href="/project-tracker" data-go="tracker">Project Tracker</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/sponsors" data-go="sponsors">Sponsors</a><a href="/contact" data-go="contact">Contact Us</a>`;
 const EDITION_TZ="America/New_York",FIRST_EDITION=Date.UTC(2026,10,15,17);
 function etParts(date){
@@ -1575,7 +1707,7 @@ function tickCountdown(){
 setInterval(tickCountdown,1000);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]);
 const fmtDate=iso=>iso?new Intl.DateTimeFormat("en-US",{month:"long",day:"numeric",year:"numeric"}).format(new Date(iso)):"";
-const PLAN_INFO={monthly:{name:"Monthly",price:"$12.99/month"},annual:{name:"Annual",price:"$109.99/year"}};
+const PLAN_INFO={monthly:{name:"Monthly",price:"$11.99/month"},annual:{name:"Annual",price:"$109.99/year"}};
 const STATUS_TEXT={active:"Active",trialing:"Active",canceling:"Active until period ends",past_due:"Payment due",unpaid:"Payment due",canceled:"Canceled",incomplete:"Payment incomplete",incomplete_expired:"Expired",paused:"Paused",none:"No membership"};
 const isMember=m=>!!m&&["active","trialing","past_due","canceling"].includes(m.status);
 let sb=null,session=null,currentRoute="";
@@ -1719,20 +1851,22 @@ async function loadDashboard(){
 function go(route,keep,nav){
   if(route==="insights")route="tracker";
   const views={dashboard,reset,welcome,home,privacy,terms,refunds,contact,membership,tracker,newsletters,archives,sponsors,signin};
-  if(!views[route]&&!byId[route])route="home";
-  app.innerHTML=byId[route]?story(byId[route]):views[route]();
-  if(route==="archives"){document.getElementById("a-q").value=state.nq;newsRows()}
+  const ind=route.startsWith("ind-")?IND_BY_SLUG[route.slice(4)]:null;
+  if(!views[route]&&!byId[route]&&!ind)route="home";
+  if(ind&&currentRoute!==route){state.iq="";state.ireg="All";state.isort="new";state.ilimit=IND_PAGE}
+  app.innerHTML=byId[route]?story(byId[route]):ind?industry(ind):views[route]();
+  if(route==="archives")newsRows();
   tickCountdown();
   document.body.classList.toggle("bare",route==="signin"||route==="reset"||route==="welcome");
   currentRoute=route;
   if(route==="dashboard")loadDashboard();
   if(route==="welcome")loadWelcome();
   document.querySelectorAll("#nav>a").forEach(a=>{a.dataset.go===route?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
-  document.getElementById("dd-news").dataset.on=route==="archives"?"1":"0";
+  document.getElementById("dd-ind").dataset.on=ind?"1":"0";
   document.querySelectorAll("#nav details").forEach(d=>d.open=false);
   const url=pathOf(route)+(nav==="init"?location.search:"");
   try{if(nav==="push"){if(location.pathname!==pathOf(route))history.pushState(null,"",url)}else if(nav!=="pop")history.replaceState(null,"",url)}catch(e){}
-  document.title=byId[route]?byId[route].title.replace(/<[^>]+>/g,"")+" | Georgia Construction Insider":(PAGE_TITLES[route]||PAGE_TITLES.home);
+  document.title=byId[route]?byId[route].title.replace(/<[^>]+>/g,"")+" | Georgia Construction Insider":ind?ind+" Construction News | Georgia Construction Insider":(PAGE_TITLES[route]||PAGE_TITLES.home);
   if(!keep)window.scrollTo(0,0);
 }
 document.addEventListener("click",e=>{
@@ -1750,8 +1884,8 @@ document.addEventListener("click",e=>{
   else if(t.hasAttribute("data-signin-note")){const n=document.querySelector(".si-note");n.dataset.state="done";n.textContent="Preview only: accounts aren't set up yet, so this isn't available."}
   else if(t.hasAttribute("data-join")){t.nextElementSibling.textContent="Preview only: payments aren't connected yet, so nothing was charged."}
   else if(t.dataset.scroll){if(t.dataset.option)document.getElementById("sp-interest").value=t.dataset.option;document.getElementById(t.dataset.scroll).scrollIntoView({behavior:"smooth"})}
-  else if(t.dataset.topic){state.topic=t.dataset.topic;state.region="All";state.nq="";state.nlimit=NEWS_PAGE;go("archives",false,"push")}
-  else{if(t.dataset.go==="archives"){state.topic="All";state.region="All";state.nq="";state.nlimit=NEWS_PAGE}go(t.dataset.go,false,"push")}
+  else if(t.dataset.topic){go("ind-"+indSlug(t.dataset.topic),false,"push")}
+  else{if(t.dataset.go==="archives")state.nlimit=NEWS_PAGE;go(t.dataset.go,false,"push")}
 });
 document.addEventListener("input",e=>{if(e.target.id==="a-q"){state.nq=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}});
 document.addEventListener("change",e=>{
