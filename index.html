@@ -1280,7 +1280,7 @@ async function loadWelcome(){
   }
   if(!data||!data.email)return set("Payment received.","We're still setting up your membership. Check your email in a few minutes for a link to set your password, or contact us if it doesn't arrive.",signBtn);
   const email=`<b>${esc(data.email)}</b>`;
-  if(!data.created)return set("Welcome to GCI membership!",`Your membership is now active on your account ${email}. Sign in to start reading.`,signBtn);
+  if(!data.needsPassword)return set("Welcome to GCI membership!",`Your membership is now active on your account ${email}. Sign in to start reading.`,signBtn);
   const sent="gci_welcome_"+sid;let already=false;try{already=sessionStorage.getItem(sent)==="1"}catch(e){}
   const sbc=await authInit;
   if(!already&&sbc){

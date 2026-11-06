@@ -78,5 +78,12 @@ export async function linkCheckout(sessionOrId) {
 
   sub.metadata = { ...sub.metadata, user_id: userId };
   const member = await syncSubscription(sub);
-  return { email: member?.email || email, created, guest: !session.client_reference_id };
+  return { email: member?.email || email, created, needsPassword: await neverSignedIn(userId) };
+}
+
+// True for accounts made at checkout that haven't signed in yet, so the welcome page sends a set-password link.
+async function neverSignedIn(userId) {
+  const res = await fetch(`${setting("SUPABASE_URL")}/auth/v1/admin/users/${encodeURIComponent(userId)}`, { headers: adminHeaders() });
+  if (!res.ok) return false;
+  return !(await res.json()).last_sign_in_at;
 }
