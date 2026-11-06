@@ -1015,7 +1015,7 @@ function home(){
   <div class="home-end">${memberBox()}</div></div>`;
 }
 const NEWS_PAGE=24;
-const REGIONS=[...new Set(STORIES.map(s=>s.region).filter(Boolean))].sort();
+const NEWS_REGIONS=[...new Set(STORIES.map(s=>s.region).filter(Boolean))].sort();
 function newsRows(){
   const q=state.nq.trim().toLowerCase();
   const list=STORIES.filter(s=>inTopic(s,state.topic)&&(state.region==="All"||s.region===state.region)&&(!q||[s.title,s.dek,s.sector,s.region,s.where,s.who,...s.body].join(" ").toLowerCase().includes(q)));
@@ -1030,7 +1030,7 @@ function archives(){
   return `<div class="wrap news-page"><header class="np-head"><h1>Latest News</h1><p>Browse the latest Georgia construction stories, project developments and market updates.</p></header>
     <div class="np-filters">
       <label for="a-q">Search<input id="a-q" type="search" placeholder="Search stories"></label>
-      <label for="a-region">Region<select id="a-region">${opts([["All","All Regions"],...REGIONS.map(r=>[r,r])],state.region)}</select></label>
+      <label for="a-region">Region<select id="a-region">${opts([["All","All Regions"],...NEWS_REGIONS.map(r=>[r,r])],state.region)}</select></label>
       <label for="a-sector">Industry<select id="a-sector">${opts([["All","All Industries"],...Object.keys(TOPICS).map(t=>[t.replace(/&/g,"&amp;"),t])],state.topic.replace(/&/g,"&amp;"))}</select></label>
       <label for="a-sort">Sort By Date<select id="a-sort">${opts([["new","Newest to Oldest"],["old","Oldest to Newest"]],state.nsort)}</select></label>
       <button type="button" class="np-clear" data-nclear>Clear filters</button>
