@@ -1112,7 +1112,7 @@ function sponsors(){
       <button class="sp-btn sp-btn-red sp-submit" type="submit">Send Enquiry</button>
       <p class="sub-note sp-note" role="status">We only use your details to respond to your enquiry.</p>
     </form></section>
-  <div class="sp-press"><div class="wrap"><p><b>Submitting a project announcement?</b> Press releases are reviewed editorially and are separate from paid sponsorships.</p><a href="/sponsors" data-scroll="sp-enquiry" data-option="Press release submission">Press release submissions ↗</a></div></div>`;
+`;
 }
 // Membership comparison table rows: [feature, free, monthly, annual]; 1 = included, 0 = not, text = shown as written.
 const COMPARE=[
@@ -1360,7 +1360,7 @@ function story(s){
 const app=document.getElementById("app");
 document.getElementById("nav").innerHTML=`<a href="/" data-go="home">Home</a>
   <details id="dd-news"><summary>News</summary><div class="menu"><a class="menu-all" href="/news" data-go="archives">View All</a><div><span class="mono">Industry</span>${Object.keys(TOPICS).map(t=>`<a href="/news" data-topic="${t}">${t}</a>`).join("")}</div></div></details>
-  <a href="/project-tracker" data-go="tracker">Project Tracker</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/sponsors" data-go="sponsors">Sponsors</a>`;
+  <a href="/project-tracker" data-go="tracker">Project Tracker</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/sponsors" data-go="sponsors">Sponsors</a><a href="/contact" data-go="contact">Contact Us</a>`;
 const EDITION_TZ="America/New_York",FIRST_EDITION=Date.UTC(2026,10,15,17);
 function etParts(date){
   const p=Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:EDITION_TZ,hourCycle:"h23",year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric",second:"numeric",weekday:"short"}).formatToParts(date).map(x=>[x.type,x.value]));
