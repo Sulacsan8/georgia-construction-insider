@@ -1860,6 +1860,7 @@ function go(route,keep,nav){
   document.body.classList.toggle("bare",route==="signin"||route==="reset"||route==="welcome");
   currentRoute=route;
   if(route==="dashboard")loadDashboard();
+  if(ind)indRows();
   if(route==="welcome")loadWelcome();
   document.querySelectorAll("#nav>a").forEach(a=>{a.dataset.go===route?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
   document.getElementById("dd-ind").dataset.on=ind?"1":"0";
