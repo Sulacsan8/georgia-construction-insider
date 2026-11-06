@@ -155,7 +155,11 @@ td a:hover{color:var(--gray)}
 /* Homepage: lead headline fills its column; newsletter box in grey and red; room above the footer */
 .lead h1{text-wrap:pretty;max-width:none}
 /* Homepage newsletter box (The Georgia Build), charcoal grey with red accents */
-.front .pour-x{background:#2e3136;color:#fff;border:0;border-radius:14px;padding:16px 24px 24px;display:block;flex:none}
+.front .pour.pour-x{background:#2e3136;color:#fff;border:0;border-radius:14px;padding:16px 24px 24px;display:block;flex:none}
+/* The lead photo card grows to fill the column so both columns end level */
+.front .lead-hero{flex:1;display:flex}
+.front .lead-hero>a{flex:1;display:flex;flex-direction:column}
+.front .lead-hero .art{flex:1;aspect-ratio:auto;min-height:360px}
 .pour-x .px-rule{display:block;width:44px;height:3px;background:#cc050d;margin-bottom:8px}
 .pour-x h2{color:#fff;font:800 27px/1.15 var(--head);letter-spacing:-.01em;margin:0}
 .pour-x .px-sub{color:#c9ccd1;font-size:13px;font-weight:700;margin:6px 0 12px}
