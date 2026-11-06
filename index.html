@@ -181,8 +181,8 @@ td a:hover{color:var(--gray)}
 /* Article pages: headline across the top, facts beside the body, Texas-style footer blocks */
 .art-head{padding-top:14px}
 .art-head .art-kicker{color:var(--accent);margin:0}
-.art-head h1{font-size:clamp(30px,3.7vw,46px);margin:6px 0 12px}
-.art-head .dek{font-size:20px;line-height:1.4;color:var(--body-gray);margin:0}
+.art-head h1{font-size:clamp(30px,3.7vw,46px);margin:6px 0 4px;text-wrap:pretty;max-width:none}
+.art-dek{font-size:20px;line-height:1.4;color:var(--body-gray);margin:14px 0 0;font-weight:600}
 .article{padding-block:6px 16px}
 .article .art{margin-top:4px}
 .article .sheet{background:#f1f2f4;border:0;border-radius:14px}
@@ -1241,9 +1241,10 @@ function story(s){
   const facts=[["Value",s.valueLabel],["Location",s.where],["Company",s.who],["Stage",s.status],...(FACT_EXTRAS[s.id]||[])].filter(f=>f[1]);
   const next=sorted[(sorted.indexOf(s)+1)%sorted.length];
   const more=sorted.filter(x=>x!==s&&x!==next).slice(0,3);
-  return `<div class="wrap"><header class="art-head"><div class="row mono art-kicker">${s.sector}</div><h1>${s.title}</h1><p class="dek">${s.dek}</p>${byline(s)}</header>
+  return `<div class="wrap"><header class="art-head"><div class="row mono art-kicker">${s.sector}</div><h1>${s.title}</h1>${byline(s)}</header>
   <div class="article"><article>
     ${art(s,"a")}<p class="caption">${s.img?(s.credit?`Photo: ${s.credit}`:""):"Illustration of the project type, not a site photograph."}</p>
+    <p class="dek art-dek">${s.dek}</p>
     <div class="prose">${s.body.map(p=>p.startsWith("<")?p:`<p>${p}</p>`).join("")}</div>
   </article><aside class="sheet">${facts.length?`<div class="sheet-head"><span class="sheet-label">Overview</span><h2>Key Facts</h2></div><dl>${facts.map(f=>`<div><dt class="mono">${f[0]}</dt><dd>${f[1]}</dd></div>`).join("")}</dl>`:""}</aside></div>
   <section class="next-story">${link(next,`${art(next,"x")}<div class="ns-text"><span class="ns-label">Next story</span><h3>${next.title}</h3></div><span class="ns-btn">Next story →</span>`)}</section>
