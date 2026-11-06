@@ -1,6 +1,6 @@
 // Runs on Vercel at each deploy. Writes the site into public/ with one HTML file per clean address,
 // each carrying its own title, description and social-preview tags, plus sitemap.xml and robots.txt.
-import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync } from "node:fs";
+import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync, readdirSync } from "node:fs";
 
 const SITE = "https://georgiaconstructioninsider.com";
 const OUT = "public";
@@ -103,12 +103,48 @@ for (const s of STORIES) {
   }));
 }
 
+// Project Insights: each insights/<slug>.js pushes one profile onto INSIGHTS. They are joined into
+// public/insights.js (loaded by every page) and each profile gets its own page at /project-insights/<slug>.
+const insightFiles = readdirSync("insights").filter((f) => f.endsWith(".js")).sort();
+const insightJs = "var INSIGHTS=window.INSIGHTS=[];\n" + insightFiles.map((f) => readFileSync(`insights/${f}`, "utf8")).join("\n");
+write(`${OUT}/insights.js`, insightJs);
+const INSIGHTS = new Function("window", insightJs + "\nreturn INSIGHTS;")({});
+write(`${OUT}/project-insights.html`, page({
+  path: "/project-insights",
+  title: "Project Insights | Georgia Construction Insider",
+  description: "In-depth profiles of Georgia's biggest construction projects: investment, timelines, the companies behind each build, incentives and status.",
+}));
+for (const p of INSIGHTS) {
+  const path = `/project-insights/${p.slug}`;
+  write(`${OUT}${path}.html`, page({
+    path,
+    title: `${p.title} | Project Insights | Georgia Construction Insider`,
+    description: p.dek,
+    image: p.img || undefined,
+    type: "article",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: p.title,
+      description: p.dek,
+      image: [abs(p.img || "/images/og-default.jpg")],
+      dateModified: p.updated,
+      author: [{ "@type": "Person", name: authorOf(p) }],
+      publisher: { "@type": "Organization", name: "Georgia Construction Insider", url: SITE },
+      mainEntityOfPage: SITE + path,
+      isAccessibleForFree: p.access === "free",
+    },
+  }));
+}
+
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
   ...SECTIONS.map(([path]) => `<url><loc>${SITE}${path}</loc><lastmod>${today}</lastmod></url>`),
+  `<url><loc>${SITE}/project-insights</loc><lastmod>${today}</lastmod></url>`,
+  ...INSIGHTS.map((p) => `<url><loc>${SITE}/project-insights/${p.slug}</loc><lastmod>${p.updated}</lastmod></url>`),
   ...STORIES.map((s) => `<url><loc>${SITE}/news/${s.id.replace(/^story-/, "")}</loc><lastmod>${s.iso}</lastmod></url>`),
 ];
 write(`${OUT}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
 write(`${OUT}/robots.txt`, `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /dashboard\nDisallow: /sign-in\nDisallow: /reset-password\nDisallow: /welcome\n\nSitemap: ${SITE}/sitemap.xml\n`);
 
-console.log(`Built ${SECTIONS.length + PRIVATE.length} section pages and ${STORIES.length} article pages.`);
+console.log(`Built ${SECTIONS.length + PRIVATE.length} section pages, ${STORIES.length} article pages and ${INSIGHTS.length + 1} Project Insights pages.`);

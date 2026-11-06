@@ -742,6 +742,94 @@ body{min-height:100vh;display:flex;flex-direction:column}main{flex:1 0 auto;min-
 @media (max-width:520px){.db-form{grid-template-columns:minmax(0,1fr)}}
 .db-stats{grid-template-columns:repeat(3,minmax(0,1fr))}.db-launch{grid-column:1/-1}@media (max-width:520px){.db-stats{grid-template-columns:minmax(0,1fr)}}
 .db-empty{margin-top:24px;text-align:center}.db-empty h1{font-size:28px;font-weight:800}.db-main>.db-note{margin:0 0 12px}.db-form input[readonly]{background:#f2f2f2}
+
+/* Project Insights: listing (left filter panel + card grid) and project profile pages. */
+.pi-page{padding-block:28px 40px}
+.pi-head h1{font-size:clamp(34px,4.4vw,52px);font-weight:800;letter-spacing:-.01em}
+.pi-head p{margin-top:8px;color:#4a4f56;font-size:17px;max-width:900px}
+.pi-layout{display:grid;grid-template-columns:270px minmax(0,1fr);gap:28px;align-items:start;margin-top:24px}
+.pi-filter{background:#000;color:#fff;border-radius:14px;border-top:4px solid #cc050d;padding:20px 18px;display:grid;gap:6px;position:sticky;top:16px}
+.pi-filter h2{color:#fff;font-size:22px;margin-bottom:8px}
+.pi-filter label{font-size:13.5px;font-weight:700;margin-top:8px}
+.pi-filter input,.pi-filter select{font:inherit;font-size:14px;color:#000;background:#fff;border:1px solid #d4d4d4;border-radius:8px;padding:10px 12px;width:100%;min-width:0}
+.pi-clear{margin-top:14px;font:700 14px/1 var(--body);color:#fff;background:transparent;border:1px solid #555;border-radius:99px;padding:12px;cursor:pointer}
+.pi-clear:hover{border-color:#fff}
+.pi-count{font-size:13.5px;color:#cfcfcf;margin-top:8px}
+.pi-grid-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 22px}
+.pi-grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.pi-card a{display:flex;flex-direction:column;height:100%}
+.pi-img .art{display:block;aspect-ratio:16/10;border-radius:10px;overflow:hidden;background:#000}
+.pi-img .art img,.pi-img .art svg{transition:transform .3s}
+.pi-card a:hover .pi-img img{transform:scale(1.03)}
+.pi-card-body{display:flex;flex-direction:column;gap:6px;padding-top:12px}
+.pi-tag{align-self:flex-start;display:inline-flex;align-items:center;gap:5px;font:700 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;border-radius:4px}
+.pi-member{color:#cc050d}
+.pi-free{color:#fff;background:#cc050d;padding:5px 8px}
+.pi-sector{font-size:13px;color:#6b6b6b;font-weight:600}
+.pi-card h3{font-size:21px;line-height:1.2;font-weight:800}
+.pi-card a:hover h3{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.pi-go{margin-top:auto;padding-top:6px;color:#cc050d;font-weight:700;font-size:14.5px}
+.pi-cta{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:#000;color:#fff;border-radius:14px;padding:24px 28px;border-left:6px solid #cc050d}
+.pi-cta h2{color:#fff;font-size:24px}.pi-cta p{color:#d6d6d6;margin-top:6px;max-width:640px}
+.pi-cta-btn,.pi-gate-btn,.pi-band-btn{display:inline-block;background:#cc050d;color:#fff;font-weight:700;border-radius:99px;padding:13px 24px;white-space:nowrap}
+.pi-cta-btn:hover,.pi-gate-btn:hover,.pi-band-btn:hover{background:#fff;color:#000}
+.pi-band{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:28px;padding:26px 28px;border:1px solid #d4d4d4;border-top:4px solid #cc050d;border-radius:14px}
+.pi-band-tag{font:800 11.5px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:#cc050d}
+.pi-band h2{font-size:28px;margin-top:8px}.pi-band p{margin-top:6px;color:#4a4f56;max-width:720px}
+.pi-band-btn:hover{background:#000;color:#fff}
+.pi-band-grid{margin-top:22px}
+.pi-art{padding-block:18px 32px}
+.pi-preview{background:#fff4d6;border:1px solid #e9c46a;border-radius:10px;padding:10px 14px;font-size:14px;margin-bottom:14px}
+.pi-preview button{font:700 13px var(--body);margin-left:8px;background:#000;color:#fff;border:0;border-radius:99px;padding:6px 12px;cursor:pointer}
+.pi-back{display:inline-block;font-weight:700;font-size:14.5px;color:#cc050d;margin-bottom:12px}
+.pi-kicker{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-weight:700;font-size:13px;color:#6b6b6b;text-transform:uppercase;letter-spacing:.06em}
+.pi-art-head h1{font-size:clamp(30px,3.8vw,48px);font-weight:800;margin:10px 0 8px;max-width:1100px;text-wrap:pretty}
+.pi-sub{font-size:18px;font-weight:600}
+.pi-statline{font-size:16px;color:#4a4f56;margin-top:4px}
+.pi-meta{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;margin-top:12px;font-size:14px;color:#4a4f56}
+.pi-status{display:inline-block;font-weight:700;font-size:13px;padding:4px 10px;border-radius:99px;background:#000;color:#fff}
+.pi-status.st-plan{background:#eee;color:#000}.pi-status.st-build{background:#cc050d;color:#fff}
+.pi-body{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:48px;align-items:start;margin-top:22px}
+.pi-fig{margin:0}.pi-fig .art{display:block;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:#000}
+.pi-dek{font-size:20px;line-height:1.45;font-weight:600;margin-top:18px}
+.pi-sec{margin-top:34px;font-size:18px;line-height:1.65}
+.pi-sec h2{font-size:28px;font-weight:800;padding-top:16px;border-top:3px solid #000;margin-bottom:14px}
+.pi-sec h3{font-size:20px;font-weight:800;margin:22px 0 8px}
+.pi-sec p{margin:0 0 14px}
+.pi-sec ul{margin:0 0 14px;padding-left:22px;display:grid;gap:8px}
+.pi-note{font-size:15px;color:#4a4f56}
+.pi-glance{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 28px;margin:0}
+.pi-glance div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:10px;padding:10px 0;border-bottom:1px solid #e1e1e1;font-size:15px;line-height:1.45}
+.pi-glance dt{font-weight:700;color:#000}.pi-glance dd{margin:0;color:#3b3f45}
+.pi-timeline{list-style:none;margin:0;padding:0;counter-reset:pit}
+.pi-timeline li{position:relative;padding:0 0 22px 52px;counter-increment:pit}
+.pi-timeline li::before{content:counter(pit);position:absolute;left:0;top:0;width:34px;height:34px;border-radius:50%;background:#000;color:#fff;font:800 14px/34px var(--body);text-align:center}
+.pi-timeline li::after{content:"";position:absolute;left:16px;top:38px;bottom:4px;width:2px;background:#e1e1e1}
+.pi-timeline li:last-child::after{display:none}
+.pi-date{display:block;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#cc050d}
+.pi-timeline h3{font-size:19px;margin:4px 0 4px}
+.pi-timeline p{font-size:16px;margin:0;color:#3b3f45}
+.pi-gate{margin-top:34px;background:#000;color:#fff;border-radius:14px;padding:30px;border-top:5px solid #cc050d}
+.pi-gate h2{color:#fff;font-size:28px;margin:10px 0}
+.pi-gate p{color:#d6d6d6;font-size:17px}
+.pi-gate ul{margin:14px 0 20px;padding-left:20px;color:#fff;display:grid;gap:6px}
+.pi-gate-icon{display:inline-flex;width:46px;height:46px;border-radius:50%;background:#cc050d;align-items:center;justify-content:center}
+.pi-gate-btns{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
+.pi-gate-link{color:#fff;text-decoration:underline;font-weight:600}
+.pi-rel ul{list-style:none;padding:0}.pi-rel a{font-weight:700;color:#cc050d}
+.pi-side{position:sticky;top:16px;display:grid;gap:16px}
+.pi-facts{background:#f1f2f4;border-radius:14px;padding:20px 22px}
+.pi-facts .sheet-head{margin-bottom:10px}.pi-facts h2{font-size:24px}
+.pi-side-cta{background:#000;color:#fff;border-radius:14px;padding:20px 22px}
+.pi-side-cta h3{color:#fff;font-size:19px}.pi-side-cta p{color:#d6d6d6;font-size:14.5px;margin:6px 0 12px}
+.pi-side-cta a{color:#fff;font-weight:700;text-decoration:underline}
+.pi-more{margin-top:44px}
+.pi-more-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:16px;border-top:3px solid #000;padding-top:16px}
+.pi-more-head h2{font-size:28px;font-weight:800}.pi-more-head a{color:#cc050d;font-weight:700}
+.pi-more .pi-card h3{font-size:18px}
+@media (max-width:1100px){.pi-grid-cards,.pi-grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.pi-body{grid-template-columns:minmax(0,1fr) 300px;gap:32px}}
+@media (max-width:860px){.pi-layout,.pi-body{grid-template-columns:minmax(0,1fr)}.pi-filter,.pi-side{position:static}.pi-glance{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.pi-grid-cards,.pi-grid-4{grid-template-columns:minmax(0,1fr)}.pi-sec{font-size:17px}.pi-glance div{grid-template-columns:minmax(0,1fr)}}
 </style>
 
 
@@ -754,11 +842,12 @@ body{min-height:100vh;display:flex;flex-direction:column}main{flex:1 0 auto;min-
 <footer class="site"><div class="wrap">
   <div class="foot-cols">
     <div class="foot-about"><h3>Georgia Construction Insider</h3><p>Construction news, major projects and industry updates across Georgia.</p></div>
-    <div><h3>Explore</h3><div class="foot-links"><a href="/news" data-go="archives">Latest News</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/project-tracker" data-go="tracker">Project Tracker</a></div></div>
+    <div><h3>Explore</h3><div class="foot-links"><a href="/news" data-go="archives">Latest News</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/project-tracker" data-go="tracker">Project Tracker</a><a href="/project-insights" data-go="insights">Project Insights</a></div></div>
     <div><h3>Support</h3><div class="foot-links"><a href="/sponsors" data-go="sponsors">Sponsors &amp; Advertising</a><a href="/sponsors" data-go="sponsors">Submit a Press Release</a><a href="/contact" data-go="contact">Contact Us</a><a href="/sign-in" data-go="signin">Sign In</a></div></div>
   </div>
   <div class="foot-base"><span>© 2026 Georgia Construction Insider. All Rights Reserved.</span><span class="foot-legal"><a href="/privacy" data-go="privacy">Privacy Policy</a><a href="/terms" data-go="terms">Terms &amp; Conditions</a><a href="/refunds" data-go="refunds">Refund Policy</a></span></div>
 </div></footer>
+<script src="/insights.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 const STORIES=[
@@ -1140,10 +1229,10 @@ function byline(s){
 }
 const TOPICS=Object.fromEntries(["Civil","Commercial","Data Center","Energy & Solar","Federal & Government","Healthcare","Industrial","Semi-Conductor & Manufacturing","Transportation","Water"].map(t=>[t,[t]]));
 // Clean page addresses. Articles live at /news/<slug>, where the slug is the story id without "story-".
-const PATHS={home:"/",archives:"/news",tracker:"/project-tracker",newsletters:"/newsletter",sponsors:"/sponsors",membership:"/membership",contact:"/contact",privacy:"/privacy",terms:"/terms",refunds:"/refunds",signin:"/sign-in",dashboard:"/dashboard",reset:"/reset-password",welcome:"/welcome"};
-const pathOf=r=>r.startsWith("story-")?"/news/"+r.slice(6):r.startsWith("ind-")?"/industry/"+r.slice(4):(PATHS[r]||"/");
-const routeOf=p=>{p=p.replace(/\/+$/,"")||"/";if(p.startsWith("/news/"))return "story-"+p.slice(6);if(p.startsWith("/industry/"))return "ind-"+p.slice(10);return Object.keys(PATHS).find(k=>PATHS[k]===p)||"home"};
-const PAGE_TITLES={home:"Georgia Construction Insider | Georgia Construction News and Projects",archives:"Latest Georgia Construction News",tracker:"Project Tracker",newsletters:"The Georgia Build Newsletter",sponsors:"Sponsors and Advertising",membership:"Membership",contact:"Contact Us",privacy:"Privacy Policy",terms:"Terms and Conditions",refunds:"Refund Policy",signin:"Sign In",dashboard:"Dashboard",reset:"Reset Password",welcome:"Welcome to GCI"};
+const PATHS={home:"/",archives:"/news",tracker:"/project-tracker",insights:"/project-insights",newsletters:"/newsletter",sponsors:"/sponsors",membership:"/membership",contact:"/contact",privacy:"/privacy",terms:"/terms",refunds:"/refunds",signin:"/sign-in",dashboard:"/dashboard",reset:"/reset-password",welcome:"/welcome"};
+const pathOf=r=>r.startsWith("story-")?"/news/"+r.slice(6):r.startsWith("pi-")?"/project-insights/"+r.slice(3):r.startsWith("ind-")?"/industry/"+r.slice(4):(PATHS[r]||"/");
+const routeOf=p=>{p=p.replace(/\/+$/,"")||"/";if(p.startsWith("/news/"))return "story-"+p.slice(6);if(p.startsWith("/industry/"))return "ind-"+p.slice(10);if(p.startsWith("/project-insights/"))return "pi-"+p.slice(18);return Object.keys(PATHS).find(k=>PATHS[k]===p)||"home"};
+const PAGE_TITLES={home:"Georgia Construction Insider | Georgia Construction News and Projects",archives:"Latest Georgia Construction News",tracker:"Project Tracker",insights:"Project Insights | Georgia Construction Insider",newsletters:"The Georgia Build Newsletter",sponsors:"Sponsors and Advertising",membership:"Membership",contact:"Contact Us",privacy:"Privacy Policy",terms:"Terms and Conditions",refunds:"Refund Policy",signin:"Sign In",dashboard:"Dashboard",reset:"Reset Password",welcome:"Welcome to GCI"};
 const link=(s,inner,cls)=>`<a href="${pathOf(s.id)}" data-go="${s.id}"${cls?` class="${cls}"`:""}>${inner}</a>`;
 const short=s=>s.title.split(": ").pop();
 const metric=s=>[s.valueLabel!=="Not disclosed"?s.valueLabel:"",s.where].filter(Boolean).join(" · ");
@@ -1160,7 +1249,7 @@ const trackable=STORIES.filter(s=>s.status);
 const trackRow=s=>`<tr><td>${link(s,short(s))}</td><td>${s.where}</td><td>${s.who}</td><td class="val">${s.valueLabel}</td><td><span class="stage st-${s.st}">${s.status}</span></td></tr>`;
 const pastRow=s=>`<article class="past">${link(s,`<div class="row mono"><span class="cat">${s.sector}</span><span>${s.date}</span><span>${s.region}</span></div><h3>${s.title}</h3><p>${s.dek}</p>`)}</article>`;
 const inTopic=(s,t)=>t==="All"||TOPICS[t].includes(s.sector);
-const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMode:"signin",authNote:"",topic:"All",region:"All",nq:"",nsort:"new",nlimit:24,iq:"",ireg:"All",isort:"new",ilimit:12,q:"",tSector:"All",tRegion:"All",desc:true};
+const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMode:"signin",authNote:"",topic:"All",region:"All",nq:"",nsort:"new",nlimit:24,iq:"",ireg:"All",isort:"new",ilimit:12,pq:"",psort:"featured",pind:"All",preg:"All",pacc:"All",piAsGuest:false,q:"",tSector:"All",tRegion:"All",desc:true};
 
 function home(){
   const lead=byId["story-audi"];
@@ -1256,8 +1345,92 @@ function tracker(){
     <div class="launch-form launch-join"><p>Full Project Tracker access is exclusive to annual members.</p>
       <button type="button" class="launch-btn" data-plan="annual">Sign Up as an Annual Member →</button><p class="launch-status" role="status"></p>
       <p class="launch-note">$109.99/year · Limited Time Offer · Price fixed for life</p></div>
-  </section></div>`;
+  </section>
+  <section class="pi-band"><div><span class="pi-band-tag">New · Project Insights</span><h2>Go inside Georgia's biggest builds.</h2><p>In-depth profiles of ${INSIGHTS.length} major Georgia projects: investment, timelines and phases, the companies behind each build, incentives and status.</p></div>
+    <a class="pi-band-btn" href="/project-insights" data-go="insights">Explore Project Insights →</a></section>
+  <section class="pi-band-grid"><div class="pi-grid-cards">${piSorted().slice(0,3).map(piCard).join("")}</div></section></div>`;
 }
+// Project Insights: in-depth project profiles at /project-insights/<slug>, data in insights/*.js (built into /insights.js).
+const PI_BY=Object.fromEntries(INSIGHTS.map(p=>[p.slug,p]));
+const PI_PAGE_REGIONS=REGIONS;
+const PI_INDUSTRIES=INDUSTRIES.filter(t=>t!=="Market Intelligence");
+const piPreview=()=>!/(^|\.)georgiaconstructioninsider\.com$/.test(location.hostname);
+const piLocked=p=>p.access==="member"&&!isMember(state.member)&&!(piPreview()&&!state.piAsGuest);
+const piSorted=()=>[...INSIGHTS].sort((a,b)=>a.order-b.order);
+const piTag=p=>p.access==="free"?`<span class="pi-tag pi-free">Free</span>`:`<span class="pi-tag pi-member">${ICON_LOCK}Members only</span>`;
+const ICON_LOCK='<svg viewBox="0 0 24 24" width="11" height="11" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2.4"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></g></svg>';
+const piArt=(p,mark)=>p.img?`<span class="art"><img src="${p.img}" alt="${esc(p.alt)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block"></span>`:art({id:"pi-"+p.slug,scene:p.scene||"crew"},mark);
+const piCard=p=>`<article class="pi-card"><a href="/project-insights/${p.slug}" data-go="pi-${p.slug}"><span class="pi-img">${piArt(p,"c")}</span><span class="pi-card-body">${piTag(p)}<span class="pi-sector">${p.sector}</span><h3>${p.title}</h3><span class="pi-go">Read project insight <span aria-hidden="true">→</span></span></span></a></article>`;
+const piCta=()=>`<aside class="pi-cta"><div><h2>Want the Full Project Details?</h2><p>Unlock every Project Insight, with contractor information, construction timelines and incentive details for Georgia's biggest builds.</p></div><a class="pi-cta-btn" href="/membership" data-go="membership">Explore Memberships →</a></aside>`;
+function piRows(){
+  const q=state.pq.trim().toLowerCase();
+  let list=piSorted().filter(p=>(state.pind==="All"||p.sector===state.pind)&&(state.preg==="All"||p.region===state.preg)&&(state.pacc==="All"||p.access===state.pacc)&&(!q||[p.title,p.company,p.place,p.sector,p.region,p.dek,...p.glance.map(g=>g[1])].join(" ").toLowerCase().includes(q)));
+  if(state.psort==="value")list.sort((a,b)=>b.value-a.value);
+  if(state.psort==="az")list.sort((a,b)=>a.title.localeCompare(b.title));
+  const cards=list.map(piCard);
+  if(cards.length>6)cards.splice(6,0,piCta());
+  document.getElementById("pi-list").innerHTML=list.length?`<div class="pi-grid-cards">${cards.join("")}</div>`:`<p class="empty">No projects match. Clear the filters or try another search.</p>`;
+  document.getElementById("pi-count").textContent=list.length?`Showing 1–${list.length} of ${list.length} project${list.length===1?"":"s"}`:`Showing 0 of ${INSIGHTS.length} projects`;
+}
+function insights(){
+  const opt=(v,l,cur)=>`<option value="${esc(v)}"${v===cur?" selected":""}>${esc(l)}</option>`;
+  return `<div class="wrap pi-page"><header class="pi-head"><h1>Project Insights</h1><p>Explore Georgia's biggest construction projects: key investments, the companies behind each build, timelines and phases, with exclusive insights for GCI members.</p></header>
+  <div class="pi-layout"><aside class="pi-filter" aria-label="Filter projects"><h2>Filter Projects</h2>
+    <label for="pi-q">Search Projects</label><input id="pi-q" type="search" placeholder="Project, location or company" value="${esc(state.pq)}">
+    <label for="pi-sort">Sort By</label><select id="pi-sort">${opt("featured","Featured Order",state.psort)}${opt("value","Largest Investment",state.psort)}${opt("az","Project Name (A–Z)",state.psort)}</select>
+    <label for="pi-ind">Industry</label><select id="pi-ind">${opt("All","All Industries",state.pind)}${PI_INDUSTRIES.map(t=>opt(t,t,state.pind)).join("")}</select>
+    <label for="pi-reg">Region</label><select id="pi-reg">${opt("All","All Regions",state.preg)}${PI_PAGE_REGIONS.map(r=>opt(r,r,state.preg)).join("")}</select>
+    <label for="pi-acc">Access</label><select id="pi-acc">${opt("All","All Projects",state.pacc)}${opt("free","Free",state.pacc)}${opt("member","Members Only",state.pacc)}</select>
+    <button type="button" class="pi-clear" data-piclear>Clear filters</button>
+    <p class="pi-count" id="pi-count" role="status"></p></aside>
+  <section class="pi-results" id="pi-list"></section></div></div>`;
+}
+function insightPage(p){
+  const locked=piLocked(p),author=authorOf(p);
+  const sec=s=>`<section class="pi-sec"><h2>${s.h}</h2>${(s.body||[]).map(b=>b.startsWith("<")?b:`<p>${b}</p>`).join("")}${(s.sub||[]).map(x=>`<h3>${x.h}</h3>${x.body.map(b=>b.startsWith("<")?b:`<p>${b}</p>`).join("")}`).join("")}</section>`;
+  const glance=`<section class="pi-sec"><h2>Project at a glance</h2><dl class="pi-glance">${p.glance.map(g=>`<div><dt>${g[0]}</dt><dd>${g[1]}</dd></div>`).join("")}</dl></section>`;
+  const updates=`<section class="pi-sec"><h2>Timeline and latest updates</h2><p class="pi-note">${p.timelineIntro} Reviewed ${fmtDate(p.updated)}.</p><ol class="pi-timeline">${p.timeline.map(t=>`<li><span class="pi-date">${t[0]}</span><h3>${t[1]}</h3><p>${t[2]}</p></li>`).join("")}</ol></section>`;
+  const [first,...rest]=p.sections;
+  const gate=`<section class="pi-gate"><span class="pi-gate-icon">${ICON_LOCK.replace(/width="11" height="11"/,'width="22" height="22"')}</span><h2>This Project Insight is for GCI members</h2><p>Members get the full profile: the project team, timeline and phases, components, incentives, economic impact and what to watch next, across every Project Insight.</p>
+    <ul><li>Project team and contractor details</li><li>Dated timeline of every milestone</li><li>Incentives, financing and status updates</li></ul>
+    <div class="pi-gate-btns"><a class="pi-gate-btn" href="/membership" data-go="membership">Explore Memberships →</a><a class="pi-gate-link" href="/sign-in" data-go="signin">Already a member? Sign in</a></div></section>`;
+  const preview=p.access==="member"&&piPreview()?`<p class="pi-preview">Preview: ${state.piAsGuest?"showing what non-members see.":"members-only content is shown so you can review it."} <button type="button" data-piguest>${state.piAsGuest?"Show full page":"View as non-member"}</button></p>`:"";
+  const others=piSorted().filter(x=>x!==p).slice(0,4);
+  const rel=(p.related||[]).map(id=>byId[id]).filter(Boolean);
+  return `<div class="wrap pi-art">${preview}<a class="pi-back" href="/project-insights" data-go="insights">← All Project Insights</a>
+  <header class="pi-art-head"><div class="pi-kicker">${piTag(p)}<span>${p.sector} · Project Insight</span></div><h1>${p.title}</h1>
+    <p class="pi-sub">${p.company} · ${p.place}</p><p class="pi-statline">${p.statline}</p>
+    <p class="pi-meta"><span class="pi-status st-${p.stage}">${p.status}</span><span>By ${author}</span><span>Updated ${fmtDate(p.updated)}</span></p></header>
+  <div class="pi-body"><article class="pi-main">
+    <figure class="pi-fig">${piArt(p,"a")}<figcaption class="caption">${p.img?(p.credit?`Photo: ${p.credit}`:""):"Illustration of the project type, not a site photograph."}</figcaption></figure>
+    <p class="pi-dek">${p.dek}</p>
+    ${sec(first)}${glance}
+    ${locked?gate:`${updates}${rest.map(sec).join("")}`}
+    ${rel.length?`<section class="pi-sec pi-rel"><h2>Related GCI coverage</h2><ul>${rel.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ul></section>`:""}
+  </article>
+  <aside class="pi-side"><div class="sheet pi-facts"><div class="sheet-head"><span class="sheet-label">Overview</span><h2>Key Facts</h2></div><ul class="kf-list">${p.facts.map(f=>`<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul></div>
+    ${p.access==="member"&&locked?`<div class="pi-side-cta"><h3>Unlock the full insight</h3><p>Contractor details, timelines and incentives for every project.</p><a href="/membership" data-go="membership">See membership plans →</a></div>`:""}</aside></div>
+  <section class="pi-more"><div class="pi-more-head"><h2>Explore Other Projects</h2><a href="/project-insights" data-go="insights">View all Project Insights →</a></div><div class="pi-grid-cards pi-grid-4">${others.map(piCard).join("")}</div></section>
+  <section class="news-bar"><p>Subscribe to The Georgia Build, our free newsletter, delivered to your inbox every week.</p>${subForm("sub-pi","Subscribe","","Enter your email")}</section></div>`;
+}
+// Members-only insights: load the signed-in member's plan once, then redraw the page.
+async function piMember(){
+  const sbc=await authInit;
+  if(!sbc||!session||(state.member&&state.member.id===session.user.id))return;
+  const {data,error}=await sbc.from("members").select("*").eq("id",session.user.id).maybeSingle();
+  if(error)return;
+  state.member=data||{id:session.user.id,status:"none"};state.memberAt=Date.now();
+  if(currentRoute.startsWith("pi-"))go(currentRoute,true);
+}
+document.addEventListener("input",e=>{if(e.target.id==="pi-q"){state.pq=e.target.value;piRows()}});
+document.addEventListener("change",e=>{
+  const k={"pi-sort":"psort","pi-ind":"pind","pi-reg":"preg","pi-acc":"pacc"}[e.target.id];
+  if(k){state[k]=e.target.value;piRows()}
+});
+document.addEventListener("click",e=>{
+  if(e.target.closest("[data-piclear]")){Object.assign(state,{pq:"",psort:"featured",pind:"All",preg:"All",pacc:"All"});go("insights",true)}
+  else if(e.target.closest("[data-piguest]")){state.piAsGuest=!state.piAsGuest;go(currentRoute,true)}
+});
 function sponsors(){
   const card=(num,title,copy,cta,opt,art)=>`<article class="sp-card"><div class="sp-card-art">${art}</div><div class="sp-card-body"><span class="sp-eyebrow">${num}</span><h3>${title}</h3><p>${copy}</p><a href="/sponsors" data-scroll="sp-enquiry" data-option="${opt}">${cta} ↗</a></div></article>`;
   return `<section class="sp-hero"><div class="wrap sp-hero-grid"><div>
@@ -1697,7 +1870,7 @@ const app=document.getElementById("app");
 document.getElementById("nav").innerHTML=`<a href="/" data-go="home">Home</a>
   <a href="/news" data-go="archives">News</a>
   <details id="dd-ind"><summary>Industry</summary><div class="menu">${INDUSTRIES.map(t=>`<a href="/industry/${indSlug(t)}" data-go="ind-${indSlug(t)}">${t}</a>`).join("")}</div></details>
-  <a href="/project-tracker" data-go="tracker">Project Tracker</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/sponsors" data-go="sponsors">Sponsors</a><a href="/contact" data-go="contact">Contact Us</a>`;
+  <a href="/project-tracker" data-go="tracker">Project Tracker</a><a href="/project-insights" data-go="insights">Project Insights</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/sponsors" data-go="sponsors">Sponsors</a><a href="/contact" data-go="contact">Contact Us</a>`;
 const EDITION_TZ="America/New_York",FIRST_EDITION=Date.UTC(2026,10,15,17);
 function etParts(date){
   const p=Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:EDITION_TZ,hourCycle:"h23",year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric",second:"numeric",weekday:"short"}).formatToParts(date).map(x=>[x.type,x.value]));
@@ -1865,25 +2038,27 @@ async function loadDashboard(){
 // nav: "push" adds a history entry (link clicks), "pop" leaves the address alone (back/forward),
 // "init" keeps the query string on first load (auth and checkout redirects); anything else replaces it.
 function go(route,keep,nav){
-  if(route==="insights")route="tracker";
-  const views={dashboard,reset,welcome,home,privacy,terms,refunds,contact,membership,tracker,newsletters,archives,sponsors,signin};
+  const views={dashboard,reset,welcome,home,privacy,terms,refunds,contact,membership,tracker,insights,newsletters,archives,sponsors,signin};
   const ind=route.startsWith("ind-")?IND_BY_SLUG[route.slice(4)]:null;
-  if(!views[route]&&!byId[route]&&!ind)route="home";
+  const pi=route.startsWith("pi-")?PI_BY[route.slice(3)]:null;
+  if(!views[route]&&!byId[route]&&!ind&&!pi)route=route.startsWith("pi-")?"insights":"home";
   if(ind&&currentRoute!==route){state.iq="";state.ireg="All";state.isort="new";state.ilimit=IND_PAGE}
-  app.innerHTML=byId[route]?story(byId[route]):ind?industry(ind):views[route]();
+  app.innerHTML=byId[route]?story(byId[route]):ind?industry(ind):pi?insightPage(pi):views[route]();
   if(route==="archives")newsRows();
+  if(route==="insights")piRows();
+  if(pi)piMember();
   tickCountdown();
   document.body.classList.toggle("bare",route==="signin"||route==="reset"||route==="welcome");
   currentRoute=route;
   if(route==="dashboard")loadDashboard();
   if(ind)indRows();
   if(route==="welcome")loadWelcome();
-  document.querySelectorAll("#nav>a").forEach(a=>{a.dataset.go===route?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
+  document.querySelectorAll("#nav>a").forEach(a=>{a.dataset.go===(pi?"insights":route)?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
   document.getElementById("dd-ind").dataset.on=ind?"1":"0";
   document.querySelectorAll("#nav details").forEach(d=>d.open=false);
   const url=pathOf(route)+(nav==="init"?location.search:"");
   try{if(nav==="push"){if(location.pathname!==pathOf(route))history.pushState(null,"",url)}else if(nav!=="pop")history.replaceState(null,"",url)}catch(e){}
-  document.title=byId[route]?byId[route].title.replace(/<[^>]+>/g,"")+" | Georgia Construction Insider":ind?ind+" Construction News | Georgia Construction Insider":(PAGE_TITLES[route]||PAGE_TITLES.home);
+  document.title=byId[route]?byId[route].title.replace(/<[^>]+>/g,"")+" | Georgia Construction Insider":pi?pi.title+" | Project Insights | Georgia Construction Insider":ind?ind+" Construction News | Georgia Construction Insider":(PAGE_TITLES[route]||PAGE_TITLES.home);
   if(!keep)window.scrollTo(0,0);
 }
 document.addEventListener("click",e=>{
