@@ -154,10 +154,10 @@ td a:hover{color:var(--gray)}
 .see-more .pill{background:#cc050d;border-color:#cc050d;color:#fff}
 /* Homepage: lead headline fills its column; newsletter box in grey and red; room above the footer */
 .lead h1{text-wrap:pretty;max-width:none}
-/* Homepage newsletter box (The Peach State Pour), charcoal grey with red accents */
-.front .pour-x{background:#2e3136;color:#fff;border:0;border-radius:14px;padding:24px;display:block;flex:none}
-.pour-x .px-rule{display:block;width:44px;height:3px;background:#cc050d;margin-bottom:12px}
-.pour-x h2{color:#fff;font:800 26px/1.15 var(--display);margin:0}
+/* Homepage newsletter box (The Georgia Build), charcoal grey with red accents */
+.front .pour-x{background:#2e3136;color:#fff;border:0;border-radius:14px;padding:16px 24px 24px;display:block;flex:none}
+.pour-x .px-rule{display:block;width:44px;height:3px;background:#cc050d;margin-bottom:8px}
+.pour-x h2{color:#fff;font:800 27px/1.15 var(--head);letter-spacing:-.01em;margin:0}
 .pour-x .px-sub{color:#c9ccd1;font-size:13px;font-weight:700;margin:6px 0 12px}
 .pour-x .px-desc{color:#fff;font-size:15px;margin:0 0 8px}
 .pour-x .px-list{margin:0 0 4px;padding:0;list-style:none;display:grid;gap:6px}
@@ -905,12 +905,12 @@ const link=(s,inner,cls)=>`<a href="#${s.id}" data-go="${s.id}"${cls?` class="${
 const short=s=>s.title.split(": ").pop();
 const metric=s=>[s.valueLabel!=="Not disclosed"?s.valueLabel:"",s.where].filter(Boolean).join(" · ");
 const subForm=(id,btn="Subscribe for free",note="Free to join. Unsubscribe anytime.",placeholder="Enter your email")=>`<form class="sub-form" data-sub><label class="sr" for="${id}">Email address</label><input id="${id}" type="email" required placeholder="${placeholder}" autocomplete="email"><button class="pill" type="submit">${btn}</button><p class="sub-note" role="status">${note}</p></form>`;
-const pourBox=()=>`<aside class="pour pour-x"><span class="px-rule" aria-hidden="true"></span><h2>The Peach State Pour</h2><p class="px-sub">Get the Free Newsletter</p>
+const pourBox=()=>`<aside class="pour pour-x"><span class="px-rule" aria-hidden="true"></span><h2>The Georgia Build</h2><p class="px-sub">Get the Free Newsletter</p>
   <p class="px-desc">Georgia construction news, projects and industry updates, delivered every week.</p>
   <ul class="px-list"><li>The latest Georgia construction headlines</li><li>Major project announcements and milestones</li><li>Industry news, delivered free to your inbox</li></ul>
   ${subForm("sub-side","Subscribe","","Enter your email address")}
   <div class="countdown px-next" data-countdown><p class="px-label">Next Newsletter</p><div class="cd-boxes"><div><b data-cd="d">0</b><span>Days</span></div><div><b data-cd="h">00</b><span>Hours</span></div><div><b data-cd="m">00</b><span>Mins</span></div><div><b data-cd="s">00</b><span>Secs</span></div></div><p class="px-when"><span data-cd="when"></span> · Scheduled edition</p></div></aside>`;
-const pourBand=id=>`<section class="pour-band"><div><span class="mono">The Peach State Pour · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div>${subForm(id)}</section>`;
+const pourBand=id=>`<section class="pour-band"><div><span class="mono">The Georgia Build · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div>${subForm(id)}</section>`;
 const insight=s=>link(s,`${art(s,"i")}<span class="metric">${metric(s)}</span><h3>${s.title}</h3><p>${s.dek}</p><span class="go">Read more →</span>`,"insight");
 const newsCard=s=>`<article class="news-card">${link(s,`${art(s,"n")}<div class="nc-body"><span class="nc-meta">${s.sector} · ${s.date}</span><h3>${s.title}</h3><p>${s.dek}</p><span class="nc-go">Read Story →</span></div>`)}</article>`;
 const trackable=STORIES.filter(s=>s.status);
@@ -976,12 +976,12 @@ function sponsors(){
     </div>
     <div class="sp-mock" aria-hidden="true"><span class="sp-slash"></span>
       <div class="sp-sheet sp-sheet-back"><div class="sp-sheet-head"><b>Construction <i>Insider</i></b></div><div class="sp-sheet-body"><small>Coverage</small><strong>Shaping Georgia</strong><div class="sp-slot"><b>Your brand here</b><small>Website sponsorship</small></div><u></u><u></u></div></div>
-      <div class="sp-sheet sp-sheet-front"><div class="sp-sheet-head"><b>The Peach<br><i>State Pour.</i></b><small>Georgia construction, in your inbox</small></div><div class="sp-sheet-body"><small class="sp-red">This week in construction</small><strong>Georgia's next big builds.</strong><div class="sp-slot"><b>Your brand here</b><small>Newsletter sponsorship</small></div></div></div>
+      <div class="sp-sheet sp-sheet-front"><div class="sp-sheet-head"><b>The Georgia<br><i>Build.</i></b><small>Georgia construction, in your inbox</small></div><div class="sp-sheet-body"><small class="sp-red">This week in construction</small><strong>Georgia's next big builds.</strong><div class="sp-slot"><b>Your brand here</b><small>Newsletter sponsorship</small></div></div></div>
       <span class="sp-tag">Ad placement preview</span>
     </div></div></section>
   <section class="wrap sp-opps" id="sp-opps"><div class="sp-opps-head"><div><span class="sp-eyebrow">Sponsorship opportunities</span><h2>Put Your Brand in the Right Place.</h2></div><p>Flexible formats for companies looking to connect with Georgia's construction industry. Availability and rates provided on enquiry.</p></div>
     <div class="sp-cards">
-      ${card("01 / Inbox","Newsletter Sponsorship","Feature your company in The Peach State Pour with a clearly marked sponsor placement alongside Georgia construction updates.","Enquire about newsletter","Newsletter sponsorship",`<div class="sp-mini"><b>The Peach State Pour</b><span class="sp-mini-red">Your brand here</span><u></u><u></u></div>`)}
+      ${card("01 / Inbox","Newsletter Sponsorship","Feature your company in The Georgia Build with a clearly marked sponsor placement alongside Georgia construction updates.","Enquire about newsletter","Newsletter sponsorship",`<div class="sp-mini"><b>The Georgia Build</b><span class="sp-mini-red">Your brand here</span><u></u><u></u></div>`)}
       ${card("02 / Onsite","Website Advertising","Position your message on relevant website pages, from homepage placements to sponsorship alongside project and industry coverage.","Enquire about website ads","Website advertising",`<div class="sp-mini sp-mini-site"><i></i><u class="sp-dark"></u><span class="sp-mini-dash">Sponsor placement</span><u></u></div>`)}
       ${card("03 / Partnership","Custom Partnerships","Discuss custom campaigns, branded reports or relevant sponsored features. All paid content is clearly identified as sponsored.","Explore partnerships","Custom partnership",`<div class="sp-mini-black"><b>Industry partnerships</b><small>Sponsor content</small></div>`)}
     </div></section>
@@ -1071,7 +1071,7 @@ const ul=a=>`<ul>${a.map(x=>`<li>${x}</li>`).join("")}</ul>`;
 function privacy(){return legalPage("Privacy Policy",`This policy explains what Georgia Construction Insider ("GCI", "we" or "us") collects, why we collect it and the choices available to you.`,[
   ["Information We Collect",`<p>We collect details you give us, such as your name, email address, company and any message you send. If you create an account, we also keep your login details; your password is stored in encrypted form, and we cannot see it. When you visit, we and our providers may also receive technical data such as your IP address, browser, device and the pages you view.</p>`],
   ["Payments and Memberships",`<p>Stripe processes membership payments, so we do not store your full card number. Stripe collects the billing details needed to take payment, such as your card, country and postal code, and may email you receipts and payment notices. We keep the account details needed to manage your plan, such as your email address, plan type, renewal date and billing history.</p>`],
-  ["Newsletter and Communications",`<p>Beehiiv helps us deliver The Peach State Pour. You can unsubscribe using the link in any newsletter. We may still send essential messages about your account, membership or billing.</p>`],
+  ["Newsletter and Communications",`<p>Beehiiv helps us deliver The Georgia Build. You can unsubscribe using the link in any newsletter. We may still send essential messages about your account, membership or billing.</p>`],
   ["How We Use Information",`<p>We use information to:</p>`+ul(["Deliver newsletters and updates you request","Provide and manage accounts and memberships","Respond to questions, story tips and sponsorship enquiries","Understand how the site is used and improve it","Protect the service and meet legal obligations"])],
   ["Service Providers and Disclosures",`<p>We do not sell your personal information. We share it with providers that help us operate GCI, including our hosting, payment, newsletter, form and analytics services. We may also disclose it if the law requires it, to protect our rights or users, or as part of a business sale or reorganization.</p>`],
   ["Cookies and Similar Technologies",`<p>We use cookies, browser storage and similar tools to keep the site working and remember settings. Google Analytics helps us measure site traffic. You can limit cookies through your browser, although some features may stop working properly.</p>`],
@@ -1165,7 +1165,7 @@ function dashboard(){
   <div class="db-layout"><nav class="db-tabs" aria-label="Dashboard">${tabs.map(t=>`<button data-dtab="${t[0]}"${state.dtab===t[0]?' aria-current="page"':""}>${t[1]}</button>`).join("")}<button data-signout>Sign Out</button></nav>
   <div class="db-main"><p class="db-note" role="status">${esc(state.dbMsg||"")}</p>${panels[state.dtab]||panels.overview}</div></div></div>`;
 }
-function newsletters(){return `<div class="wrap"><section class="pour-band"><div><span class="mono">The Peach State Pour · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div><div>${countdownHTML().replace("data-countdown","data-countdown data-target=\"2026-11-15T17:00:00Z\"").replace("Next edition:","First edition:")}${subForm("sub-page")}</div></section></div>`}
+function newsletters(){return `<div class="wrap"><section class="pour-band"><div><span class="mono">The Georgia Build · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div><div>${countdownHTML().replace("data-countdown","data-countdown data-target=\"2026-11-15T17:00:00Z\"").replace("Next edition:","First edition:")}${subForm("sub-page")}</div></section></div>`}
 function story(s){
   const related=sorted.filter(x=>x!==s&&(x.sector===s.sector||x.region===s.region)).slice(0,3);
   const facts=[["Value",s.valueLabel],["Location",s.where],["Lead",s.who],["Stage",s.status]].filter(f=>f[1]);
