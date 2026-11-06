@@ -355,6 +355,9 @@ nav.main>a:hover,nav.main summary:hover{color:#cc050d}
 .launch-form{max-width:480px;margin:28px auto 0}
 .launch-form>p{font-weight:700;font-size:17px}
 .launch-form .sub-note{color:#ddd}
+.launch-btn{display:block;width:100%;margin-top:12px;background:#cc050d;color:#fff;border:0;border-radius:99px;padding:15px 18px;font:700 16px/1.2 var(--body);cursor:pointer}.launch-btn:hover{background:#a30409}.launch-btn:disabled{opacity:.7;cursor:default}
+.launch-status{margin:8px 0 0;color:#fff;font-size:14px}.launch-status:empty{display:none}
+.launch-note{margin:10px 0 0;color:#ddd;font-size:13px}
 .peek-wrap{position:relative;overflow:hidden;border-radius:12px}
 .peek{filter:blur(5px);user-select:none;pointer-events:none}
 .peek-tag{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#000;color:#fff;font-weight:700;padding:11px 20px;border-radius:99px;white-space:nowrap}
@@ -1045,21 +1048,15 @@ document.addEventListener("click",e=>{
 });
 document.addEventListener("change",e=>{if(e.target.id==="a-region"){state.region=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}});
 function tracker(){
-  const peek=[...trackable].filter(s=>s.value).sort((a,b)=>b.value-a.value).slice(0,4);
   return `<div class="wrap"><section class="launch">
     <span class="launch-tag">Launching November 29</span>
     <h1>Know what Georgia is building before anyone else.</h1>
     <p class="launch-dek">The Georgia Project Tracker brings the state's biggest construction jobs together in one place. Find the work, see who's leading it, and follow it from proposal to completion.</p>
     <div class="countdown launch-cd" data-countdown data-target="2026-11-29T17:00:00Z"><div class="cd-boxes"><div><b data-cd="d">0</b><span>Days</span></div><div><b data-cd="h">00</b><span>Hours</span></div><div><b data-cd="m">00</b><span>Minutes</span></div><div><b data-cd="s">00</b><span>Seconds</span></div></div></div>
-    <div class="launch-form"><p>Be the first to know when it goes live.</p>${subForm("sub-tracker").replace("Subscribe for free","Notify me on launch day").replace("Free to join. Unsubscribe anytime.","We only use this to tell you about the launch.")}</div>
-  </section>
-  <section class="module"><div class="mod-head"><h2>A First Look Inside</h2></div>
-    <div class="peek-wrap"><div class="table-scroll peek" inert aria-hidden="true"><table><thead><tr><th>Project</th><th>Location</th><th>Lead</th><th class="val">Value</th><th>Stage</th></tr></thead><tbody>${peek.map(trackRow).join("")}</tbody></table></div><span class="peek-tag">Unlocks November 29</span></div>
-    <div class="offers launch-offers">
-      <div class="offer"><h3>Find your next job</h3><p>Search by county, company or sector to see where the work is heading.</p></div>
-      <div class="offer"><h3>See who's building it</h3><p>Check the lead company, disclosed value and current stage for each project.</p></div>
-      <div class="offer"><h3>Follow every stage</h3><p>Watch projects move from proposal and permits through to construction.</p></div>
-    </div></section></div>`;
+    <div class="launch-form launch-join"><p>Full Project Tracker access is exclusive to annual members.</p>
+      <button type="button" class="launch-btn" data-plan="annual">Sign Up as an Annual Member →</button><p class="launch-status" role="status"></p>
+      <p class="launch-note">$109.99/year · Limited Time Offer · Price fixed for life</p></div>
+  </section></div>`;
 }
 function sponsors(){
   const card=(num,title,copy,cta,opt,art)=>`<article class="sp-card"><div class="sp-card-art">${art}</div><div class="sp-card-body"><span class="sp-eyebrow">${num}</span><h3>${title}</h3><p>${copy}</p><a href="/sponsors" data-scroll="sp-enquiry" data-option="${opt}">${cta} ↗</a></div></article>`;
