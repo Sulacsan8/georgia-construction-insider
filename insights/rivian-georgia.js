@@ -1,7 +1,7 @@
 INSIGHTS.push({
   slug: "rivian-georgia",
   order: 3,
-  access: "member",
+  access: "free",
   sector: "Semi-Conductor & Manufacturing",
   region: "Metro Atlanta",
   title: "Rivian — Georgia Manufacturing Plant",
