@@ -1136,7 +1136,7 @@ function membership(){
   const I={doc:"M6 3h9l4 4v14H6zM9 10h7M9 14h7M9 18h4",city:"M3 21V9l6-3v15M9 21V4l8 3v14M3 21h18M12 10h2M12 14h2M5 12h2M5 16h2",hat:"M3 17h18M5 17a7 7 0 0 1 14 0M10 10.5V6h4v4.500",cal:"M4 6h16v15H4zM4 10h16M8 3v5M16 3v5M8 14h2M14 14h2M8 18h2",chart:"M4 21h16M6 21v-5M11 21v-9M16 21V8M4 11l6-5 4 3 6-6",news:"M4 5h13v15H6a2 2 0 0 1-2-2zM17 9h3v9a2 2 0 0 1-2 2M7 9h7M7 13h7M7 17h4",deal:"M3 11l5-4 4 2 4-2 5 4M6 13l4 4a2 2 0 0 0 3 0l5-5M9 9l-2 3"};
   const plan=(cls,name,price,per,note,bullets,badge,was)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price"><b>${price}</b>/${per}${was?` <s class="mb-was">${was}</s>`:""}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">${cls?"Choose Annual":"Choose Monthly"} ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul></article>`;
   const benefit=(i,t,c)=>`<div class="mb-benefit">${ic(I[i])}<div><h4>${t}</h4><p>${c}</p></div></div>`;
-  const faq=(q,a)=>`<details open><summary>${q}</summary><p>${a}</p></details>`;
+  const faq=(q,a)=>`<details><summary>${q}</summary><p>${a}</p></details>`;
  return `<section class="mb-hero"><div class="wrap mb-hero-grid"><div>
       <h1>Know the Projects.<br>Know the Players.<br><em>Become a Member.</em></h1>
       <p class="mb-lede">Members get premium Georgia construction reporting, project insights, contractor information, timelines and market intelligence.</p>
@@ -1150,7 +1150,7 @@ function membership(){
     </div></section>
   <section class="wrap mb-compare"><h2>Compare Membership Plans</h2>
     <div class="mbc-scroll"><table class="mbc"><thead><tr><th>Features &amp; Access</th><th>Free</th><th>Monthly</th><th class="mbc-annual">Annual</th></tr></thead><tbody>${COMPARE.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v===1?TICK:v===0?`<span class="mbc-no" aria-label="Not included">–</span>`:`<span class="mbc-txt">${v}</span>`}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>
-  <section class="wrap"><div class="mb-benefits"><div class="mb-benefits-head"><span class="mb-eyebrow">Member Benefits</span><h2>More Insight.<br>More Context.<br>A Clearer View of <em>Georgia Construction.</em></h2></div><div class="mb-benefit-grid">
+  <section class="wrap"><div class="mb-benefits"><div class="mb-benefits-head"><span class="mb-eyebrow">Member Benefits</span><h2>Built for <em>Georgia's Construction Industry.</em></h2></div><div class="mb-benefit-grid">
     ${benefit("doc","Premium Articles","In-depth coverage and analysis you won't find anywhere else.")}${benefit("city","Project Insights","Detailed looks at Georgia's largest and most impactful construction projects.")}${benefit("hat","Contractor Information","Verified details on general contractors, developers and design teams.")}${benefit("cal","Construction Timelines","Key milestones, schedules and what's happening next.")}${benefit("chart","Major Project Tracking","Follow high-value projects across the state in one place.")}${benefit("doc","Exclusive Reports","Member-only market reports, trends and industry intelligence.")}
   </div></div></section>
   <section class="wrap mb-faq"><div class="mb-faq-head"><h2>Frequently Asked Questions</h2></div><div class="mb-faq-grid">
@@ -1158,6 +1158,8 @@ function membership(){
     ${faq("Can I cancel my membership anytime?","Yes. You can cancel at any time, and you'll retain access through the end of your current billing period.")}
     ${faq("Is there a savings benefit with an annual plan?","Yes. The annual plan is $109.99/year, which saves you 29% compared to the monthly plan. That's more than 3 months free.")}
     ${faq("What does the Project Tracker cover?","A regularly updated listing of major Georgia construction projects, including project details, estimated values, key milestones and the latest developments.")}
+    ${faq("Can I upgrade from monthly to annual?","Yes. Please contact us through the <a href=\"/contact\" data-go=\"contact\">Contact Us page</a> with the email address on your membership, and we'll move you to the annual plan.")}
+    ${faq("How does the founding member lifetime price work?","If you join the annual plan during the Limited Time Offer, you keep the $109.99 yearly price at every renewal for as long as your membership stays active without interruption. If you cancel and rejoin later, the annual price at that time applies.")}
     ${faq("How do I contact support?","Please reach us through the <a href=\"#contact\" data-go=\"contact\">Contact Us page</a>, and we'll be happy to help.")}
   </div></section>`;
 }
