@@ -497,7 +497,7 @@ footer.site{margin-top:0}
 .mb-plan{position:relative;border:1px solid #bbb;border-radius:12px;padding:26px 28px;display:flex;flex-direction:column}
 .mb-plan h3{font-size:26px}
 .mb-price{font-size:17px;margin-top:2px}.mb-price b{font-size:38px;font-weight:800}
-.mb-was{font-size:24px;font-weight:600;opacity:.6;text-decoration:line-through;text-decoration-thickness:2px;margin-right:6px}
+.mb-was{font-size:24px;font-weight:600;opacity:.6;text-decoration:line-through;text-decoration-thickness:2px;margin-left:10px}
 .mb-note{font-size:15px;margin-top:2px}
 .mb-join{background:#cc050d;color:#fff;border:0;border-radius:7px;padding:12px;font-weight:700;font-size:16px;cursor:pointer;margin-top:14px}
 .mb-join:hover{background:#a30409}
@@ -520,6 +520,20 @@ footer.site{margin-top:0}
 .mb-benefit svg{width:36px;height:36px;color:#cc050d}
 .mb-benefit h4{margin:0;font-size:16px;font-weight:700}
 .mb-benefit p{font-size:14px;line-height:1.35;margin-top:3px}
+/* Membership comparison table */
+.mb-compare{padding-block:20px 16px;text-align:center}
+.mb-compare>h2{font-size:clamp(26px,3.2vw,38px);font-weight:800;margin-bottom:18px}
+.mbc-scroll{max-width:980px;margin:0 auto;overflow-x:auto;border:1px solid #d4d4d4;border-radius:12px}
+.mbc{width:100%;min-width:560px;border-collapse:collapse;font-size:15px;text-align:center}
+.mbc th{background:#000;color:#fff;font-weight:700;padding:15px 14px}
+.mbc th:first-child,.mbc td:first-child{text-align:left;padding-left:20px}
+.mbc td{padding:13px 14px;border-top:1px solid #e3e3e3;color:#222}
+.mbc th:not(:first-child),.mbc td:not(:first-child){width:15%}
+.mbc td:last-child{background:#f1f2f4}
+.mbc th.mbc-annual{background:#cc050d}
+.mbc-yes{vertical-align:middle}
+.mbc-no{color:#888;font-weight:600}
+.mbc-txt{font-weight:700;font-size:14px}
 .mb-faq{padding-block:32px 44px}
 .mb-faq-head{display:flex;align-items:center;gap:20px}
 .mb-faq-head::after{content:"";flex:1;height:2px;background:#cc050d}
@@ -984,10 +998,10 @@ function byline(s){
 }
 const TOPICS=Object.fromEntries(["Civil","Commercial","Data Center","Energy & Solar","Federal & Government","Healthcare","Industrial","Semi-Conductor & Manufacturing","Transportation","Water"].map(t=>[t,[t]]));
 // Clean page addresses. Articles live at /news/<slug>, where the slug is the story id without "story-".
-const PATHS={home:"/",archives:"/news",tracker:"/project-tracker",newsletters:"/newsletter",sponsors:"/sponsors",membership:"/membership",contact:"/contact",privacy:"/privacy",terms:"/terms",refunds:"/refunds",signin:"/sign-in",dashboard:"/dashboard",reset:"/reset-password"};
+const PATHS={home:"/",archives:"/news",tracker:"/project-tracker",newsletters:"/newsletter",sponsors:"/sponsors",membership:"/membership",contact:"/contact",privacy:"/privacy",terms:"/terms",refunds:"/refunds",signin:"/sign-in",dashboard:"/dashboard",reset:"/reset-password",welcome:"/welcome"};
 const pathOf=r=>r.startsWith("story-")?"/news/"+r.slice(6):(PATHS[r]||"/");
 const routeOf=p=>{p=p.replace(/\/+$/,"")||"/";if(p.startsWith("/news/"))return "story-"+p.slice(6);return Object.keys(PATHS).find(k=>PATHS[k]===p)||"home"};
-const PAGE_TITLES={home:"Georgia Construction Insider | Georgia Construction News and Projects",archives:"Latest Georgia Construction News",tracker:"Project Tracker",newsletters:"The Georgia Build Newsletter",sponsors:"Sponsors and Advertising",membership:"Membership",contact:"Contact Us",privacy:"Privacy Policy",terms:"Terms and Conditions",refunds:"Refund Policy",signin:"Sign In",dashboard:"Dashboard",reset:"Reset Password"};
+const PAGE_TITLES={home:"Georgia Construction Insider | Georgia Construction News and Projects",archives:"Latest Georgia Construction News",tracker:"Project Tracker",newsletters:"The Georgia Build Newsletter",sponsors:"Sponsors and Advertising",membership:"Membership",contact:"Contact Us",privacy:"Privacy Policy",terms:"Terms and Conditions",refunds:"Refund Policy",signin:"Sign In",dashboard:"Dashboard",reset:"Reset Password",welcome:"Welcome to GCI"};
 const link=(s,inner,cls)=>`<a href="${pathOf(s.id)}" data-go="${s.id}"${cls?` class="${cls}"`:""}>${inner}</a>`;
 const short=s=>s.title.split(": ").pop();
 const metric=s=>[s.valueLabel!=="Not disclosed"?s.valueLabel:"",s.where].filter(Boolean).join(" · ");
@@ -1100,13 +1114,27 @@ function sponsors(){
     </form></section>
   <div class="sp-press"><div class="wrap"><p><b>Submitting a project announcement?</b> Press releases are reviewed editorially and are separate from paid sponsorships.</p><a href="/sponsors" data-scroll="sp-enquiry" data-option="Press release submission">Press release submissions ↗</a></div></div>`;
 }
+// Membership comparison table rows: [feature, free, monthly, annual]; 1 = included, 0 = not, text = shown as written.
+const COMPARE=[
+  ["The Georgia Build newsletter, delivered free every week",1,1,1],
+  ["Georgia construction news and market updates",1,1,1],
+  ["Full access to premium articles and project coverage",0,1,1],
+  ["Contractor, developer and design team information",0,1,1],
+  ["Construction timelines and key milestones",0,1,1],
+  ["Members-only articles and project deep dives",0,1,1],
+  ["Georgia Project Tracker access",0,"Limited","Full"],
+  ["Exclusive market reports and analysis",0,0,1],
+  ["Priority access to new features and coverage",0,0,1],
+  ["Limited Time Offer price, fixed for life",0,0,1]
+];
+const TICK=`<svg class="mbc-yes" viewBox="0 0 24 24" width="18" height="18" aria-label="Included"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="#cc050d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const memberBox=()=>`<section class="member"><div><span class="mono">GCI Membership</span><h2>Unlock Premium Access for Less Than $4 a Week.</h2><p>Go beyond the headlines. Get exclusive Georgia construction news, in-depth project coverage, contractor information and construction timelines.</p></div>
     <ul class="ticks"><li>Exclusive Georgia construction news and premium project coverage</li><li>Discover who's behind Georgia's biggest construction projects</li><li>Explore project investments, construction timelines and key milestones</li><li>Access members-only articles and project deep dives</li></ul>
     <a class="member-cta" href="/membership" data-go="membership">Explore Memberships</a></section>`;
 function membership(){
   const ic=d=>`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="${d}"/></svg>`;
   const I={doc:"M6 3h9l4 4v14H6zM9 10h7M9 14h7M9 18h4",city:"M3 21V9l6-3v15M9 21V4l8 3v14M3 21h18M12 10h2M12 14h2M5 12h2M5 16h2",hat:"M3 17h18M5 17a7 7 0 0 1 14 0M10 10.5V6h4v4.500",cal:"M4 6h16v15H4zM4 10h16M8 3v5M16 3v5M8 14h2M14 14h2M8 18h2",chart:"M4 21h16M6 21v-5M11 21v-9M16 21V8M4 11l6-5 4 3 6-6",news:"M4 5h13v15H6a2 2 0 0 1-2-2zM17 9h3v9a2 2 0 0 1-2 2M7 9h7M7 13h7M7 17h4",deal:"M3 11l5-4 4 2 4-2 5 4M6 13l4 4a2 2 0 0 0 3 0l5-5M9 9l-2 3"};
-  const plan=(cls,name,price,per,note,bullets,badge,was)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price">${was?`<s class="mb-was">${was}</s> `:""}<b>${price}</b>/${per}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">Join GCI ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul>${cls?`<p class="mb-lock">This price is fixed for life.</p>`:""}</article>`;
+  const plan=(cls,name,price,per,note,bullets,badge,was)=>`<article class="mb-plan ${cls}">${badge}<h3>${name}</h3><p class="mb-price"><b>${price}</b>/${per}${was?` <s class="mb-was">${was}</s>`:""}</p><p class="mb-note">${note}</p><button class="mb-join" data-plan="${cls?"annual":"monthly"}">Join GCI ↗</button><p class="mb-status" role="status"></p><ul>${bullets.map(x=>`<li>${x}</li>`).join("")}</ul>${cls?`<p class="mb-lock">This price is fixed for life.</p>`:""}</article>`;
   const benefit=(i,t,c)=>`<div class="mb-benefit">${ic(I[i])}<div><h4>${t}</h4><p>${c}</p></div></div>`;
   const faq=(q,a)=>`<details open><summary>${q}</summary><p>${a}</p></details>`;
  return `<section class="mb-hero"><div class="wrap mb-hero-grid"><div>
@@ -1119,8 +1147,10 @@ function membership(){
   <section class="wrap mb-plans" id="mb-plans"><h2>Choose Your Membership</h2><p class="mb-plans-sub">Get full access to Georgia Construction Insider's premium content, project coverage and market intelligence.</p>
     <div class="mb-plan-grid">
       ${plan("","Monthly","$12.99","month","Premium access. Cancel anytime.</p><p class=\"mb-save mb-save-plain\">Pay monthly, with no annual commitment.",["Full access to premium articles and project coverage","Contractor, developer and design team information","Construction timelines and key milestones","Limited access to the Project Tracker","Georgia construction news and market updates"],"")}
-      ${plan("mb-plan-dark","Annual","$109.99","year","Full access, at a lower annual price.</p><p class=\"mb-save\">Save 29%: more than 3 months free compared to monthly.",["Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage"],`<span class="mb-founding">★ Limited Time Offer</span><span class="mb-ribbon">Lock in this price for life</span>`,"$159.99")}
+      ${plan("mb-plan-dark","Annual","$109.99","year","Full access, at a lower annual price.</p><p class=\"mb-save\">Save 29%: more than 3 months free compared to monthly.",["<strong>Save $50 a year with the Limited Time Offer (31% off $159.99)</strong>","Everything in the Monthly plan","Full access to all premium articles and project insights","Full access to the Project Tracker","Exclusive market reports and analysis","Priority access to new features and coverage"],`<span class="mb-founding">★ Limited Time Offer</span><span class="mb-ribbon">Lock in this price for life</span>`,"$159.99")}
     </div></section>
+  <section class="wrap mb-compare"><h2>What's Included with Each Membership?</h2>
+    <div class="mbc-scroll"><table class="mbc"><thead><tr><th>Features &amp; Access</th><th>Free</th><th>Monthly</th><th class="mbc-annual">Annual</th></tr></thead><tbody>${COMPARE.map(r=>`<tr><td>${r[0]}</td>${r.slice(1).map(v=>`<td>${v===1?TICK:v===0?`<span class="mbc-no" aria-label="Not included">–</span>`:`<span class="mbc-txt">${v}</span>`}</td>`).join("")}</tr>`).join("")}</tbody></table></div></section>
   <section class="wrap"><div class="mb-benefits"><div class="mb-benefits-head"><span class="mb-eyebrow">Member Benefits</span><h2>More Insight.<br>More Context.<br>A Clearer View of <em>Georgia Construction.</em></h2></div><div class="mb-benefit-grid">
     ${benefit("doc","Premium Articles","In-depth coverage and analysis you won't find anywhere else.")}${benefit("city","Project Insights","Detailed looks at Georgia's largest and most impactful construction projects.")}${benefit("hat","Contractor Information","Verified details on general contractors, developers and design teams.")}${benefit("cal","Construction Timelines","Key milestones, schedules and what's happening next.")}${benefit("chart","Major Project Tracking","Follow high-value projects across the state in one place.")}${benefit("doc","Exclusive Reports","Member-only market reports, trends and industry intelligence.")}
   </div></div></section>
@@ -1235,6 +1265,30 @@ function reset(){return `<div class="si-page"><a class="si-back" href="/" data-g
   <div class="si-box"><span class="si-eyebrow">Member Access</span><h1>Set a new password.</h1><p class="si-lede">Choose a new password for your account.</p>
   <form class="si-form" data-reset><label for="rs-pass">New password</label><div class="si-pass"><input id="rs-pass" type="password" required minlength="8" placeholder="At least 8 characters" autocomplete="new-password"></div>
     <button class="si-submit" type="submit">Save new password →</button><p class="sub-note si-note" role="status" data-state="done"></p></form></div></div>`}
+function welcome(){return `<div class="si-page"><a class="si-back" href="/" data-go="home">← Back to Georgia Construction Insider</a>
+  <div class="si-box"><span class="si-eyebrow">Member Access</span><h1 id="wl-head">Payment received.</h1><p class="si-lede" id="wl-text">Setting up your membership. One moment...</p><div id="wl-actions"></div></div></div>`}
+// After a checkout without an account: link the payment to a member account, then email a set-password link.
+async function loadWelcome(){
+  const sid=new URLSearchParams(location.search).get("session_id")||"";
+  const set=(h,t,a)=>{if(currentRoute!=="welcome")return;document.getElementById("wl-head").textContent=h;document.getElementById("wl-text").innerHTML=t;document.getElementById("wl-actions").innerHTML=a||""};
+  const signBtn=`<button class="si-submit" type="button" data-go="signin">Sign in to your account →</button>`;
+  if(!sid)return set("Welcome to GCI.","If you've just joined, check your email for a link to set your password.",signBtn);
+  let data=null;
+  for(let i=0;i<8&&!data;i++){
+    try{const res=await fetch("/api/checkout-status?session_id="+encodeURIComponent(sid));if(res.status===200)data=await res.json();else if(res.status!==202)break}catch(e){}
+    if(!data)await new Promise(r=>setTimeout(r,2000));
+  }
+  if(!data||!data.email)return set("Payment received.","We're still setting up your membership. Check your email in a few minutes for a link to set your password, or contact us if it doesn't arrive.",signBtn);
+  const email=`<b>${esc(data.email)}</b>`;
+  if(!data.created)return set("Welcome to GCI membership!",`Your membership is now active on your account ${email}. Sign in to start reading.`,signBtn);
+  const sent="gci_welcome_"+sid;let already=false;try{already=sessionStorage.getItem(sent)==="1"}catch(e){}
+  const sbc=await authInit;
+  if(!already&&sbc){
+    const {error}=await sbc.auth.resetPasswordForEmail(data.email,{redirectTo:location.origin+"/reset-password?recovery=1"});
+    if(!error)try{sessionStorage.setItem(sent,"1")}catch(e){}
+  }
+  set("Welcome to GCI membership!",`Your membership is active. We've emailed a link to ${email} so you can set your password and sign in. If it isn't in your inbox, check your junk folder.`,signBtn);
+}
 function dashboard(){
   if(state.db!=="ready"){
     const off=state.db==="unavailable";
@@ -1406,11 +1460,12 @@ async function startCheckout(plan,statusEl){
   const say=msg=>{const el=statusEl&&document.contains(statusEl)?statusEl:document.querySelector(".si-note,.db-note,.mb-status");if(el){el.dataset.state="done";el.textContent=msg}};
   const sbc=await authInit;
   if(!sbc){say("Membership checkout works on georgiaconstructioninsider.com.");return}
-  if(!session){setPending(plan);state.authMode="signin";state.authNote="Sign in or create an account to continue to checkout.";go("signin");return}
   say("Taking you to secure checkout...");
   try{
-    const token=await freshToken();
-    const res=await fetch("/api/create-checkout",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+token},body:JSON.stringify({plan})});
+    // Signed-out visitors go straight to checkout; their account is created from the checkout email.
+    const token=session?await freshToken():null;
+    const headers={"Content-Type":"application/json"};if(token)headers.Authorization="Bearer "+token;
+    const res=await fetch("/api/create-checkout",{method:"POST",headers,body:JSON.stringify({plan})});
     const data=await res.json().catch(()=>({}));
     if(!res.ok||!data.url)throw new Error(data.error||"Checkout couldn't start. Please try again.");
     location.href=data.url;
@@ -1474,14 +1529,15 @@ async function loadDashboard(){
 // "init" keeps the query string on first load (auth and checkout redirects); anything else replaces it.
 function go(route,keep,nav){
   if(route==="insights")route="tracker";
-  const views={dashboard,reset,home,privacy,terms,refunds,contact,membership,tracker,newsletters,archives,sponsors,signin};
+  const views={dashboard,reset,welcome,home,privacy,terms,refunds,contact,membership,tracker,newsletters,archives,sponsors,signin};
   if(!views[route]&&!byId[route])route="home";
   app.innerHTML=byId[route]?story(byId[route]):views[route]();
   if(route==="archives"){document.getElementById("a-q").value=state.nq;newsRows()}
   tickCountdown();
-  document.body.classList.toggle("bare",route==="signin"||route==="reset");
+  document.body.classList.toggle("bare",route==="signin"||route==="reset"||route==="welcome");
   currentRoute=route;
   if(route==="dashboard")loadDashboard();
+  if(route==="welcome")loadWelcome();
   document.querySelectorAll("#nav>a").forEach(a=>{a.dataset.go===route?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
   document.getElementById("dd-news").dataset.on=route==="archives"?"1":"0";
   document.querySelectorAll("#nav details").forEach(d=>d.open=false);

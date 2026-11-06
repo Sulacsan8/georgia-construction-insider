@@ -65,7 +65,7 @@ const SECTIONS = [
   ["/terms", "Terms and Conditions | Georgia Construction Insider", DESC],
   ["/refunds", "Refund Policy | Georgia Construction Insider", DESC],
 ];
-const PRIVATE = [["/sign-in", "Sign In"], ["/dashboard", "Dashboard"], ["/reset-password", "Reset Password"]];
+const PRIVATE = [["/sign-in", "Sign In"], ["/dashboard", "Dashboard"], ["/reset-password", "Reset Password"], ["/welcome", "Welcome"]];
 
 for (const [path, title, description] of SECTIONS) {
   write(path === "/" ? `${OUT}/index.html` : `${OUT}${path}.html`, page({ path, title, description }));
@@ -103,6 +103,6 @@ const urls = [
   ...STORIES.map((s) => `<url><loc>${SITE}/news/${s.id.replace(/^story-/, "")}</loc><lastmod>${s.iso}</lastmod></url>`),
 ];
 write(`${OUT}/sitemap.xml`, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>\n`);
-write(`${OUT}/robots.txt`, `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /dashboard\nDisallow: /sign-in\nDisallow: /reset-password\n\nSitemap: ${SITE}/sitemap.xml\n`);
+write(`${OUT}/robots.txt`, `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /dashboard\nDisallow: /sign-in\nDisallow: /reset-password\nDisallow: /welcome\n\nSitemap: ${SITE}/sitemap.xml\n`);
 
 console.log(`Built ${SECTIONS.length + PRIVATE.length} section pages and ${STORIES.length} article pages.`);

@@ -81,7 +81,7 @@ export async function sendEmail({ to, subject, html }) {
 }
 
 // Works with both legacy service_role JWTs and newer sb_secret_ keys.
-function adminHeaders() {
+export function adminHeaders() {
   const key = setting("SUPABASE_SERVICE_ROLE_KEY");
   const headers = { apikey: key, "Content-Type": "application/json" };
   if (key.startsWith("eyJ")) headers.Authorization = `Bearer ${key}`;

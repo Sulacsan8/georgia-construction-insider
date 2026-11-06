@@ -1,8 +1,7 @@
 import crypto from "node:crypto";
-import { handle, json, stripe, updateMembers, sendEmail } from "./_lib.js";
+import { handle, json, sendEmail } from "./_lib.js";
 import { cancellationScheduled, membershipEnded } from "./_emails.js";
-
-const PLAN_BY_LOOKUP = { gci_monthly: "monthly", gci_annual_founding: "annual" };
+import { syncSubscription, linkCheckout } from "./_members.js";
 
 // Checks Stripe's signature so only genuine Stripe events can change memberships.
 function verifySignature(payload, header, secret) {
@@ -19,32 +18,6 @@ function verifySignature(payload, header, secret) {
     const given = Buffer.from(sig);
     return given.length === expected.length && crypto.timingSafeEqual(given, expected);
   });
-}
-
-async function syncSubscription(sub) {
-  const item = sub.items?.data?.[0];
-  const plan = PLAN_BY_LOOKUP[item?.price?.lookup_key] || null;
-  const periodEnd = sub.cancel_at || item?.current_period_end || sub.current_period_end;
-  let status = sub.status;
-  // The billing portal may schedule a cancellation with cancel_at instead of cancel_at_period_end.
-  if (status === "active" && (sub.cancel_at_period_end || sub.cancel_at)) status = "canceling";
-
-  const fields = {
-    stripe_customer_id: sub.customer,
-    stripe_subscription_id: sub.id,
-    status,
-    plan,
-    current_period_end: periodEnd ? new Date(periodEnd * 1000).toISOString() : null,
-  };
-  if (plan === "annual") fields.founding_member = true;
-
-  const userId = sub.metadata?.user_id;
-  const filter = userId
-    ? `id=eq.${encodeURIComponent(userId)}`
-    : `stripe_customer_id=eq.${encodeURIComponent(sub.customer)}`;
-  const rows = await updateMembers(filter, fields);
-  if (!rows.length) console.warn("No member matched subscription", sub.id);
-  return rows[0] || null;
 }
 
 // True when this update is the moment a cancellation was scheduled (not a later, unrelated update).
@@ -75,17 +48,10 @@ export const POST = handle(async (request) => {
 
   const event = JSON.parse(payload);
   switch (event.type) {
-    case "checkout.session.completed": {
-      const session = event.data.object;
-      if (session.mode === "subscription" && session.subscription) {
-        const sub = await stripe("GET", `subscriptions/${session.subscription}`);
-        if (!sub.metadata?.user_id && session.client_reference_id) {
-          sub.metadata = { ...sub.metadata, user_id: session.client_reference_id };
-        }
-        await syncSubscription(sub);
-      }
+    case "checkout.session.completed":
+      // Also creates the member account for visitors who checked out without signing in.
+      await linkCheckout(event.data.object);
       break;
-    }
     case "customer.subscription.created":
       await syncSubscription(event.data.object);
       break;
