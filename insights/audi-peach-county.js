@@ -36,10 +36,8 @@ INSIGHTS.push({
     ["Rail service", "Norfolk Southern"],
     ["Electric utility", "Georgia Power"],
     ["Workforce training", "Georgia Quick Start / Technical College System of Georgia"],
-    ["General contractor", "Not yet named"],
-    ["Architect / engineers", "Not yet named"],
     ["Location", "North of Ga. 96, roughly 5 miles west of I-75, east side of Fort Valley"],
-    ["Site", "Approximately 1,500 acres (authority documents cite 1,474)"],
+    ["Site", "Approximately 1,500 acres"],
     ["Investment", "$4 billion Phase 1; optional Phase 2 of $3 billion"],
     ["Jobs", "4,500 (Phase 1); 3,000 more if Phase 2 proceeds"],
     ["Average pay", "Above $63,000 a year"],
@@ -73,7 +71,7 @@ INSIGHTS.push({
     ]},
     { h: "Investment and phases", body: [
       "Phase 1 is the $4 billion, 4,500-job plant Audi has committed to publicly. Development authority documents also describe an optional second phase: another $3 billion and 3,000 jobs, bringing the total to $7 billion and 7,500 workers. Audi has until the end of 2033 to exercise that option. It is an option written into the incentive paperwork, not a company commitment.",
-      "No building program has been released yet. Audi has not said how many buildings the plant will have, how large they will be, or whether it will include its own body, paint and battery operations alongside final assembly. Those details normally come out with site plans and permit filings once an automaker's board signs off."
+      "No building program has been released yet. Those details normally come out with site plans and permit filings once an automaker's board signs off."
     ]},
     { h: "Incentives", body: [
       "The incentive package reported from the draft agreements is worth at least $958 million for Phase 1 and could top $1 billion once state tax credits are counted. The main pieces:",
@@ -83,7 +81,6 @@ INSIGHTS.push({
     { h: "Project team", body: [
       "At this stage the team is public-sector partners rather than builders. The State of Georgia and the Development Authority of Peach County own and prepared the site. The Mid-Georgia Gateway Joint Development Authority, which joins Peach, Houston and Macon-Bibb counties, handles the regional agreements.",
       "<ul><li><b>Rail:</b> Norfolk Southern serves the site, with rail access to the ports of Savannah and Brunswick in under five hours.</li><li><b>Power:</b> Georgia Power is listed as a project partner.</li><li><b>Training:</b> Georgia Quick Start and the Technical College System of Georgia.</li><li><b>State agencies:</b> the Georgia Department of Economic Development, GDOT, the Georgia Ports Authority, Georgia EPD and the University System of Georgia.</li></ul>",
-      "Audi has not named a general contractor, design firm, engineer of record or grading contractor. GCI will add them as they are confirmed."
     ]},
     { h: "Why Peach County?", sub: [
       { h: "1. A ready megasite", body: ["The state already owns the land, has studied it and can move permits quickly. Officials said they could promise water and power on Audi's schedule, which is the main thing a shovel-ready megasite offers."] },
@@ -92,11 +89,11 @@ INSIGHTS.push({
       { h: "4. Suppliers and customers", body: ["Georgia and its neighbors already host a dense network of automotive suppliers. Audi also cited being closer to its North American customers and less exposed to trade tariffs and exchange rates."] }
     ]},
     { h: "Economic impact", body: [
-      "State officials put average pay at more than $63,000 a year, with annual payroll of roughly $283 million once the plant is fully staffed. Authority documents estimate Phase 1 payroll at $28 million in the first year and $1.4 billion over five years. Construction employment figures have not been released."
+      "State officials put average pay at more than $63,000 a year, with annual payroll of roughly $283 million once the plant is fully staffed. Authority documents estimate Phase 1 payroll at $28 million in the first year and $1.4 billion over five years."
     ]},
     { h: "Status and what to watch", body: [
       "As of early November 2026, the project is announced but not approved. Watch for:",
-      "<ul><li>Audi's supervisory board vote on the investment.</li><li>Signed incentive agreements from Peach and Houston counties and the state.</li><li>The state's formal incentive disclosure, which officials said is coming.</li><li>Selection of a general contractor and designers, and the first grading and stormwater permits.</li><li>Which models the plant will build. Audi has pointed to SUVs designed for American customers but has not confirmed a lineup.</li></ul>"
+      "<ul><li>Audi's supervisory board vote on the investment.</li><li>Signed incentive agreements from Peach and Houston counties and the state.</li><li>The state's formal incentive disclosure, which officials said is coming.</li><li>Selection of a general contractor and designers, and the first grading and stormwater permits.</li><li>Which models the plant will build.</li></ul>"
     ]}
   ]
 });

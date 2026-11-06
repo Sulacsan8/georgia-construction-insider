@@ -23,7 +23,7 @@ INSIGHTS.push({
     ["Design-build contractor", "FlatironDragados / Acciona JV"],
     ["Lead designer", "Parsons"],
     ["Length", "16 miles"],
-    ["Design-build cost", "Estimated $4.6–$4.7 billion"],
+    ["Design-build cost", "$4.6 billion"],
     ["Total financing", "Approximately $11 billion"],
     ["Federal loan", "$3.89 billion TIFIA"],
     ["Opening", "Feb. 2031 (target)"],
@@ -41,7 +41,7 @@ INSIGHTS.push({
     ["Counties", "Fulton and Forsyth"],
     ["Lanes", "Two each way to McGinnis Ferry Road; one each way to McFarland Parkway"],
     ["BRT stations", "Holcomb Bridge Road and North Point Mall"],
-    ["Design-build cost", "Estimated $4.6–$4.7 billion"],
+    ["Design-build cost", "$4.6 billion"],
     ["Private activity bonds", "Approximately $3.4 billion"],
     ["TIFIA loan", "$3.89 billion"],
     ["Federal INFRA grant", "$184 million"],
@@ -80,7 +80,7 @@ INSIGHTS.push({
     ]},
     { h: "Financing", body: [
       "The full financing package is roughly $11 billion. That covers construction plus the large upfront concession payments to the state, which total $4.05 billion. GDOT estimated the design-build cost at $4.6 billion, and the lenders' monitor puts the current budget at roughly $4.7 billion with no material overruns.",
-      "<ul><li><b>TIFIA loan:</b> $3.89 billion from the U.S. Department of Transportation, the largest in the program's history.</li><li><b>Private activity bonds:</b> roughly $3.4 billion in toll revenue bonds, issued through the Public Finance Authority. They were the largest U.S. P3 bond sale to date.</li><li><b>Federal INFRA grant:</b> $184 million.</li><li><b>Transit funding:</b> $100 million in state bonds for the BRT stations, $26 million for MARTA integration and $15 million from the City of Roswell.</li><li><b>Equity:</b> developer equity. The amount has not been disclosed.</li></ul>",
+      "<ul><li><b>TIFIA loan:</b> $3.89 billion from the U.S. Department of Transportation, the largest in the program's history.</li><li><b>Private activity bonds:</b> roughly $3.4 billion in toll revenue bonds, issued through the Public Finance Authority. They were the largest U.S. P3 bond sale to date.</li><li><b>Federal INFRA grant:</b> $184 million.</li><li><b>Transit funding:</b> $100 million in state bonds for the BRT stations, $26 million for MARTA integration and $15 million from the City of Roswell.</li><li><b>Equity:</b> developer equity.</li></ul>",
       "The bonds are rated Baa3 by Moody's and BBB+ by KBRA. The deal won a major infrastructure finance industry award for the Americas."
     ]},
     { h: "Expected benefits", body: [

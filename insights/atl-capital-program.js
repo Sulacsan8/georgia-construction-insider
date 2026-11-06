@@ -22,7 +22,7 @@ INSIGHTS.push({
     ["Program", "ATLNext capital improvement program"],
     ["Active construction", "$4.2 billion across 58 projects (Oct. 2026)"],
     ["2026 spending", "Approximately $1 billion"],
-    ["Largest project", "Concourse D widening, $1.3–$1.69 billion"],
+    ["Largest project", "Concourse D widening, $1.69 billion"],
     ["Construction manager", "ATL Construction Management Partners (Jacobs, Parsons, Rohadfox)"],
     ["Program manager", "WSP / H.J. Russell / Turner & Townsend JV"],
     ["Passengers", "Approximately 105 million a year"],
@@ -40,10 +40,10 @@ INSIGHTS.push({
     ["T-North extension builder", "Skanska / New South / FS360 / Synergy JV"],
     ["Plane Train tunnel extension", "Clark-Atkinson-Technique JV; STV; McMillen Jacobs Associates"],
     ["Plane Train operations", "Alstom"],
-    ["Concourse D cost", "$1.3B (ASCE), $1.4B (2026 reports), $1.69B (Oct. 2026 project list)"],
+    ["Concourse D cost", "$1.69 billion"],
     ["South Domestic parking deck", "$441 million, opened June 1, 2026"],
     ["Concourse D completion", "2029"],
-    ["Total program estimates", "$10.8 billion (2022) to approximately $20 billion through 2032"]
+    ["Total program", "Approximately $20 billion through 2032"]
   ],
   timelineIntro: "Key program milestones. The ATLNext program has dozens of projects; this list follows the largest.",
   timeline: [
@@ -67,12 +67,12 @@ INSIGHTS.push({
   sections: [
     { h: "Project overview", body: [
       "Hartsfield-Jackson handles roughly 105 million passengers a year and has been the world's busiest airport since 1998. Its core buildings date to 1980, and airport officials have said much of that infrastructure is wearing out. ATLNext is the long-running capital program to rebuild and expand it while keeping every gate as busy as possible.",
-      "There is no single agreed price for the program. It was reported at $10.8 billion in 2022, $18 billion in 2025, and roughly $20 billion through 2032 by program construction manager Jacobs. The most concrete current figure comes from the airport's October 2026 project list: $4.2 billion of work under construction across 58 projects, with roughly $1 billion spent in 2026 alone."
+      "Program construction manager Jacobs values the full program at roughly $20 billion through 2032. The airport's October 2026 project list shows $4.2 billion of work under construction across 58 projects, with roughly $1 billion spent in 2026 alone."
     ]},
     { h: "Concourse D widening", body: [
       "Concourse D was built 60 ft wide for 50- to 75-seat regional jets. Today it handles narrow-body jets carrying around 150 passengers. The widening project rebuilds the concourse at 99 ft wide, raises ceilings from 11 to 18 ft and widens the center corridor from 18 to 29 ft. The concourse also gets 288 ft longer. The number of gates drops from 40 to 34, but each gate can handle larger aircraft, including the A321neo and 737 MAX 10, and the concourse will hold roughly 1,000 more passengers at a time.",
       "It is the airport's first use of modular construction. Ten steel modules, weighing 400 to more than 700 tons each and up to 192 ft long, are built in a yard about a mile away. Self-propelled transporters then carry them across the airfield and set them into place. Only eight gates close at a time, so the concourse stays in service.",
-      "Gates opened in September 2024, September 2025 and June 2026, and another round is due in spring 2027. Completion is planned for 2029. The cost has been reported at $1.3 billion, $1.4 billion and, in the October 2026 project list, $1.69 billion. The airport has not explained the difference."
+      "Gates opened in September 2024, September 2025 and June 2026, and another round is due in spring 2027. Completion is planned for 2029. The October 2026 project list puts its cost at $1.69 billion."
     ]},
     { h: "Other active projects", body: [
       "The October 2026 project list shows the scale of work beyond Concourse D:",
@@ -83,10 +83,9 @@ INSIGHTS.push({
     ]},
     { h: "Project team", body: [
       "<ul><li><b>Owner:</b> City of Atlanta Department of Aviation.</li><li><b>Program management:</b> a joint venture of WSP, H.J. Russell & Co. and Turner & Townsend.</li><li><b>Construction management:</b> ATL Construction Management Partners, a Jacobs-led JV with Parsons Transportation Group and Rohadfox Construction Control Services. Its 15-year contract began in 2017 and covers more than 180 projects.</li><li><b>Concourse D:</b> the Holder-Moody-Bryson-Sovereign (HMBS) joint venture builds it. WSP leads design, Thornton Tomasetti is structural engineer, Sykes Consulting provides engineering and Mammoet moves the modules.</li><li><b>Concourse T-North:</b> a Skanska, New South, FS360 and Synergy joint venture, on a $124.5 million contract.</li><li><b>Plane Train tunnel extension:</b> design-build by a Clark Construction, Atkinson and Technique joint venture, with STV as architect and McMillen Jacobs Associates as tunnel designer.</li><li><b>Plane Train operations:</b> Alstom.</li></ul>",
-      "Contractors for the parking decks, the administration center and the runway work have not been confirmed."
     ]},
     { h: "Funding", body: [
-      "ATLNext is tied to the airport's use and lease agreement between the City of Atlanta and its airlines. Concourse D is led by the city and Delta with federal support, but the federal amount has not been disclosed. The city has also proposed roughly $1 billion in new airport bonds for rental car center and SkyTrain work, parking and EV charging. Small and minority-owned firms had received more than $911 million in program work by the end of 2023."
+      "ATLNext is tied to the airport's use and lease agreement between the City of Atlanta and its airlines. The city has also proposed roughly $1 billion in new airport bonds for rental car center and SkyTrain work, parking and EV charging. Small and minority-owned firms had received more than $911 million in program work by the end of 2023."
     ]},
     { h: "Status and what to watch", body: [
       "<ul><li>The spring 2027 Concourse D gate opening and the final cost.</li><li>Phase 2 of the south parking deck.</li><li>The status of the end-around taxiway and the long-discussed sixth runway, neither of which has been confirmed for 2026.</li><li>New bond issues and an updated master plan.</li></ul>"

@@ -69,15 +69,14 @@ INSIGHTS.push({
       "Production started later than first planned. Qcells originally aimed for 2024. Modules started in April 2025, a customs dispute halted much of the Georgia workforce over the winter, and cell production started in June 2026."
     ]},
     { h: "Project team", body: [
-      "<ul><li><b>Design-builder:</b> Gray, which also built Qcells' Dalton plant. Gray says roughly 40% to 50% of the construction work went to local contractors from the Atlanta and Chattanooga areas.</li><li><b>Architect and engineer:</b> Stantec, covering architecture, MEP, structural, civil, fire protection, environmental and water and wastewater design.</li><li><b>Economic development partners:</b> the Bartow-Cartersville Joint Development Authority, the Bartow-Cartersville Second JDA, the Dalton-Whitfield JDA and the Georgia Department of Economic Development.</li><li><b>Other partners:</b> Georgia Tech, Georgia EMC and Georgia Quick Start. Georgia EMC's role suggests the plant is served by an electric cooperative, but the specific provider has not been confirmed.</li></ul>"
+      "<ul><li><b>Design-builder:</b> Gray, which also built Qcells' Dalton plant. Gray says roughly 40% to 50% of the construction work went to local contractors from the Atlanta and Chattanooga areas.</li><li><b>Architect and engineer:</b> Stantec, covering architecture, MEP, structural, civil, fire protection, environmental and water and wastewater design.</li><li><b>Economic development partners:</b> the Bartow-Cartersville Joint Development Authority, the Bartow-Cartersville Second JDA, the Dalton-Whitfield JDA and the Georgia Department of Economic Development.</li><li><b>Other partners:</b> Georgia Tech, Georgia EMC and Georgia Quick Start.</li></ul>"
     ]},
     { h: "Project components", body: [
       "<ul><li><b>Ingot and wafer production:</b> 3.3 GW a year once ramped.</li><li><b>Cell production:</b> 3.3 GW a year. Lines started in June 2026.</li><li><b>Module assembly:</b> 3.5 GW a year, or 16,700 panels a day at full capacity, across three lines running roughly 500 panels an hour each.</li><li><b>Recycling:</b> an EcoRecycle panel-recycling operation sized for roughly 500,000 panels a year.</li><li><b>Support:</b> warehouse space, offices and a solar carport.</li></ul>",
-      "Reported floor area varies. Company officials have cited roughly 1.2 million sq ft, while Gray's marketing describes a 2.5 million-sq-ft facility. Acreage has not been published."
+      "Company officials put the facility at roughly 1.2 million sq ft."
     ]},
     { h: "Financing and incentives", body: [
       "The plant leans heavily on federal support. The Department of Energy finalized a loan guarantee of up to $1.45 billion in December 2024. Each production stage also earns the federal 45X advanced manufacturing tax credit, and buyers of Qcells panels can claim the domestic-content bonus on the investment tax credit.",
-      "State and local incentive amounts for Cartersville have not been published. The governor's release did not list any figures.",
       "The anchor customer is Microsoft, which agreed in January 2024 to buy 12 GW of panels and related EPC services over eight years."
     ]},
     { h: "Why Bartow County?", body: [
@@ -87,7 +86,7 @@ INSIGHTS.push({
       "Qcells employs roughly 3,800 people across Bartow and Whitfield counties, with roughly 2,000 at Cartersville. Federal loan documents projected about 1,200 construction jobs. Local economic developers estimate roughly 6,800 indirect jobs in the surrounding counties. Qcells says its combined Georgia output can power roughly 1.3 million homes a year."
     ]},
     { h: "Status and what to watch", body: [
-      "<ul><li>Whether ingot and wafer lines hit the third-quarter 2026 full-ramp target. Qcells has not provided an update since June.</li><li>Further customs detentions under the forced-labor law.</li><li>Changes to federal solar tax credits and trade policy.</li><li>Polysilicon supply for the ingot lines.</li></ul>"
+      "<ul><li>Whether ingot and wafer lines hit the third-quarter 2026 full-ramp target.</li><li>Further customs detentions under the forced-labor law.</li><li>Changes to federal solar tax credits and trade policy.</li><li>Polysilicon supply for the ingot lines.</li></ul>"
     ]}
   ]
 });

@@ -25,7 +25,6 @@ INSIGHTS.push({
     ["Construction workforce", "Estimated 1,000"],
     ["Groundbreaking", "July 28, 2026"],
     ["In service", "2029–2031 winter capacity window"],
-    ["Project cost", "Not disclosed"],
     ["Federal loan", "Part of up to $26.5 billion DOE loan to Southern Company"],
     ["Stage", "Under construction; air permit under legal challenge"]
   ],
@@ -33,9 +32,6 @@ INSIGHTS.push({
     ["Owner / operator", "Georgia Power, a Southern Company subsidiary"],
     ["Regulator", "Georgia Public Service Commission"],
     ["Lender", "U.S. DOE Office of Energy Dominance Financing (up to $26.5B to Southern Company)"],
-    ["EPC contractor", "Not disclosed"],
-    ["Turbine supplier", "Not disclosed"],
-    ["Battery supplier", "Not confirmed by Georgia Power"],
     ["Address", "317 Covered Bridge Road SW, Euharlee"],
     ["Existing plant", "Four coal units, approximately 3,380 MW"],
     ["New units", "Combined-cycle Units 7 and 8, 1,482 MW total"],
@@ -71,7 +67,6 @@ INSIGHTS.push({
     ]},
     { h: "Project components", body: [
       "<ul><li><b>Combined-cycle Units 7 and 8:</b> two natural gas units totaling 1,482 MW. Georgia Power describes them as nearly 1,500 MW.</li><li><b>Battery energy storage:</b> 500 MW, built in two phases.</li><li><b>Existing infrastructure:</b> the expansion reuses Bowen's transmission connections, site and workforce of more than 400 people.</li></ul>",
-      "Georgia Power has not disclosed the EPC contractor, the turbine maker or the battery supplier for Bowen. One trade report named Tesla Megapack units for the battery system, but Georgia Power has not confirmed it."
     ]},
     { h: "The wider buildout", body: [
       "Bowen is one part of a much larger certified portfolio. Georgia Power will own 7,065 MW, and another 2,821 MW comes through power purchase agreements:",
@@ -79,15 +74,15 @@ INSIGHTS.push({
       "Separately, Plant Yates in Coweta County is adding three simple-cycle turbines totaling 1,300 MW, approved in 2023 and due online by the end of 2027. Those units use Mitsubishi Power M501JAC turbines built at the company's Savannah Machinery Works, with Mitsubishi Electric generators. They support roughly 600 construction jobs."
     ]},
     { h: "Cost and financing", body: [
-      "Georgia Power has not published Bowen's cost. Estimated construction cost for the whole certified portfolio is $16 billion to $16.5 billion. PSC staff and environmental groups have estimated customers' lifetime cost at $50 billion to $60 billion.",
-      "In February 2026, Southern Company and the Department of Energy announced loans of up to $26.5 billion for projects in Georgia and Alabama. The utility projects $7.3 billion in customer savings over the roughly 30-year term. Bowen's share of the loan has not been disclosed."
+      "Estimated construction cost for the whole certified portfolio is $16 billion to $16.5 billion. PSC staff and environmental groups have estimated customers' lifetime cost at $50 billion to $60 billion.",
+      "In February 2026, Southern Company and the Department of Energy announced loans of up to $26.5 billion for projects in Georgia and Alabama. The utility projects $7.3 billion in customer savings over the roughly 30-year term."
     ]},
     { h: "Conditions and challenges", body: [
       "The PSC attached conditions to its approval. Significant costs must be assigned to large-load customers in Georgia Power's next rate case, and revenue from those customers must lower a typical 1,000-kWh residential bill by at least $8.50 a month from 2029 to 2031. Georgia Power also had to report on load-flexibility options.",
       "Opponents have challenged the project on two fronts. The Southern Environmental Law Center, representing Georgia Interfaith Power & Light and Southface, and the Sierra Club contested the Bowen air permit in February 2026. A separate petition over the certification is pending in Fulton County Superior Court. The PSC denied reconsideration on a 3-2 vote."
     ]},
     { h: "Local impact", body: [
-      "Georgia Power says the expansion will more than double Plant Bowen's property tax payments to Bartow County. It has not given a dollar figure. Large customers driving the buildout sign long-term contracts, some for 25 years, with minimum bills and collateral requirements."
+      "Georgia Power says the expansion will more than double Plant Bowen's property tax payments to Bartow County. Large customers driving the buildout sign long-term contracts, some for 25 years, with minimum bills and collateral requirements."
     ]},
     { h: "Status and what to watch", body: [
       "<ul><li>Rulings on the air permit challenge and the Fulton County court petition.</li><li>Disclosure of the EPC contractor, turbine supplier and Bowen-specific cost.</li><li>How much of the DOE loan goes to Bowen.</li><li>Firm in-service dates for each unit.</li><li>Rate politics after two new PSC commissioners took office in January 2026.</li></ul>"

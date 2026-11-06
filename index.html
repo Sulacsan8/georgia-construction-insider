@@ -1387,9 +1387,10 @@ function insights(){
 }
 function insightPage(p){
   const locked=piLocked(p),author=authorOf(p);
-  const sec=s=>`<section class="pi-sec"><h2>${s.h}</h2>${(s.body||[]).map(b=>b.startsWith("<")?b:`<p>${b}</p>`).join("")}${(s.sub||[]).map(x=>`<h3>${x.h}</h3>${x.body.map(b=>b.startsWith("<")?b:`<p>${b}</p>`).join("")}`).join("")}</section>`;
-  const glance=`<section class="pi-sec"><h2>Project at a glance</h2><dl class="pi-glance">${p.glance.map(g=>`<div><dt>${g[0]}</dt><dd>${g[1]}</dd></div>`).join("")}</dl></section>`;
-  const updates=`<section class="pi-sec"><h2>Timeline and latest updates</h2><p class="pi-note">${p.timelineIntro} Reviewed ${fmtDate(p.updated)}.</p><ol class="pi-timeline">${p.timeline.map(t=>`<li><span class="pi-date">${t[0]}</span><h3>${t[1]}</h3><p>${t[2]}</p></li>`).join("")}</ol></section>`;
+  const tc=t=>String(t).replace(/(^|[\s(])([a-z])/g,(m,a,b)=>a+b.toUpperCase());
+  const sec=s=>`<section class="pi-sec"><h2>${tc(s.h)}</h2>${(s.body||[]).map(b=>b.startsWith("<")?b:`<p>${b}</p>`).join("")}${(s.sub||[]).map(x=>`<h3>${tc(x.h)}</h3>${x.body.map(b=>b.startsWith("<")?b:`<p>${b}</p>`).join("")}`).join("")}</section>`;
+  const glance=`<section class="pi-sec"><h2>Project At A Glance</h2><dl class="pi-glance">${p.glance.map(g=>`<div><dt>${g[0]}</dt><dd>${g[1]}</dd></div>`).join("")}</dl></section>`;
+  const updates=`<section class="pi-sec"><h2>Timeline And Latest Updates</h2><p class="pi-note">${p.timelineIntro} Reviewed ${fmtDate(p.updated)}.</p><ol class="pi-timeline">${p.timeline.map(t=>`<li><span class="pi-date">${t[0]}</span><h3>${tc(t[1])}</h3><p>${t[2]}</p></li>`).join("")}</ol></section>`;
   const [first,...rest]=p.sections;
   const gate=`<section class="pi-gate"><span class="pi-gate-icon">${ICON_LOCK.replace(/width="11" height="11"/,'width="22" height="22"')}</span><h2>This Project Insight is for GCI members</h2><p>Members get the full profile: the project team, timeline and phases, components, incentives, economic impact and what to watch next, across every Project Insight.</p>
     <ul><li>Project team and contractor details</li><li>Dated timeline of every milestone</li><li>Incentives, financing and status updates</li></ul>
@@ -1398,15 +1399,14 @@ function insightPage(p){
   const others=piSorted().filter(x=>x!==p).slice(0,4);
   const rel=(p.related||[]).map(id=>byId[id]).filter(Boolean);
   return `<div class="wrap pi-art">${preview}<a class="pi-back" href="/project-insights" data-go="insights">← All Project Insights</a>
-  <header class="pi-art-head"><div class="pi-kicker">${piTag(p)}<span>${p.sector} · Project Insight</span></div><h1>${p.title}</h1>
-    <p class="pi-sub">${p.company} · ${p.place}</p><p class="pi-statline">${p.statline}</p>
+  <header class="pi-art-head"><div class="pi-kicker">${piTag(p)}<span>${p.sector} · Project Insight</span></div><h1>${p.title}</h1>
     <p class="pi-meta"><span class="pi-status st-${p.stage}">${p.status}</span><span>By ${author}</span><span>Updated ${fmtDate(p.updated)}</span></p></header>
   <div class="pi-body"><article class="pi-main">
     <figure class="pi-fig">${piArt(p,"a")}<figcaption class="caption">${p.img?(p.credit?`Photo: ${p.credit}`:""):"Illustration of the project type, not a site photograph."}</figcaption></figure>
     <p class="pi-dek">${p.dek}</p>
     ${sec(first)}
     ${locked?gate:`${glance}${updates}${rest.map(sec).join("")}`}
-    ${rel.length?`<section class="pi-sec pi-rel"><h2>Related GCI coverage</h2><ul>${rel.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ul></section>`:""}
+    ${rel.length?`<section class="pi-sec pi-rel"><h2>Related GCI Coverage</h2><ul>${rel.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ul></section>`:""}
   </article>
   <aside class="pi-side"><div class="sheet pi-facts"><div class="sheet-head"><span class="sheet-label">Overview</span><h2>Key Facts</h2></div><ul class="kf-list">${p.facts.map(f=>`<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul></div>
     ${p.access==="member"&&locked?`<div class="pi-side-cta"><h3>Unlock the full insight</h3><p>Contractor details, timelines and incentives for every project.</p><a href="/membership" data-go="membership">See membership plans →</a></div>`:""}</aside></div>

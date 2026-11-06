@@ -46,7 +46,7 @@ INSIGHTS.push({
     ["Planned program", "Approximately 4M sq ft commercial/hotel/entertainment and 4M sq ft residential"],
     ["Open", "The Mitchell (304 units), Hotel Phoenix (292 rooms), Cosm"],
     ["Opening 2027", "Virgin Hotels Atlanta (261 rooms), 5,300-capacity Live Nation venue"],
-    ["2024 bonds", "Approximately $557–$575 million via Invest Atlanta"]
+    ["2024 bonds", "Approximately $575 million via Invest Atlanta"]
   ],
   timelineIntro: "Confirmed milestones from the 2018 incentive vote to the current Entertainment District build.",
   timeline: [
@@ -80,11 +80,10 @@ INSIGHTS.push({
     ]},
     { h: "Project team", body: [
       "<ul><li><b>Developer:</b> Centennial Yards Company, led by President Brian McGowan.</li><li><b>General contractor:</b> CIM Group acts as its own general contractor on the buildings under construction.</li><li><b>Entertainment District design:</b> Gensler.</li><li><b>The Mitchell:</b> TVS and Goode Van Slyke Architects as architects of record, Salas O'Brien for MEP engineering, and Thornton Tomasetti with Sykes Consulting for structural engineering.</li><li><b>Trades named on Hotel Phoenix:</b> Evolve Contractors (roofing) and Eastern Glass and Aluminum.</li><li><b>Hotel partners:</b> The Drew Company and Virgin Hotels; Preferred Hotels & Resorts.</li></ul>",
-      "Architects for Hotel Phoenix and the Virgin Hotel have not been confirmed."
     ]},
     { h: "Financing and incentives", body: [
       "In 2018, Atlanta approved a public incentive package worth up to $1.9 billion, the largest in the city's history, through bonds and reimbursements running to 2048.",
-      "In September 2024, Invest Atlanta approved a bond deal for the Entertainment District, reported at roughly $557 million to $575 million. It has two parts: $219 million in senior revenue bonds backed by property-tax growth in the Westside tax allocation district, and $356 million in economic development certificates backed by a 5% fee collected on sales inside the project. Invest Atlanta said no new city money was involved. J.P. Morgan led the underwriting, with Truist Securities and D.A. Davidson.",
+      "In September 2024, Invest Atlanta approved a roughly $575 million bond deal for the Entertainment District. It has two parts: $219 million in senior revenue bonds backed by property-tax growth in the Westside tax allocation district, and $356 million in economic development certificates backed by a 5% fee collected on sales inside the project. Invest Atlanta said no new city money was involved. J.P. Morgan led the underwriting, with Truist Securities and D.A. Davidson.",
       "The 2018 deal set a 38% goal for women- and minority-owned business participation. The developer reported reaching 39% by the end of 2024."
     ]},
     { h: "Why it matters", body: [

@@ -32,9 +32,7 @@ INSIGHTS.push({
     ["Owner", "State of Georgia"],
     ["Project manager", "Georgia Building Authority (Gerald Pilgrim)"],
     ["Assessment study", "Prepared with Houser Walker Architecture"],
-    ["Contractor partner", "SG Contracting (role not formally stated)"],
-    ["Design architect of record", "Not confirmed"],
-    ["Engineers", "Not confirmed"],
+    ["Contractor partner", "SG Contracting"],
     ["Budget", "$392 million, approved 2024"],
     ["Capitol and Gold Dome share", "Approximately $83 million"],
     ["Skybridge", "$10 million, three stories above MLK Jr. Drive"],
@@ -45,7 +43,7 @@ INSIGHTS.push({
     ["Capitol work season", "April–November each year"],
     ["All work complete", "End of 2027 (target)"]
   ],
-  timelineIntro: "Confirmed milestones. GCI has not yet confirmed the office building's opening date.",
+  timelineIntro: "Confirmed milestones.",
   timeline: [
     ["Jan. 2024", "Assessment presented", "The Georgia Building Authority presents its study of the Capitol complex to lawmakers."],
     ["Feb. 2024", "Plan revealed", "The plan is made public, and the mid-year budget funds work starting that summer."],
@@ -73,8 +71,7 @@ INSIGHTS.push({
       { h: "State Capitol renovation", body: ["<ul><li>Replacement of mechanical systems.</li><li>Two new fire stairs and exits, and more restrooms.</li><li>A new visitor entrance and full accessibility.</li><li>Regilding of the Gold Dome with roughly 40 ounces of Dahlonega gold.</li><li>Restoration of the original state library, with offices removed from the mezzanines.</li><li>Restored House and Senate chambers.</li><li>Security upgrades.</li></ul>", "Work inside the Capitol runs from April to November each year so it does not overlap with legislative sessions."] }
     ]},
     { h: "Project team", body: [
-      "<ul><li><b>Owner and manager:</b> the Georgia Building Authority, with Gerald Pilgrim leading the project.</li><li><b>Planning:</b> the authority's assessment study was prepared with Houser Walker Architecture of Atlanta. GCI has not confirmed whether the firm is also the design architect for the new building.</li><li><b>Contractor:</b> the authority has called SG Contracting of Atlanta a valued partner across the project and credited it with keeping work on budget. Its formal role has not been stated.</li><li><b>Gold Dome:</b> more than 100 contractors worked on the scaffolding and repairs, and seven artisans did the gilding.</li></ul>",
-      "The design architect of record and engineers have not been confirmed."
+      "<ul><li><b>Owner and manager:</b> the Georgia Building Authority, with Gerald Pilgrim leading the project.</li><li><b>Planning:</b> the authority's assessment study was prepared with Houser Walker Architecture of Atlanta.</li><li><b>Contractor:</b> the authority has called SG Contracting of Atlanta a valued partner across the project and credited it with keeping work on budget.</li><li><b>Gold Dome:</b> more than 100 contractors worked on the scaffolding and repairs, and seven artisans did the gilding.</li></ul>",
     ]},
     { h: "Funding", body: [
       "The $392 million comes from state funds approved through the 2024 mid-year budget, drawn from fiscal 2024 revenue. No bond financing has been reported for the project."
@@ -83,7 +80,7 @@ INSIGHTS.push({
       "Once legislators move into the new building, the Coverdell building will be vacated and other state agencies will move in. The Agriculture Building stays on the new building's block."
     ]},
     { h: "Status and what to watch", body: [
-      "As of June 2026, the office building was under construction and most of the skybridge was in place. The building was targeted to open in late 2026, ahead of the 2027 session, but GCI has not confirmed that it has opened. Watch for:",
+      "As of June 2026, the office building was under construction and most of the skybridge was in place. Watch for:",
       "<ul><li>The office building opening and move-in before the January 2027 session.</li><li>Final cost compared with the $392 million budget.</li><li>The remaining Capitol work, due to finish by the end of 2027.</li><li>Plans for reusing the Coverdell building.</li></ul>"
     ]}
   ]

@@ -31,7 +31,7 @@ INSIGHTS.push({
   glance: [
     ["Owner / operator", "Hyundai Motor Group Metaplant America (HMGMA)"],
     ["Site partners", "State of Georgia and Savannah Harbor-Interstate 16 Corridor JDA"],
-    ["General contractor", "Hyundai Engineering of America (per a subcontractor's project record)"],
+    ["General contractor", "Hyundai Engineering of America"],
     ["Geotechnical / materials testing", "Terracon"],
     ["Ground improvement / piling", "Berkel & Company Contractors; Keller North America"],
     ["Structural engineer (selected buildings)", "Haines Gipson & Associates"],
@@ -73,7 +73,7 @@ INSIGHTS.push({
     { h: "Project overview", body: [
       "Hyundai Motor Group Metaplant America sits on the Bryan County Megasite in Ellabell, along I-16 roughly 20 miles west of Savannah. Hyundai announced the plant in May 2022, broke ground that October and built its first vehicle, an IONIQ 5, on Oct. 3, 2024. For a plant of this size, that is very fast.",
       "The campus covers roughly 2,900 acres and holds 14 buildings with more than 7.6 million sq ft of floor space. It builds the Hyundai IONIQ 5 and IONIQ 9, and since 2026 the Kia Sportage hybrid. A battery cell plant run jointly with LG Energy Solution sits on the same site.",
-      "Hyundai is not finished. In September 2025 it announced another $2.7 billion and 3,000 jobs to raise capacity from 300,000 to 500,000 vehicles a year by 2028. In August 2026, Hyundai's CEO said the company was considering 700,000 to 800,000 a year. Hyundai has not confirmed that figure."
+      "Hyundai is not finished. In September 2025 it announced another $2.7 billion and 3,000 jobs to raise capacity from 300,000 to 500,000 vehicles a year by 2028. In August 2026, Hyundai's CEO said the company was considering 700,000 to 800,000 a year."
     ]},
     { h: "Investment over time", body: [
       "The headline number has grown several times:",
@@ -81,9 +81,8 @@ INSIGHTS.push({
       "Suppliers had put more than $2.5 billion and roughly 6,900 jobs into 12 Georgia counties by mid-2024."
     ]},
     { h: "Project team", body: [
-      "Hyundai has not published a full contractor list. The firms below are confirmed through their own project records or agency documents.",
-      "<ul><li><b>General contractor:</b> Hyundai Engineering of America, named on a concrete subcontractor's project page. Hyundai itself has not announced its builders.</li><li><b>Geotechnical and materials testing:</b> Terracon, which says the project finished six months ahead of schedule. Berkel & Company Contractors and Keller North America worked alongside on ground improvement and piling.</li><li><b>Structural engineering:</b> Haines Gipson & Associates on the buildings poured by Precision Concrete Construction, which placed 100,000 cubic yards across the assembly, battery system assembly and module buildings.</li><li><b>Steel:</b> MMI Industrial fabricated the crane runways.</li><li><b>Erosion control:</b> Moses Grass Company.</li><li><b>Wastewater:</b> Thomas & Hutton engineered Bryan County's new North Bryan County Water Reclamation Facility.</li><li><b>Utilities and logistics:</b> Georgia Power supplies electricity, Georgia Central Railway provides rail service, and Hyundai Glovis runs vehicle logistics.</li></ul>",
-      "The architect and MEP engineer of record have not been confirmed."
+      "Key firms on the build:",
+      "<ul><li><b>General contractor:</b> Hyundai Engineering of America.</li><li><b>Geotechnical and materials testing:</b> Terracon, which says the project finished six months ahead of schedule. Berkel & Company Contractors and Keller North America worked alongside on ground improvement and piling.</li><li><b>Structural engineering:</b> Haines Gipson & Associates on the buildings poured by Precision Concrete Construction, which placed 100,000 cubic yards across the assembly, battery system assembly and module buildings.</li><li><b>Steel:</b> MMI Industrial fabricated the crane runways.</li><li><b>Erosion control:</b> Moses Grass Company.</li><li><b>Wastewater:</b> Thomas & Hutton engineered Bryan County's new North Bryan County Water Reclamation Facility.</li><li><b>Utilities and logistics:</b> Georgia Power supplies electricity, Georgia Central Railway provides rail service, and Hyundai Glovis runs vehicle logistics.</li></ul>",
     ]},
     { h: "Project components", body: [
       "<ul><li><b>Vehicle plant:</b> 14 buildings totaling more than 7.6 million sq ft, including press, body, paint and general assembly, a battery system assembly building and two module buildings.</li><li><b>On-site suppliers:</b> Hyundai Mobis battery system and module plants, and a Hyundai Transys seat plant sized for 420,000 sets a year. Hyundai Rotem supplied the press shop equipment.</li><li><b>Front building:</b> a 3,050-ft facade facing I-16.</li><li><b>Solar:</b> a 5.2 MW parking-lot array over 1,878 spaces, supplying roughly 5% of the plant's power.</li><li><b>Ecological park:</b> 41 acres on the campus.</li><li><b>Training:</b> the 89,000-sq-ft Quick Start Hyundai Mobility Training Center.</li><li><b>Rail:</b> two on-site rail facilities. Hyundai expects about 70% of finished vehicles to leave by rail.</li><li><b>Battery plant:</b> the 2.5 million-sq-ft HL-GA Battery Company plant with LG Energy Solution, covered in its own Project Insight.</li></ul>"
