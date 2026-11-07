@@ -1268,7 +1268,7 @@ const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMo
 
 function home(){
   const lead=byId["story-audi"];
-  const tops=["story-walmart-carnesville","story-gainesville-inland-port","story-yancey","story-guildhouse","story-selig-ponce","story-macon-costco","story-agc-jobs","story-jefferson-dc","story-js-link","story-beltline-nw","story-savannah-fairgrounds","story-sr21","story-thomasville-shelter","story-srs","story-i285"].map(i=>byId[i]);
+  const tops=["story-audi-phase-two","story-georgia-power-large-load-q3","story-mcgrau-ford-battery-opens","story-openai-grid-protectors-camellia","story-cobb-splost-2028","story-dekalb-esplost-vii","story-satilla-bluffs-woodbine","story-campus-244-dunwoody","story-live-etowah-cherokee","story-macon-arena-bond-authority","story-effingham-splost-fails","story-apex-atlanta-buckhead","story-columbus-state-pezold-groundbreaking","story-centerpoint-bartow-commerce-center","story-construction-partners-fy2027-outlook"].map(i=>byId[i]);
   return `<div class="wrap"><section class="front">
     <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title.replace(/\s(\S+)$/,' <span class="hero-last">$1<span class="hero-gap" aria-hidden="true"></span></span>')}<span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
       ${pourBox()}</div>
