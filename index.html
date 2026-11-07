@@ -1414,12 +1414,12 @@ function insightPage(p){
   const others=piSorted().filter(x=>x!==p).slice(0,4);
   const rel=(p.related||[]).map(id=>byId[id]).filter(Boolean);
   return `<div class="wrap pi-art">${preview}<a class="pi-back" href="/project-insights" data-go="insights">← All Project Insights</a>
-  <header class="pi-art-head"><div class="pi-kicker">${piTag(p)}<span>${p.sector} · Project Insight</span></div><h1>${p.title}</h1>
+  <header class="pi-art-head"><div class="pi-kicker">${piTag(p)}<span>${p.sector} · Project Insight</span></div><h1>${p.title}</h1>
     <p class="pi-meta"><span class="pi-status st-${p.stage}">${p.status}</span><span>By ${author}</span><span>Updated ${fmtDate(p.updated)}</span></p></header>
   <div class="pi-body"><article class="pi-main">
     <figure class="pi-fig">${piArt(p,"a")}<figcaption class="caption">${p.img?(p.credit?`Photo: ${p.credit}`:""):"Illustration of the project type, not a site photograph."}</figcaption></figure>
-    <p class="pi-dek">${p.dek}</p>
-    ${sec(first)}
+    ${locked&&p.teaserParas?"":`<p class="pi-dek">${p.dek}</p>`}
+    ${sec(locked&&p.teaserParas?{h:first.h,body:first.body.slice(0,p.teaserParas)}:first)}
     ${locked?gate:`${glance}${updates}${rest.map(sec).join("")}`}
     ${rel.length?`<section class="pi-sec pi-rel"><h2>Related GCI Coverage</h2><ul>${rel.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ul></section>`:""}
   </article>
