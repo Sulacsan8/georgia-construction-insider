@@ -1268,13 +1268,14 @@ const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMo
 
 function home(){
   const lead=byId["story-audi"];
-  const tops=["story-audi-phase-two","story-georgia-power-large-load-q3","story-mcgrau-ford-battery-opens","story-openai-grid-protectors-camellia","story-cobb-splost-2028","story-dekalb-esplost-vii","story-satilla-bluffs-woodbine","story-campus-244-dunwoody","story-live-etowah-cherokee","story-macon-arena-bond-authority","story-effingham-splost-fails","story-apex-atlanta-buckhead","story-columbus-state-pezold-groundbreaking","story-centerpoint-bartow-commerce-center","story-construction-partners-fy2027-outlook"].map(i=>byId[i]);
+  // Top Stories = the 15 newest stories (after the lead); Latest News continues from story 16, so nothing repeats.
+  const rest=sorted.filter(s=>s!==lead),tops=rest.slice(0,15);
   return `<div class="wrap"><section class="front">
     <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title.replace(/\s(\S+)$/,' <span class="hero-last">$1<span class="hero-gap" aria-hidden="true"></span></span>')}<span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
       ${pourBox()}</div>
     <div><h2 class="bar-head">Top Construction Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol></div>
   </section>
-  <section class="module latest-news"><h2 class="bar-head">Latest News</h2><div class="news-grid">${sorted.filter(s=>s!==lead).slice(0,8).map(newsCard).join("")}</div>
+  <section class="module latest-news"><h2 class="bar-head">Latest News</h2><div class="news-grid">${rest.slice(15,23).map(newsCard).join("")}</div>
     <div class="see-more"><a class="pill" href="/news" data-go="archives">View All Latest News →</a></div></section>
   <div class="home-end">${memberBox()}</div></div>`;
 }
