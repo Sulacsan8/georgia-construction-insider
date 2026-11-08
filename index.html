@@ -1292,8 +1292,8 @@ const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMo
 function home(){
   // Lead = the newest story with a real photo (stories whose image is a logo carry logo:true and are skipped).
   const lead=sorted.find(s=>s.img&&!s.logo)||sorted[0];
-  // Top Stories = 15 stories after the lead: every pin:true story, then the newest. Latest News continues with the rest, so nothing repeats.
-  const rest=sorted.filter(s=>s!==lead),pins=rest.filter(s=>s.pin),tops=rest.filter(s=>s.pin||rest.filter(x=>!x.pin).indexOf(s)<15-pins.length),more=rest.filter(s=>!tops.includes(s));
+  // Top Stories = every story from the newest day plus every pin:true story (even past 15), topped up to 15 with the next newest. Latest News continues with the rest, so nothing repeats.
+  const rest=sorted.filter(s=>s!==lead),must=rest.filter(s=>s.pin||s.iso===sorted[0].iso),others=rest.filter(s=>!must.includes(s)),tops=rest.filter(s=>must.includes(s)||others.indexOf(s)<15-must.length),more=rest.filter(s=>!tops.includes(s));
   return `<div class="wrap"><section class="front">
     <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${(lead.heroTitle||lead.title).replace(/\s(\S+)$/,' <span class="hero-last">$1<span class="hero-gap" aria-hidden="true"></span></span>')}<span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
       ${pourBox()}</div>
