@@ -43,17 +43,17 @@ INSIGHTS.push({
     ["Airport package", "More than $55 million in approvals on Nov. 2, 2026"],
     ["Airport-wide construction", "Approximately 58 active projects worth approximately $4.2 billion"]
   ],
-  timelineIntro: "Funding phases of the fire and life safety program, in order.",
+  timelineIntro: "Funding phases of the fire and life safety program.",
   timeline: [
-    ["Phase 1", "Pedestrian mall level funded", "Approximately $33.5 million covers fire and life safety work in the passenger tunnels and the Plane Train level beneath the terminal complex."],
-    ["Phase 2", "Concourse A funded", "$38.5 million carries the program to Concourse A, including gate doors, exit stairs and fire and smoke detection."],
+    ["Earlier phase", "Pedestrian mall level funded", "Approximately $33.5 million covers fire and life safety work in the passenger tunnels and the Plane Train level beneath the terminal complex."],
+    ["Earlier phase", "Concourse A funded", "$38.5 million carries the program to Concourse A, including gate doors, exit stairs and fire and smoke detection."],
     ["Nov. 2, 2026", "Concourse B approved", "Atlanta City Council approves $36.84 million for Concourse B, raising the program ceiling to approximately $108.84 million."],
     ["Nov. 2, 2026", "Airport package passes", "Concourse B leads a package of more than $55 million in airport approvals, including perimeter gate services, firefighting vehicles and grounds supplies."],
     ["Next", "Concourse C", "Concourse C is the next phase and will come back to council as a separate funding request."]
   ],
   sections: [
     { h: "Project overview", body: [
-      "Hartsfield-Jackson is working concourse by concourse to bring the fire and life safety systems in its 1980-era terminal complex up to current code. The Central Passenger Terminal Complex Fire and Life Safety Enhancement Program started underground, in the passenger tunnels and the Plane Train, then moved to Concourse A.",
+      "Hartsfield-Jackson is working concourse by concourse to bring the fire and life safety systems in its 1980-era terminal complex up to current code. The Central Passenger Terminal Complex Fire and Life Safety Enhancement Program has already covered the passenger tunnels, the Plane Train and Concourse A.",
       "On Nov. 2, 2026, the Atlanta City Council approved $36.84 million to take the program into Concourse B, lifting its total ceiling to approximately $108.84 million. The work is delivered by the NSMS joint venture of New South Construction, McCarthy Building Companies and Synergy Development Partners under a construction manager at risk contract."
     ]},
     { h: "Scope of work", sub: [
@@ -63,7 +63,7 @@ INSIGHTS.push({
     ]},
     { h: "Project team", body: [
       "<ul><li><b>Owner:</b> City of Atlanta Department of Aviation.</li><li><b>Contractor:</b> the NSMS joint venture.</li><li><b>JV members:</b> New South Construction, McCarthy Building Companies and Synergy Development Partners.</li><li><b>Delivery method:</b> construction manager at risk.</li></ul>",
-      "The construction manager at risk model lets the airport release funding in stages as each concourse phase is defined, rather than bidding the whole program at once. That is why the program has grown in steps, from the tunnels to Concourse A and now Concourse B."
+      "The construction manager at risk model lets the airport release funding in stages as each concourse phase is defined, rather than bidding the whole program at once. That is why the program has grown in steps, one area at a time."
     ]},
     { h: "Funding by phase", body: [
       "<ul><li><b>Pedestrian mall level:</b> approximately $33.5 million.</li><li><b>Concourse A:</b> $38.5 million.</li><li><b>Concourse B:</b> $36.84 million.</li><li><b>Program ceiling:</b> approximately $108.84 million.</li></ul>"
