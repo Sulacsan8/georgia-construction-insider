@@ -67,7 +67,7 @@ INSIGHTS.push({
   sections: [
     { h: "Project overview", body: [
       "Hartsfield-Jackson handles roughly 105 million passengers a year and has been the world's busiest airport since 1998. Its core buildings date to 1980, and airport officials have said much of that infrastructure is wearing out. ATLNext is the long-running capital program to rebuild and expand it while keeping every gate as busy as possible.",
-      "Program construction manager Jacobs values the full program at roughly $20 billion through 2032. The airport's October 2026 project list shows $4.2 billion of work under construction across 58 projects, with roughly $1 billion spent in 2026 alone."
+      "The full program is valued at roughly $20 billion through 2032. The airport's October 2026 project list shows $4.2 billion of work under construction across 58 projects, with roughly $1 billion spent in 2026 alone."
     ]},
     { h: "Concourse D widening", body: [
       "Concourse D was built 60 ft wide for 50- to 75-seat regional jets. Today it handles narrow-body jets carrying around 150 passengers. The widening project rebuilds the concourse at 99 ft wide, raises ceilings from 11 to 18 ft and widens the center corridor from 18 to 29 ft. The concourse also gets 288 ft longer. The number of gates drops from 40 to 34, but each gate can handle larger aircraft, including the A321neo and 737 MAX 10, and the concourse will hold roughly 1,000 more passengers at a time.",
