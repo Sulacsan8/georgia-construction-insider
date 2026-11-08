@@ -8,7 +8,7 @@ INSIGHTS.push({
   title: "Hartsfield-Jackson — Fire & Life Safety Enhancement Program",
   company: "City of Atlanta Department of Aviation",
   place: "Hartsfield-Jackson Atlanta International Airport",
-  statline: "$108.84M program · Concourse B approved · NSMS JV",
+  statline: "$108.84M program · Concourse B approved",
   status: "Under way · Concourse B funded",
   stage: "build",
   value: 108.84,
@@ -17,7 +17,7 @@ INSIGHTS.push({
   alt: "Aerial view of Hartsfield-Jackson Atlanta International Airport at sunset, with the domestic terminal canopies lit in red, white and blue",
   credit: "",
   related: ["story-atl-concourse-b-fire-safety"],
-  dek: "Atlanta has added $36.84 million to Hartsfield-Jackson's fire and life safety program, carrying the work into Concourse B and lifting the program ceiling to approximately $108.84 million. The NSMS joint venture of New South, McCarthy and Synergy is delivering it.",
+  dek: "Atlanta has added $36.84 million to Hartsfield-Jackson's fire and life safety program, carrying the work into Concourse B and lifting the program ceiling to approximately $108.84 million.",
   facts: [
     ["Owner", "City of Atlanta Department of Aviation"],
     ["Program", "Central Passenger Terminal Complex Fire and Life Safety Enhancement Program"],
@@ -54,7 +54,7 @@ INSIGHTS.push({
   sections: [
     { h: "Project overview", body: [
       "Hartsfield-Jackson is working concourse by concourse to bring the fire and life safety systems in its 1980-era terminal complex up to current code. The Central Passenger Terminal Complex Fire and Life Safety Enhancement Program has already covered the passenger tunnels, the Plane Train and Concourse A.",
-      "On Nov. 2, 2026, the Atlanta City Council approved $36.84 million to take the program into Concourse B, lifting its total ceiling to approximately $108.84 million. The work is delivered by the NSMS joint venture of New South Construction, McCarthy Building Companies and Synergy Development Partners under a construction manager at risk contract."
+      "On Nov. 2, 2026, the Atlanta City Council approved $36.84 million to take the program into Concourse B, lifting its total ceiling to approximately $108.84 million. Concourse B was the largest item in a package of more than $55 million in airport approvals that day."
     ]},
     { h: "Scope of work", sub: [
       { h: "Passenger tunnels and Plane Train", body: ["<ul><li>Fire sprinklers and smoke detection in the Plane Train and passenger tunnels.</li><li>Upgraded emergency exit doors and hardware in the tunnels.</li></ul>"] },

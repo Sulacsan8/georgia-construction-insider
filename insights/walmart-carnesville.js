@@ -56,7 +56,7 @@ INSIGHTS.push({
   sections: [
     { h: "Project overview", body: [
       "Walmart is building a $1.3 billion automated fulfillment center in Carnesville, in Franklin County in Northeast Georgia. The 1.5 million-sq-ft facility sits near Interstate 85 and will be the sixth center in Walmart's network of next-generation fulfillment centers, employing approximately 1,000 people once it opens.",
-      "Walmart broke ground on Oct. 26, 2026. Site preparation is under way this fall, and construction of the building itself is expected to start in early 2027. The Whiting-Turner Contracting Company is the general contractor, with BRR Architecture as architect of record."
+      "Walmart broke ground on Oct. 26, 2026. Site preparation is under way this fall, and construction of the building itself is expected to start in early 2027. Its automation is designed to cut the traditional 12-step order fulfillment process down to five steps."
     ]},
     { h: "How the facility works", body: [
       "Next-generation fulfillment centers combine robotics, machine learning and automated storage systems. Walmart says the technology cuts the traditional 12-step order fulfillment process down to five steps.",
