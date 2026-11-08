@@ -15,7 +15,7 @@ INSIGHTS.push({
   img: "/images/insights/atl-airport.jpg",
   alt: "Aerial view of Concourse C at Hartsfield-Jackson Atlanta International Airport with Delta jets at the gates",
   credit: "formulanone / Wikimedia Commons, CC BY-SA 2.0",
-  related: ["story-atl-concourse-b-fire-safety", "story-atl-faa-runway-grants"],
+  related: ["story-atl-faa-runway-grants"],
   dek: "The world's busiest airport has $4.2 billion of construction under way across 58 projects, about $1 billion of it being spent this year. The largest is the modular widening of Concourse D, which is roughly halfway done and due to finish in 2029.",
   facts: [
     ["Owner", "City of Atlanta Department of Aviation"],
