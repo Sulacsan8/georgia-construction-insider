@@ -179,6 +179,10 @@ td a:hover{color:var(--gray)}
 .np-sum{grid-column:1/-1;margin:0;color:#fff;font-size:13px;font-weight:600}
 .news-page .news-grid{margin-top:18px}
 .news-page .empty{margin-top:24px}
+.news-filter{margin:0 0 6px}
+.news-page .np-sum{color:#555;margin:8px 0 0;min-height:1em}
+.ind-filter.home-search{grid-template-columns:minmax(0,1fr) auto;margin:14px 0 18px}
+@media (max-width:700px){.ind-filter.home-search{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:900px){.np-filters{grid-template-columns:1fr 1fr}.np-filters label:first-child{grid-column:1/-1}.np-clear{justify-self:start}}
 @media (max-width:520px){.np-filters{grid-template-columns:1fr}}
 /* Industry pages: heading, lead story beside Top Stories, search bar, card grid with a sidebar */
@@ -1287,7 +1291,7 @@ const trackable=STORIES.filter(s=>s.status);
 const trackRow=s=>`<tr><td>${link(s,short(s))}</td><td>${s.where}</td><td>${s.who}</td><td class="val">${s.valueLabel}</td><td><span class="stage st-${s.st}">${s.status}</span></td></tr>`;
 const pastRow=s=>`<article class="past">${link(s,`<div class="row mono"><span class="cat">${s.sector}</span><span>${s.date}</span><span>${s.region}</span></div><h3>${s.title}</h3><p>${s.dek}</p>`)}</article>`;
 const inTopic=(s,t)=>t==="All"||TOPICS[t].includes(s.sector);
-const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMode:"signin",authNote:"",topic:"All",region:"All",nq:"",nsort:"new",nlimit:24,iq:"",ireg:"All",isort:"new",ilimit:12,pq:"",psort:"featured",pind:"All",preg:"All",pacc:"All",piAsGuest:false,q:"",tSector:"All",tRegion:"All",desc:true};
+const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMode:"signin",authNote:"",topic:"All",region:"All",nq:"",nreg:"All",nsort:"new",nlimit:24,iq:"",ireg:"All",isort:"new",ilimit:12,pq:"",psort:"featured",pind:"All",preg:"All",pacc:"All",piAsGuest:false,q:"",tSector:"All",tRegion:"All",desc:true};
 
 function home(){
   // Lead = the newest story with a real photo (stories whose image is a logo carry logo:true and are skipped).
@@ -1299,20 +1303,31 @@ function home(){
       ${pourBox()}</div>
     <div><h2 class="bar-head">Top Construction Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol></div>
   </section>
-  <section class="module latest-news"><h2 class="bar-head">Latest News</h2><div class="news-grid">${more.slice(0,8).map(newsCard).join("")}</div>
+  <section class="module latest-news"><h2 class="bar-head">Latest News</h2>
+    <div class="ind-filter home-search"><label class="ind-search">${SEARCH_ICON}<span class="sr">Search all news</span><input id="h-q" type="search" placeholder="Search all Georgia construction news..."></label><button type="button" class="ind-go" data-hsearch>Search</button></div>
+    <div class="news-grid">${more.slice(0,8).map(newsCard).join("")}</div>
     <div class="see-more"><a class="pill" href="/news" data-go="archives">View All Latest News →</a></div></section>
   <div class="home-end">${memberBox()}</div></div>`;
 }
 const NEWS_PAGE=24;
 const NEWS_REGIONS=[...new Set(STORIES.map(s=>s.region).filter(Boolean))].sort();
-// News page: every story, newest first, with a Load more button.
+// News page: every story, newest first, with a search bar (keyword + region) and a Load more button.
+const newsText=s=>[s.title,s.dek,s.sector,s.region,s.where,s.who,...(s.body||[])].join(" ").replace(/<[^>]+>/g," ").toLowerCase();
 function newsRows(){
-  const shown=sorted.slice(0,state.nlimit);
-  document.getElementById("a-list").innerHTML=`<div class="news-grid">${shown.map(newsCard).join("")}</div>`;
-  document.getElementById("a-more").hidden=shown.length>=sorted.length;
+  const q=state.nq.trim().toLowerCase(),words=q.split(/\s+/).filter(Boolean);
+  const list=sorted.filter(s=>(state.nreg==="All"||s.region===state.nreg)&&(!words.length||(t=>words.every(w=>t.includes(w)))(newsText(s))));
+  const shown=list.slice(0,state.nlimit),filtered=words.length||state.nreg!=="All";
+  document.getElementById("a-list").innerHTML=shown.length?`<div class="news-grid">${shown.map(newsCard).join("")}</div>`:`<p class="empty">No stories match. Clear the filters or try another search.</p>`;
+  document.getElementById("a-sum").textContent=filtered?`${list.length} ${list.length===1?"story":"stories"} found`:"";
+  document.getElementById("a-more").hidden=shown.length>=list.length;
 }
 function archives(){
+  const opt=(v,l)=>`<option value="${esc(v)}"${v===state.nreg?" selected":""}>${esc(l)}</option>`;
   return `<div class="wrap news-page"><header class="np-head"><h1>Latest News</h1><p>The latest Georgia construction news, project announcements and market updates, all in one place.</p></header>
+    <div class="ind-filter news-filter"><select id="a-region" aria-label="Select region">${opt("All","All Regions")}${NEWS_REGIONS.map(r=>opt(r,r)).join("")}</select>
+      <label class="ind-search">${SEARCH_ICON}<span class="sr">Search</span><input id="a-q" type="search" placeholder="Search news, projects, companies, cities..." value="${esc(state.nq)}"></label>
+      <button type="button" class="ind-go" data-nsearch>Search</button><button type="button" class="ind-clear" data-nclear>Clear filters</button></div>
+    <p class="np-sum" id="a-sum" aria-live="polite"></p>
     <div id="a-list"></div>
     <div class="see-more"><button type="button" class="pill" id="a-more" data-nmore hidden>Load more stories</button></div></div>`;
 }
@@ -1366,12 +1381,15 @@ function industry(t){
 }
 document.addEventListener("click",e=>{
   if(e.target.closest("[data-nmore]")){state.nlimit+=NEWS_PAGE;newsRows()}
+  else if(e.target.closest("[data-nsearch]")){state.nq=document.getElementById("a-q").value;state.nlimit=NEWS_PAGE;newsRows()}
+  else if(e.target.closest("[data-nclear]")){state.nq="";state.nreg="All";state.nlimit=NEWS_PAGE;go("archives",true)}
+  else if(e.target.closest("[data-hsearch]")){state.nq=document.getElementById("h-q").value;state.nreg="All";state.nlimit=NEWS_PAGE;go("archives",false,"push")}
   else if(e.target.closest("[data-imore]")){state.ilimit+=IND_PAGE;indRows()}
   else if(e.target.closest("[data-isearch]")){state.iq=document.getElementById("i-q").value;state.ilimit=IND_PAGE;indRows()}
   else if(e.target.closest("[data-iclear]")){state.iq="";state.ireg="All";state.isort="new";state.ilimit=IND_PAGE;go(currentRoute,true)}
   else if(e.target.closest("[data-ilatest]")){e.preventDefault();document.getElementById("ind-latest").scrollIntoView({behavior:"smooth"})}
 });
-document.addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.id==="i-q"){state.iq=e.target.value;state.ilimit=IND_PAGE;indRows()}});
+document.addEventListener("keydown",e=>{if(e.key!=="Enter")return;if(e.target.id==="i-q"){state.iq=e.target.value;state.ilimit=IND_PAGE;indRows()}else if(e.target.id==="a-q"){state.nq=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}else if(e.target.id==="h-q"){e.preventDefault();state.nq=e.target.value;state.nreg="All";state.nlimit=NEWS_PAGE;go("archives",false,"push")}});
 document.addEventListener("change",e=>{
   if(e.target.id==="i-region"){state.ireg=e.target.value;state.ilimit=IND_PAGE;indRows()}
   if(e.target.id==="i-sort"){state.isort=e.target.value;indRows()}
@@ -2149,12 +2167,13 @@ document.addEventListener("click",e=>{
   else if(t.hasAttribute("data-join")){t.nextElementSibling.textContent="Preview only: payments aren't connected yet, so nothing was charged."}
   else if(t.dataset.scroll){if(t.dataset.option)document.getElementById("sp-interest").value=t.dataset.option;document.getElementById(t.dataset.scroll).scrollIntoView({behavior:"smooth"})}
   else if(t.dataset.topic){go("ind-"+indSlug(t.dataset.topic),false,"push")}
-  else{if(t.dataset.go==="archives")state.nlimit=NEWS_PAGE;go(t.dataset.go,false,"push")}
+  else{if(t.dataset.go==="archives"){state.nlimit=NEWS_PAGE;state.nq="";state.nreg="All"}go(t.dataset.go,false,"push")}
 });
 document.addEventListener("input",e=>{if(e.target.id==="a-q"){state.nq=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}});
 document.addEventListener("change",e=>{
   if(e.target.id==="a-sector"){state.topic=e.target.value;state.nlimit=NEWS_PAGE;go("archives",true)}
   if(e.target.id==="a-sort"){state.nsort=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}
+  if(e.target.id==="a-region"){state.nreg=e.target.value;state.nlimit=NEWS_PAGE;newsRows()}
 });
 document.addEventListener("submit",e=>{
   e.preventDefault();
