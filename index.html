@@ -1272,7 +1272,7 @@ function home(){
   // Top Stories = the 15 newest stories (after the lead); Latest News continues from story 16, so nothing repeats.
   const rest=sorted.filter(s=>s!==lead),tops=rest.slice(0,15);
   return `<div class="wrap"><section class="front">
-    <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${lead.title.replace(/\s(\S+)$/,' <span class="hero-last">$1<span class="hero-gap" aria-hidden="true"></span></span>')}<span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
+    <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${(lead.heroTitle||lead.title).replace(/\s(\S+)$/,' <span class="hero-last">$1<span class="hero-gap" aria-hidden="true"></span></span>')}<span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
       ${pourBox()}</div>
     <div><h2 class="bar-head">Top Construction Stories</h2><ol class="num-list">${tops.map(s=>`<li>${link(s,s.title)}</li>`).join("")}</ol></div>
   </section>
