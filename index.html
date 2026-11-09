@@ -427,6 +427,21 @@ nav.main>a:hover,nav.main summary:hover{color:#cc050d}
 .top-all{display:block;width:fit-content;margin:14px 0 0 auto;padding:7px 16px;border:0;background:#cc050d;color:#fff;font-size:14px;line-height:1.3}.top-all:hover{background:#a30409;color:#fff}
 .front{align-items:stretch}.front>div:first-child{display:flex;flex-direction:column}.front .pour{flex:1;display:flex;flex-direction:column;justify-content:center}
 .front+.module{margin-top:20px;padding-top:20px}
+/* Desktop: the Top Stories list sets the row height; the hero and newsletter shrink so their bottom lines up with story 11. */
+@media (min-width:761px){
+  .front>div:first-child{height:0;min-height:100%}
+  .front .lead-hero .art{min-height:220px}
+  .front .pour.pour-x{margin-top:16px;padding:14px 22px 16px}
+  .pour-x h2{font-size:24px}
+  .pour-x .px-sub{margin:4px 0 8px}
+  .pour-x .px-desc{font-size:14px;margin:0 0 6px}
+  .pour-x .px-list{gap:3px}.pour-x .px-list li{font-size:14px}
+  .pour-x .sub-form{margin-top:10px}
+  .pour-x .px-next{margin-top:12px;padding-top:10px}
+  .pour-x .px-label{margin:0 0 6px}
+  .pour-x .cd-boxes div{padding-block:6px}
+  .pour-x .px-when{margin-top:6px}
+}
 .countdown{margin-top:16px}
 .pour p.cd-title{font-weight:700;color:#fff;font-size:15px;margin-bottom:8px}
 .cd-boxes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
