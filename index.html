@@ -1722,7 +1722,7 @@ async function sendForm(form){
     if(/activat/i.test(out.message||"")){note.dataset.state="done";note.textContent="Form not activated yet: check the site owner's inbox and junk folder for the FormSubmit activation email.";btn.disabled=false;btn.textContent=label;return}
     if(!res.ok||String(out.success)!=="true")throw new Error("send failed");
     form.style.minHeight=form.offsetHeight+"px";form.classList.add("sent");
-    form.innerHTML=`<div class="sent-panel" role="status"><svg class="sent-tick" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7.5 7.5L38 19"/></svg><h3>Message sent</h3><p>Thanks for contacting us, our team will be contacting you soon.</p></div>`;
+    form.innerHTML=`<div class="sent-panel" role="status"><svg class="sent-tick" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7.5 7.5L38 19"/></svg><h3>Message Sent</h3><p>Thanks for contacting us, our team will be contacting you soon.</p></div>`;
     return;
   }catch(err){
     note.dataset.state="done";note.textContent="Sorry, your message didn't send. Please try again in a few minutes.";
