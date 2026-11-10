@@ -1733,15 +1733,15 @@ async function subscribe(form){
 }
 function signin(){
   const m=state.authMode||"signin";
-  const head={signin:["Welcome back.","Sign in to access your Georgia Construction Insider account."],signup:["Create your account.","Create an account to join GCI and manage your membership."],forgot:["Reset your password.","Enter your email and we'll send you a link to set a new password."]}[m];
+  const head={signin:["Welcome back.","Sign in to access your Georgia Construction Insider account."],signup:["Create your account.","Create an account to join GCI and manage your membership."],forgot:["Reset your password.","Enter your email and we'll send you a link to set a new password."],confirm:["Confirm your email.","Click the button below to confirm your email address and sign in to your account."]}[m];
   const name=m==="signup"?`<label for="si-name">Full name</label><input id="si-name" required placeholder="Your name" autocomplete="name">`:"";
-  const pass=m==="forgot"?"":`<div class="si-row"><label for="si-pass">Password</label>${m==="signin"?'<button class="si-link" type="button" data-auth-mode="forgot">Forgot password?</button>':""}</div><div class="si-pass"><input id="si-pass" type="password" required${m==="signup"?' minlength="8"':""} placeholder="${m==="signup"?"At least 8 characters":"Enter your password"}" autocomplete="${m==="signup"?"new-password":"current-password"}"><button type="button" data-show-pass>Show</button></div>`;
-  const submit={signin:"Sign in to your account →",signup:"Create account →",forgot:"Email me a reset link →"}[m];
+  const pass=m==="forgot"||m==="confirm"?"":`<div class="si-row"><label for="si-pass">Password</label>${m==="signin"?'<button class="si-link" type="button" data-auth-mode="forgot">Forgot password?</button>':""}</div><div class="si-pass"><input id="si-pass" type="password" required${m==="signup"?' minlength="8"':""} placeholder="${m==="signup"?"At least 8 characters":"Enter your password"}" autocomplete="${m==="signup"?"new-password":"current-password"}"><button type="button" data-show-pass>Show</button></div>`;
+  const submit={signin:"Sign in to your account →",signup:"Create account →",forgot:"Email me a reset link →",confirm:"Confirm my email →"}[m];
   const alt=m==="signin"?`<button class="si-create" type="button" data-auth-mode="signup">Create an account ↗</button>`:`<button class="si-create" type="button" data-auth-mode="signin">Back to sign in</button>`;
   const note=state.authNote||"";state.authNote="";
   return `<div class="si-page"><a class="si-back" href="/" data-go="home">← Back to Georgia Construction Insider</a>
   <div class="si-box"><span class="si-eyebrow">Member Access</span><h1>${head[0]}</h1><p class="si-lede">${head[1]}</p>
-  <form class="si-form" data-auth>${name}<label for="si-email">Email address</label><input id="si-email" type="email" required placeholder="Enter your email address" autocomplete="email">${pass}
+  <form class="si-form" data-auth>${name}${m==="confirm"?"":'<label for="si-email">Email address</label><input id="si-email" type="email" required placeholder="Enter your email address" autocomplete="email">'}${pass}
     <button class="si-submit" type="submit">${submit}</button>${alt}
     <p class="sub-note si-note" role="status" data-state="done">${esc(note)}</p>
   </form></div></div>`;
@@ -2078,6 +2078,9 @@ const STATUS_TEXT={active:"Active",trialing:"Active",canceling:"Active until per
 const isMember=m=>!!m&&["active","trialing","past_due","canceling"].includes(m.status);
 let sb=null,session=null,currentRoute="";
 const PENDING_KEY="gci_pending_plan";
+// Email links (Supabase templates) arrive with token_hash and type. The token is only spent when the reader clicks a button on our page, so link scanners (Mimecast, Safe Links) can't use it up first.
+const AUTH_LINK=(()=>{const q=new URLSearchParams(location.search),h=new URLSearchParams(location.hash.slice(1));return {th:q.get("token_hash")||"",type:q.get("type")||"",err:h.get("error_code")||q.get("error_code")||""}})();
+const LINK_USED="That link has expired or was already used.";
 const getPending=()=>{try{return sessionStorage.getItem(PENDING_KEY)}catch(e){return null}};
 const setPending=p=>{try{p?sessionStorage.setItem(PENDING_KEY,p):sessionStorage.removeItem(PENDING_KEY)}catch(e){}};
 const authInit=(async()=>{
@@ -2112,7 +2115,11 @@ async function handleAuth(form){
   const password=(document.getElementById("si-pass")||{}).value||"";
   btn.disabled=true;btn.textContent="Please wait...";note.textContent="";
   try{
-    if(state.authMode==="signup"){
+    if(state.authMode==="confirm"){
+      const {data,error}=await sbc.auth.verifyOtp({token_hash:AUTH_LINK.th,type:AUTH_LINK.type==="signup"?"email":AUTH_LINK.type});
+      if(error){state.authMode="signin";state.authNote=LINK_USED+" If your email is already confirmed, just sign in. Otherwise, create your account again and we'll send a new link.";go("signin",true);return}
+      AUTH_LINK.th="";session=data.session;afterSignIn();return;
+    }else if(state.authMode==="signup"){
       const {data,error}=await sbc.auth.signUp({email:val("si-email"),password,options:{data:{full_name:val("si-name")},emailRedirectTo:location.origin+"/dashboard?confirmed=1"}});
       if(error)throw error;
       if(data.session){session=data.session;afterSignIn()}
@@ -2134,8 +2141,13 @@ async function handleReset(form){
   const note=form.querySelector(".si-note"),btn=form.querySelector('button[type="submit"]');
   note.dataset.state="done";
   const sbc=await authInit;
-  if(!sbc||!session){note.textContent="This reset link has expired. Please request a new one from the sign-in page.";return}
   btn.disabled=true;
+  if(sbc&&!session&&AUTH_LINK.th){
+    const {data,error}=await sbc.auth.verifyOtp({token_hash:AUTH_LINK.th,type:"recovery"});
+    AUTH_LINK.th="";
+    if(!error)session=data.session;
+  }
+  if(!sbc||!session){btn.disabled=false;note.innerHTML=LINK_USED+' <a href="/sign-in" data-auth-mode="forgot">Send me a new reset link</a>.';return}
   const {error}=await sbc.auth.updateUser({password:document.getElementById("rs-pass").value});
   document.getElementById("rs-pass").value="";
   btn.disabled=false;
@@ -2276,7 +2288,11 @@ document.addEventListener("submit",e=>{
 });
 window.addEventListener("popstate",()=>go(routeOf(location.pathname),false,"pop"));
 // Old links used #route (e.g. /#story-macon-costco, /?checkout=success#dashboard); send them to the clean address.
-window.addEventListener("hashchange",()=>{if(location.hash.length>1)go(location.hash.slice(1),false,"init")});
-go(location.hash.length>1?location.hash.slice(1):routeOf(location.pathname),false,"init");
+const hashRoute=()=>location.hash.length>1&&!/^#(error|access_token|token_hash)/.test(location.hash)?location.hash.slice(1):"";
+window.addEventListener("hashchange",()=>{const h=hashRoute();if(h)go(h,false,"init")});
+let firstRoute=hashRoute()||routeOf(location.pathname);
+if(AUTH_LINK.th&&AUTH_LINK.type&&AUTH_LINK.type!=="recovery"){firstRoute="signin";state.authMode="confirm"}
+else if(AUTH_LINK.err){const rec=firstRoute==="reset";firstRoute="signin";state.authMode=rec?"forgot":"signin";state.authNote=rec?LINK_USED+" Enter your email and we'll send you a new one.":LINK_USED+" If your email is already confirmed, just sign in. Otherwise, create your account again and we'll send a new link.";try{history.replaceState(null,"",location.pathname)}catch(e){}}
+go(firstRoute,false,"init");
 </script>
 </body></html>
