@@ -390,6 +390,10 @@ footer.site{background:#000;color:#fff;margin-top:8px}
 .foot-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:28px 40px;padding-block:32px 22px}
 .foot-cols h3{color:#fff;font-size:16px;font-weight:700;margin-bottom:10px}
 .foot-about p{font-size:14.5px;max-width:36ch}
+.foot-social{display:inline-flex;align-items:center;gap:8px;margin-top:14px;background:#fff;color:#000;border-radius:99px;padding:8px 16px 8px 10px;font-size:14px;font-weight:700;line-height:1}
+.foot-social svg{width:20px;height:20px;flex:none}
+.foot-social:hover{background:#ff1a1a;color:#fff}
+.foot-social:hover svg rect{fill:#fff}.foot-social:hover svg path{fill:#ff1a1a}
 .foot-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;font-size:14.5px}
 .foot-links a:hover{text-decoration:underline}
 .foot-base{border-top:1px solid #555;padding-block:14px;font-size:14px;font-weight:600}
@@ -868,7 +872,7 @@ body{min-height:100vh;display:flex;flex-direction:column}main{flex:1 0 auto;min-
 <main id="app"></main>
 <footer class="site"><div class="wrap">
   <div class="foot-cols">
-    <div class="foot-about"><h3>Georgia Construction Insider</h3><p>Construction news, major projects and industry updates across Georgia.</p></div>
+    <div class="foot-about"><h3>Georgia Construction Insider</h3><p>Construction news, major projects and industry updates across Georgia.</p><a class="foot-social" href="https://www.linkedin.com/company/georgia-construction-insider" target="_blank" rel="noopener" aria-label="Follow Georgia Construction Insider on LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="4" fill="#0a66c2"/><path fill="#fff" d="M7.1 9.5H4.6V19h2.5V9.5zM5.9 8.4a1.4 1.4 0 1 0 0-2.9 1.4 1.4 0 0 0 0 2.9zM19.4 13.8c0-2.6-1.4-4.5-3.9-4.5-1.3 0-2.2.7-2.6 1.4V9.5h-2.4V19H13v-5c0-1.3.6-2.3 1.8-2.3s1.6 1 1.6 2.3v5h2.5v-5.2z"/></svg>Follow us on LinkedIn</a></div>
     <div><h3>Explore</h3><div class="foot-links"><a href="/news" data-go="archives">Latest News</a><a href="/newsletter" data-go="newsletters">Newsletter</a><a href="/project-tracker" data-go="tracker">Project Tracker</a><a href="/project-insights" data-go="insights">Project Insights</a></div></div>
     <div><h3>Support</h3><div class="foot-links"><a href="/sponsors" data-go="sponsors">Sponsors &amp; Advertising</a><a href="/sponsors" data-go="sponsors">Submit a Press Release</a><a href="/contact" data-go="contact">Contact Us</a><a href="/sign-in" data-go="signin">Sign In</a></div></div>
   </div>
