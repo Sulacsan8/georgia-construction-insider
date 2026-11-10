@@ -1345,8 +1345,9 @@ const state={dtab:"overview",db:"loading",member:null,memberAt:0,dbMsg:"",authMo
 function home(){
   // Lead = the newest story with a real photo (stories whose image is a logo carry logo:true and are skipped).
   const lead=sorted.find(s=>s.img&&!s.logo)||sorted[0];
-  // Top Stories is capped at 11: pin:true stories first, then the newest day's stories, then the next newest; shown newest first. Every other story goes to Latest News, so nothing repeats.
-  const TOP_MAX=11,rest=sorted.filter(s=>s!==lead),pri=[...rest.filter(s=>s.pin),...rest.filter(s=>!s.pin&&s.iso===sorted[0].iso),...rest.filter(s=>!s.pin&&s.iso!==sorted[0].iso)].slice(0,TOP_MAX),tops=rest.filter(s=>pri.includes(s)),more=rest.filter(s=>!tops.includes(s));
+  // Top Stories = this week's stories only (Monday onward, based on the newest story's date), newest first, capped at 11. Pins are ignored. Every other story goes to Latest News, so nothing repeats.
+  const TOP_MAX=11,nd=new Date(sorted[0].iso+"T00:00:00Z");nd.setUTCDate(nd.getUTCDate()-((nd.getUTCDay()+6)%7));const weekStart=nd.toISOString().slice(0,10);
+  const rest=sorted.filter(s=>s!==lead),tops=rest.filter(s=>s.iso>=weekStart).slice(0,TOP_MAX),more=rest.filter(s=>!tops.includes(s));
   return `<div class="wrap"><section class="front">
     <div><article class="lead lead-hero">${link(lead,`${art(lead,"l")}<span class="hero-shade" aria-hidden="true"></span><div class="hero-text"><span class="hero-meta">${lead.sector} · ${lead.date}</span><h1>${(lead.heroTitle||lead.title).replace(/\s(\S+)$/,' <span class="hero-last">$1<span class="hero-gap" aria-hidden="true"></span></span>')}<span class="hero-btn">Continue Reading →</span></h1></div>`)}</article>
       ${pourBox()}</div>
