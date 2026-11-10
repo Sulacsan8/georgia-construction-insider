@@ -541,6 +541,17 @@ main em{font-style:normal;color:#cc050d}
 .sp-checks li::before{content:"";position:absolute;left:5px;top:3px;width:7px;height:12px;border:solid #cc050d;border-width:0 2.4px 2.4px 0;transform:rotate(40deg)}
 .sp-form{border:1px solid var(--rule);border-radius:12px;padding:clamp(18px,3vw,30px);box-shadow:0 6px 20px rgba(0,0,0,.05)}
 .sp-form h3{font-size:23px}
+.sp-form.sent{display:flex;align-items:center;justify-content:center;text-align:center}
+.sent-panel{max-width:34ch;animation:sentIn .45s ease-out both}
+.sent-panel h3{margin-top:14px}
+.sent-panel p{font-size:16px;margin-top:6px}
+.sent-tick{width:72px;height:72px;display:block;margin:0 auto}
+.sent-tick circle{fill:#cc050d;animation:sentPop .4s ease-out both}
+.sent-tick path{fill:none;stroke:#fff;stroke-width:4.5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:36;stroke-dashoffset:36;animation:sentDraw .35s .3s ease-out forwards}
+@keyframes sentIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes sentPop{from{transform:scale(.6);transform-origin:center;opacity:0}to{transform:scale(1);transform-origin:center;opacity:1}}
+@keyframes sentDraw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.sent-panel,.sent-tick circle{animation:none}.sent-tick path{animation:none;stroke-dashoffset:0}}
 .sp-form-sub{font-size:14.5px;margin-top:4px}
 .sp-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:18px}
 .sp-fields label{display:grid;gap:6px;font-size:13.5px;font-weight:600;min-width:0}
@@ -1710,7 +1721,9 @@ async function sendForm(form){
     const out=await res.json();
     if(/activat/i.test(out.message||"")){note.dataset.state="done";note.textContent="Form not activated yet: check the site owner's inbox and junk folder for the FormSubmit activation email.";btn.disabled=false;btn.textContent=label;return}
     if(!res.ok||String(out.success)!=="true")throw new Error("send failed");
-    form.reset();note.dataset.state="done";note.textContent="Thanks, your message was sent. We'll be in touch soon.";
+    form.style.minHeight=form.offsetHeight+"px";form.classList.add("sent");
+    form.innerHTML=`<div class="sent-panel" role="status"><svg class="sent-tick" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="26" r="24"/><path d="M15 27l7.5 7.5L38 19"/></svg><h3>Message sent</h3><p>Thanks for contacting us, our team will be contacting you soon.</p></div>`;
+    return;
   }catch(err){
     note.dataset.state="done";note.textContent="Sorry, your message didn't send. Please try again in a few minutes.";
   }
