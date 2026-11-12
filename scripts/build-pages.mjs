@@ -96,6 +96,8 @@ for (const s of STORIES) {
       description: s.dek.replace(/<[^>]+>/g, ""),
       image: [abs(s.img || "/images/og-default.jpg")],
       datePublished: s.iso,
+      isAccessibleForFree: false,
+      hasPart: { "@type": "WebPageElement", isAccessibleForFree: false, cssSelector: ".art-gate" },
       author: [{ "@type": "Person", name: authorOf(s) }],
       publisher: { "@type": "Organization", name: "Georgia Construction Insider", url: SITE },
       mainEntityOfPage: SITE + path,

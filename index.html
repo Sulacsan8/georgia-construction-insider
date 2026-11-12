@@ -851,6 +851,12 @@ body{min-height:100vh;display:flex;flex-direction:column}main{flex:1 0 auto;min-
 .pi-gate-icon{display:inline-flex;width:46px;height:46px;border-radius:50%;background:#cc050d;align-items:center;justify-content:center}
 .pi-gate-btns{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center}
 .pi-gate-link{color:#fff;text-decoration:underline;font-weight:600}
+.art-gate{margin-top:26px}
+.gate-offer{margin:16px 0 20px;border:1px solid #444;border-radius:12px;padding:14px 18px}
+.gate-offer-tag{display:inline-block;background:#cc050d;color:#fff;font-weight:800;font-size:13px;padding:4px 12px;border-radius:99px;margin-bottom:10px}
+.gate-prices{display:flex;flex-wrap:wrap;gap:12px 36px;color:#fff;font-size:16px}
+.gate-prices b{font-size:26px}
+.gate-prices small{display:block;color:#bdbdbd;font-size:13px}
 .pi-rel ul{list-style:none;padding:0}.pi-rel a{font-weight:700;color:#cc050d}
 .pi-side{position:sticky;top:16px;display:grid;gap:16px}
 .pi-facts{background:#f1f2f4;border-radius:14px;padding:20px 22px}
@@ -1571,7 +1577,7 @@ async function piMember(){
   const {data,error}=await sbc.from("members").select("*").eq("id",session.user.id).maybeSingle();
   if(error)return;
   state.member=data||{id:session.user.id,status:"none"};state.memberAt=Date.now();
-  if(currentRoute.startsWith("pi-"))go(currentRoute,true);
+  if(currentRoute.startsWith("pi-")||currentRoute.startsWith("story-"))go(currentRoute,true);
 }
 document.addEventListener("input",e=>{if(e.target.id==="pi-q"){state.pq=e.target.value;piRows()}});
 document.addEventListener("change",e=>{
@@ -2096,17 +2102,26 @@ const FACT_EXTRAS={
   "story-georgia-counties-data-center-moratoriums":[["Lee County end date","Midnight June 30, 2027, or earlier if an ordinance is adopted"],["Lee County vote","Nov. 10, 2026 (second extension)"],["Lee County earlier actions","Resolution 2025-20 (Dec. 9, 2025); Resolution 2026-12 (June 9, 2026)"],["Camden County extension","Nine months, approved Nov. 3, 2026 on a 3-2 vote"],["Camden original moratorium","Six months, adopted May 5, 2026"],["Camden draft ordinance","33 pages; updated Nov. 4, 2026; not yet adopted"],["Camden well monitoring","All wells within 1 mile, paid for by the data center"]],
   "story-glynn-hwy-99-industrial-rezoning":[["Acreage","461.23 acres"],["Current zoning","Forest Agricultural (FA)"],["Requested zoning","Basic Industrial (BI)"],["DRI number","#8795"],["Filed","Nov 5, 2026; second form Nov 10, 2026"],["Regional reviewer","Coastal Regional Commission"],["Water and sewer","Well; on-site septic"]]
 };
+// Articles are members-only after the first two paragraphs (same lock as Project Insights; preview hosts show everything unless "view as non-member" is on).
+const articleLocked=()=>!isMember(state.member)&&!(piPreview()&&!state.piAsGuest);
+const articleGate=()=>`<section class="pi-gate art-gate"><span class="pi-gate-icon">${ICON_LOCK.replace(/width="11" height="11"/,'width="22" height="22"')}</span><h2>Keep reading with GCI membership</h2><p>The rest of this article and its Key Facts are for GCI members. Members get full access to every article and Project Insight, with project teams, timelines and contractor details.</p>
+    <div class="gate-offer"><span class="gate-offer-tag">Limited Time Offer</span><div class="gate-prices"><div><b>$11.99</b>/month<small>Previously <s>$19.99</s></small></div><div><b>$109.99</b>/year<small>Previously <s>$199</s></small></div></div></div>
+    <div class="pi-gate-btns"><a class="pi-gate-btn" href="/membership" data-go="membership">Explore Memberships →</a><a class="pi-gate-link" href="/sign-in" data-go="signin">Already a member? Sign in</a></div></section>`;
 function story(s){
+  const locked=articleLocked();
   const facts=[["Value",s.valueLabel],["Location",s.where],["Company",s.who],["Stage",s.status],...(FACT_EXTRAS[s.id]||[])].filter(f=>f[1]);
   const next=sorted[(sorted.indexOf(s)+1)%sorted.length];
   const more=sorted.filter(x=>x!==s&&x!==next).slice(0,3);
-  return `<div class="wrap"><header class="art-head"><div class="row mono art-kicker">${s.sector}</div><h1>${s.title}</h1>${byline(s)}</header>
+  const teaser=s.body.filter(p=>!p.startsWith("<")).slice(0,2);
+  const preview=piPreview()?`<p class="pi-preview">Preview: ${state.piAsGuest?"showing what non-members see.":"the full article is shown so you can review it."} <button type="button" data-piguest>${state.piAsGuest?"Show full article":"View as non-member"}</button></p>`:"";
+  return `<div class="wrap">${preview}<header class="art-head"><div class="row mono art-kicker">${s.sector}</div><h1>${s.title}</h1>${byline(s)}</header>
   <div class="article"><article>
     ${art(s,"a")}<p class="caption">${s.img?(s.credit?`Photo: ${s.credit}`:""):"Illustration of the project type, not a site photograph."}</p>
     <p class="dek art-dek">${s.dek}</p>
-    <div class="prose">${s.body.map(p=>p.startsWith("<")?p:`<p>${p}</p>`).join("")}</div>
+    <div class="prose">${(locked?teaser:s.body).map(p=>p.startsWith("<")?p:`<p>${p}</p>`).join("")}</div>
+    ${locked?articleGate():""}
     ${INSIGHTS.filter(p=>(p.related||[]).includes(s.id)).map(p=>`<a class="pi-link" href="/project-insights/${p.slug}" data-go="pi-${p.slug}"><span class="pi-link-label">${piTag(p)}<span>Project Insight</span></span><b>${p.title}</b><span class="pi-link-sub">Full project profile: team, timeline, contractors and status.</span><span class="pi-link-go">Read project insight →</span></a>`).join("")}
-  </article><aside class="sheet">${facts.length?`<div class="sheet-head"><span class="sheet-label">Overview</span><h2>Key Facts</h2></div><ul class="kf-list">${facts.map(f=>`<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul>`:""}</aside></div>
+  </article>${locked?`<aside class="sheet"><div class="pi-side-cta"><h3>${ICON_LOCK} Key Facts are for members</h3><p>Value, location, companies, stage and more for every story. Limited Time Offer: from $9.17 a month on the annual plan.</p><a href="/membership" data-go="membership">See membership plans →</a></div></aside>`:`<aside class="sheet">${facts.length?`<div class="sheet-head"><span class="sheet-label">Overview</span><h2>Key Facts</h2></div><ul class="kf-list">${facts.map(f=>`<li><b>${f[0]}:</b> ${f[1]}</li>`).join("")}</ul>`:""}</aside>`}</div>
   <section class="next-story">${link(next,`${art(next,"x")}<div class="ns-text"><span class="ns-label">Next story</span><h3>${next.title}</h3></div><span class="ns-btn">Next story →</span>`)}</section>
   <section class="news-bar"><p>Subscribe to The Georgia Build, our free newsletter, delivered to your inbox every week.</p>${subForm("sub-story","Subscribe","","Enter your email")}</section></div>
   <section class="more-news"><div class="wrap"><h2>More Georgia Construction News</h2><div class="more-grid">${more.map(x=>`<article class="more-card">${link(x,`${art(x,"m")}<h3>${x.title}</h3>`)}</article>`).join("")}</div>
@@ -2304,7 +2319,7 @@ function go(route,keep,nav){
   app.innerHTML=byId[route]?story(byId[route]):ind?industry(ind):pi?insightPage(pi):views[route]();
   if(route==="archives")newsRows();
   if(route==="insights")piRows();
-  if(pi)piMember();
+  if(pi||byId[route])piMember();
   tickCountdown();
   document.body.classList.toggle("bare",route==="signin"||route==="reset"||route==="welcome");
   currentRoute=route;
