@@ -6,7 +6,7 @@ INSIGHTS.push({
   sector: "Data Center",
   region: "Metro Atlanta",
   title: "Meta Stanton Springs Data Center",
-  company: "Meta; Holder Construction",
+  company: "Meta; Holder Construction; DPR Construction",
   place: "Stanton Springs, Newton County",
   statline: "$2B+ · 1,300 peak trade workers · 400 jobs",
   status: "Operating · buildout continuing",
@@ -23,7 +23,7 @@ INSIGHTS.push({
     ["Investment", "More than $2 billion"],
     ["Location", "Stanton Springs, Newton County"],
     ["Owner", "Meta"],
-    ["General contractor", "Holder Construction (Buildings 1 and 2)"],
+    ["General contractors", "Holder Construction (Buildings 1 and 2); DPR Construction (expansion)"],
     ["Groundbreaking", "2018"],
     ["Peak construction workforce", "1,300 skilled trade workers"],
     ["Operational jobs", "400 once completed"],
@@ -32,7 +32,7 @@ INSIGHTS.push({
   ],
   glance: [
     ["Owner and operator", "Meta"],
-    ["General contractor", "Holder Construction (Buildings 1 and 2)"],
+    ["General contractors", "Holder Construction (Buildings 1 and 2); DPR Construction (expansion)"],
     ["Site and utilities", "Plateau Excavation"],
     ["Structural steel", "GrayWolf (Buildings 1 and 2)"],
     ["Investment", "More than $2 billion"],
@@ -62,7 +62,7 @@ INSIGHTS.push({
       "The site was first announced as the Newton Data Center. In March 2021, Meta described a 970,000 sq ft structure and said the campus would be its twelfth data center worldwide and ninth in the United States. Industry tracking data places the operating campus at an estimated 384 megawatts."
     ]},
     { h: "Project team", body: [
-      "<ul><li><b>Owner and operator:</b> Meta.</li><li><b>General contractor:</b> Holder Construction, Atlanta, on the first two data center buildings.</li><li><b>Site and underground utilities:</b> Plateau Excavation, on both phases of the campus.</li><li><b>Structural steel:</b> GrayWolf, which supplied and installed 9,500 tons of structural steel, joists and deck for Buildings 1 and 2.</li></ul>"
+      "<ul><li><b>Owner and operator:</b> Meta.</li><li><b>General contractors:</b> Holder Construction, Atlanta, on the first two data center buildings, and DPR Construction on the expansion.</li><li><b>Site and underground utilities:</b> Plateau Excavation, on both phases of the campus.</li><li><b>Structural steel:</b> GrayWolf, which supplied and installed 9,500 tons of structural steel, joists and deck for Buildings 1 and 2.</li></ul>"
     ]},
     { h: "Site work by the numbers", body: [
       "<ul><li><b>Campus 1 (2017 to 2020):</b> 188 acres; more than 1.8 million cubic yards of material moved; 155,000 cubic yards of rock blasted; 175,000 tons of stone crushed on site; 34,000 linear feet of storm drainage and 32,000 linear feet of wet utilities.</li><li><b>Campus 2 (2021 onward):</b> 285 acres; more than 2.6 million cubic yards of material moved; 32,000 linear feet of storm drainage, 70,000 linear feet of wet utilities and 34,000 linear feet of electrical and telecom duct banks.</li></ul>"
