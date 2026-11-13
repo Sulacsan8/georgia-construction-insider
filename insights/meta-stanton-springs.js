@@ -48,11 +48,13 @@ INSIGHTS.push({
   ],
   timelineIntro: "Key milestones for Meta's Stanton Springs Data Center.",
   timeline: [
+    ["March 2018", "Project announced", "Facebook announces a $750 million data center in Stanton Springs: two buildings totaling 970,000 sq ft, with Holder Construction as general contractor."],
     ["2018", "Groundbreaking", "Construction begins on the campus, then known as the Newton Data Center."],
     ["2019", "Local grants begin", "Meta starts its grants and sponsorships program for schools and nonprofits in the Stanton Springs area."],
-    ["March 2021", "Project detailed", "Meta describes a 970,000 sq ft structure, its twelfth data center worldwide and ninth in the United States, and announces a renewable energy partnership with Walton EMC."],
-    ["2025", "Robotics partnership", "Meta and Newton College and Career Academy open competitive robotics programs to every K-12 school in Newton County Schools."],
-    ["September 2026", "Fact sheet update", "Meta puts its Georgia data center investment at more than $2 billion, with 1,300 trade workers at peak and 400 operational jobs once complete."]
+    ["September 2020", "Expansion announced", "Facebook announces a $1 billion expansion adding three data center buildings and nearly 1.5 million sq ft to the campus."],
+    ["2021", "Campus becomes operational", "The data center begins operating. Meta's environmental reporting records the Newton County site for the first time in 2021, and in March 2021 Meta introduced it as its twelfth data center worldwide and ninth in the United States."],
+    ["2021 onward", "Second campus site work", "Site work begins on a second 285-acre campus, with more than 2.6 million cubic yards of material moved."],
+    ["2025", "Robotics partnership", "Meta and Newton College and Career Academy open competitive robotics programs to every K-12 school in Newton County Schools."]
   ],
   sections: [
     { h: "Project overview", body: [
@@ -60,7 +62,7 @@ INSIGHTS.push({
       "The site was first announced as the Newton Data Center. In March 2021, Meta described a 970,000 sq ft structure and said the campus would be its twelfth data center worldwide and ninth in the United States. Industry tracking data places the operating campus at an estimated 384 megawatts."
     ]},
     { h: "Project team", body: [
-      "<ul><li><b>Owner and operator:</b> Meta.</li><li><b>General contractor:</b> Holder Construction, Atlanta, on the first two data center buildings. Holder advertised field, safety and administrative positions in Social Circle and Covington for the project in 2019.</li><li><b>Site and underground utilities:</b> Plateau Excavation, on both phases of the campus.</li><li><b>Structural steel:</b> GrayWolf, which supplied and installed 9,500 tons of structural steel, joists and deck for Buildings 1 and 2.</li></ul>"
+      "<ul><li><b>Owner and operator:</b> Meta.</li><li><b>General contractor:</b> Holder Construction, Atlanta, on the first two data center buildings.</li><li><b>Site and underground utilities:</b> Plateau Excavation, on both phases of the campus.</li><li><b>Structural steel:</b> GrayWolf, which supplied and installed 9,500 tons of structural steel, joists and deck for Buildings 1 and 2.</li></ul>"
     ]},
     { h: "Site work by the numbers", body: [
       "<ul><li><b>Campus 1 (2017 to 2020):</b> 188 acres; more than 1.8 million cubic yards of material moved; 155,000 cubic yards of rock blasted; 175,000 tons of stone crushed on site; 34,000 linear feet of storm drainage and 32,000 linear feet of wet utilities.</li><li><b>Campus 2 (2021 onward):</b> 285 acres; more than 2.6 million cubic yards of material moved; 32,000 linear feet of storm drainage, 70,000 linear feet of wet utilities and 34,000 linear feet of electrical and telecom duct banks.</li></ul>"
