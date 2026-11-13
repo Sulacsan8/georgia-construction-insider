@@ -16,7 +16,7 @@ INSIGHTS.push({
   img: "/images/insights/meta-stanton-springs.jpg",
   alt: "Exterior of the Meta Stanton Springs Data Center administration building with flagpoles and landscaped entry plaza",
   credit: "",
-  related: ["story-meta-stanton-springs-2-billion"],
+  related: [],
   dek: "Meta has invested more than $2 billion in its Stanton Springs Data Center in Newton County. The campus broke ground in 2018, drew 1,300 skilled trade workers at peak construction and will support 400 operational jobs once complete.",
   facts: [
     ["Project", "Meta Stanton Springs Data Center (formerly Newton Data Center)"],
