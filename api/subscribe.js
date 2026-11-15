@@ -1,4 +1,5 @@
 import { handle, json, HttpError, setting } from "./_lib.js";
+import { grantNewsletterAccess } from "./_newsletter-access.js";
 
 // The Georgia Build signup boxes post here. Adds the email to the Beehiiv publication
 // and asks Beehiiv to send its welcome email. The API key lives only in Vercel (BEEHIIV_API_KEY).
@@ -36,5 +37,7 @@ export const POST = handle(async (request) => {
   }
   const data = (await res.json()).data || {};
   if (data.status === "invalid") throw new HttpError(400, "That email address doesn't look right. Please check it and try again.");
-  return json(200, { ok: true });
+  // Only a confirmed active subscription unlocks the website edition.
+  if (data.status !== "active") return json(200, { ok: true, newsletterAccess: false, requiresConfirmation: true });
+  return grantNewsletterAccess(json(200, { ok: true, newsletterAccess: true }));
 });

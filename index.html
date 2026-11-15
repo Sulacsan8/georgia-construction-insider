@@ -18,6 +18,7 @@
 <meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="/newsletter.css">
 </head><body>
 <style>
 /* Layout: a regional news hub. One-row masthead, big lead beside a numbered list, then stacked full-width modules. Single light theme by choice. */
@@ -896,6 +897,8 @@ body{min-height:100vh;display:flex;flex-direction:column}main{flex:1 0 auto;min-
   <div class="foot-base"><span>© 2026 Georgia Construction Insider. All Rights Reserved.</span><span class="foot-legal"><a href="/privacy" data-go="privacy">Privacy Policy</a><a href="/terms" data-go="terms">Terms &amp; Conditions</a><a href="/refunds" data-go="refunds">Refund Policy</a></span></div>
 </div></footer>
 <script src="/insights.js"></script>
+<script src="/newsletter-meta.js"></script>
+<script src="/newsletter-page.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
 <script>
 const STORIES=[
@@ -1408,8 +1411,8 @@ function byline(s){
 const TOPICS=Object.fromEntries(["Civil","Commercial","Data Center","Energy & Solar","Federal & Government","Healthcare","Industrial","Semi-Conductor & Manufacturing","Transportation","Water"].map(t=>[t,[t]]));
 // Clean page addresses. Articles live at /news/<slug>, where the slug is the story id without "story-".
 const PATHS={home:"/",archives:"/news",tracker:"/project-tracker",insights:"/project-insights",newsletters:"/newsletter",sponsors:"/sponsors",membership:"/membership",contact:"/contact",privacy:"/privacy",terms:"/terms",refunds:"/refunds",signin:"/sign-in",dashboard:"/dashboard",reset:"/reset-password",welcome:"/welcome"};
-const pathOf=r=>r.startsWith("story-")?"/news/"+r.slice(6):r.startsWith("pi-")?"/project-insights/"+r.slice(3):r.startsWith("ind-")?"/industry/"+r.slice(4):(PATHS[r]||"/");
-const routeOf=p=>{p=p.replace(/\/+$/,"")||"/";if(p.startsWith("/news/"))return "story-"+p.slice(6);if(p.startsWith("/industry/"))return "ind-"+p.slice(10);if(p.startsWith("/project-insights/"))return "pi-"+p.slice(18);return Object.keys(PATHS).find(k=>PATHS[k]===p)||"home"};
+const pathOf=r=>r.startsWith("nl-")?"/newsletter/"+r.slice(3):r.startsWith("story-")?"/news/"+r.slice(6):r.startsWith("pi-")?"/project-insights/"+r.slice(3):r.startsWith("ind-")?"/industry/"+r.slice(4):(PATHS[r]||"/");
+const routeOf=p=>{p=p.replace(/\/+$/,"")||"/";if(/^\/newsletter\/\d{3}$/.test(p))return "nl-"+p.slice(12);if(p.startsWith("/news/"))return "story-"+p.slice(6);if(p.startsWith("/industry/"))return "ind-"+p.slice(10);if(p.startsWith("/project-insights/"))return "pi-"+p.slice(18);return Object.keys(PATHS).find(k=>PATHS[k]===p)||"home"};
 const PAGE_TITLES={home:"Georgia Construction Insider | Georgia Construction News and Projects",archives:"Latest Georgia Construction News",tracker:"Project Tracker",insights:"Project Insights | Georgia Construction Insider",newsletters:"The Georgia Build Newsletter",sponsors:"Sponsors and Advertising",membership:"Membership",contact:"Contact Us",privacy:"Privacy Policy",terms:"Terms and Conditions",refunds:"Refund Policy",signin:"Sign In",dashboard:"Dashboard",reset:"Reset Password",welcome:"Welcome to GCI"};
 const link=(s,inner,cls)=>`<a href="${pathOf(s.id)}" data-go="${s.id}"${cls?` class="${cls}"`:""}>${inner}</a>`;
 const short=s=>s.title.split(": ").pop();
@@ -1419,7 +1422,7 @@ const pourBox=()=>`<aside class="pour pour-x"><span class="px-rule" aria-hidden=
   <p class="px-desc">Georgia construction news, projects and industry updates, delivered every week.</p>
   <ul class="px-list"><li>The latest Georgia construction headlines</li><li>Major project announcements and milestones</li><li>Industry news, delivered free to your inbox</li></ul>
   ${subForm("sub-side","Subscribe","","Enter your email address")}
-  <div class="countdown px-next" data-countdown><p class="px-label">Next Newsletter</p><div class="cd-boxes"><div><b data-cd="d">0</b><span>Days</span></div><div><b data-cd="h">00</b><span>Hours</span></div><div><b data-cd="m">00</b><span>Mins</span></div><div><b data-cd="s">00</b><span>Secs</span></div></div><p class="px-when"><span data-cd="when"></span> · Scheduled edition</p></div></aside>`;
+  <div class="countdown px-next" data-countdown><p class="px-label">Next Newsletter</p><div class="cd-boxes"><div><b data-cd="d">0</b><span>Days</span></div><div><b data-cd="h">00</b><span>Hours</span></div><div><b data-cd="m">00</b><span>Mins</span></div><div><b data-cd="s">00</b><span>Secs</span></div></div><p class="px-when"><span data-cd="when"></span> · Scheduled edition</p></div><a class="px-issue" href="/newsletter/001" data-go="nl-001">View The Georgia Build #001 →</a></aside>`;
 const pourBand=id=>`<section class="pour-band"><div><span class="mono">The Georgia Build · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div>${subForm(id)}</section>`;
 const insight=s=>link(s,`${art(s,"i")}<span class="metric">${metric(s)}</span><h3>${s.title}</h3><p>${s.dek}</p><span class="go">Read more →</span>`,"insight");
 const newsCard=s=>`<article class="news-card">${link(s,`${art(s,"n")}<div class="nc-body"><span class="nc-meta">${s.sector} · ${s.date}</span><h3>${s.title}</h3><p>${s.dek}</p><span class="nc-go">Read Story →</span></div>`)}</article>`;
@@ -1810,7 +1813,8 @@ async function subscribe(form){
     const res=await fetch("/api/subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:input.value,company:form.querySelector('[name="company"]').value,page:location.pathname})});
     const out=await res.json().catch(()=>({}));
     if(!res.ok)throw new Error(out.error||"");
-    form.reset();say("Thanks for subscribing! Check your inbox for a welcome email from The Georgia Build.");
+    form.reset();say(out.requiresConfirmation?"Check your inbox to confirm your subscription, then return here to continue reading.":"Thanks for subscribing! Check your inbox for a welcome email from The Georgia Build.");
+    if(out.newsletterAccess&&gciNewsletterRoute())await loadNewsletter({afterSubscribe:true});
   }catch(err){
     say(err.message||"Sorry, we couldn't subscribe you just now. Please try again in a few minutes.");
   }
@@ -1883,7 +1887,7 @@ function dashboard(){
   <div class="db-layout"><nav class="db-tabs" aria-label="Dashboard">${tabs.map(t=>`<button data-dtab="${t[0]}"${state.dtab===t[0]?' aria-current="page"':""}>${t[1]}</button>`).join("")}<button data-signout>Sign Out</button></nav>
   <div class="db-main"><p class="db-note" role="status">${esc(state.dbMsg||"")}</p>${panels[state.dtab]||panels.overview}</div></div></div>`;
 }
-function newsletters(){return `<div class="wrap"><section class="pour-band"><div><span class="mono">The Georgia Build · Free newsletter</span><h2>Know what Georgia is building.</h2><p>Major projects, construction news and industry updates, in your inbox every week.</p></div><div>${countdownHTML().replace("data-countdown","data-countdown data-target=\"2026-11-15T17:00:00Z\"").replace("Next edition:","First edition:")}${subForm("sub-page")}</div></section></div>`}
+function newsletters(){return newsletterPage(false)}
 // Extra Key Facts per story. Only facts stated in the article; leave a story out when nothing is confirmed.
 const FACT_EXTRAS={
   "story-audi":[["Jobs","Approximately 4,500 (Phase One)"],["Site size","Approximately 1,500 acres"],["Output","Up to 200,000 SUVs a year"],["Timeline","Grading 2027, construction 2028, full production targeted 2031"],["Incentives","At least $958.4 million (Phase One)"],["Phase two option","Approximately $3 billion and 3,000 more jobs"]],
@@ -2224,7 +2228,7 @@ function nextEdition(now){
 const countdownHTML=()=>`<div class="countdown" data-countdown><p class="cd-title">Next edition: <span data-cd="when"></span></p><div class="cd-boxes"><div><b data-cd="d">0</b><span>Days</span></div><div><b data-cd="h">00</b><span>Hours</span></div><div><b data-cd="m">00</b><span>Minutes</span></div><div><b data-cd="s">00</b><span>Seconds</span></div></div></div>`;
 function tickCountdown(){
   document.querySelectorAll("[data-countdown]").forEach(box=>{
-    const now=new Date(),target=box.dataset.target?new Date(box.dataset.target):nextEdition(now),left=Math.max(0,Math.floor((target-now)/1000)),two=n=>String(n).padStart(2,"0");
+    const now=new Date(Date.now()+Number(box.dataset.serverOffset||0)),target=box.dataset.target?new Date(box.dataset.target):nextEdition(now),left=Math.max(0,Math.floor((target-now)/1000)),two=n=>String(n).padStart(2,"0");
     const set=(k,v)=>{const el=box.querySelector(`[data-cd="${k}"]`);if(el)el.textContent=v};
     set("when",new Intl.DateTimeFormat("en-US",{timeZone:EDITION_TZ,weekday:"long",month:"long",day:"numeric"}).format(target)+" at 12 p.m. ET");
     set("d",Math.floor(left/86400));set("h",two(Math.floor(left%86400/3600)));set("m",two(Math.floor(left%3600/60)));set("s",two(left%60));
@@ -2262,10 +2266,11 @@ function updateAuthUI(){
   if(!pill)return;
   const route=session?"dashboard":"signin";
   pill.dataset.go=route;pill.href="#"+route;pill.textContent=session?"Dashboard":"Sign in";
+  newsletterAuthChanged();
 }
 const friendly=e=>{const m=(e&&e.message)||"";return /invalid login/i.test(m)?"That email and password don't match. Please try again.":/already registered|already been registered/i.test(m)?"An account with that email already exists. Please sign in instead.":/email not confirmed/i.test(m)?"Please confirm your email first, using the link we sent you.":/rate limit|too many/i.test(m)?"Too many attempts. Please wait a few minutes and try again.":m||"Something went wrong. Please try again."};
 async function freshToken(){const {data}=await sb.auth.getSession();session=data.session;return session&&session.access_token}
-function afterSignIn(){updateAuthUI();const plan=getPending();if(plan){setPending(null);startCheckout(plan)}else go("dashboard")}
+function afterSignIn(){updateAuthUI();const plan=getPending();if(plan){setPending(null);startCheckout(plan)}else go(newsletterReturnRoute()||"dashboard")}
 async function handleAuth(form){
   const note=form.querySelector(".si-note"),btn=form.querySelector('button[type="submit"]'),label=btn.textContent;
   note.dataset.state="done";
@@ -2347,6 +2352,9 @@ async function openPortal(btn){
   }catch(err){note.textContent=err.message;btn.disabled=false}
 }
 async function signOut(){
+  cancelNewsletterLoad();
+  const root=document.getElementById("gci-newsletter-root");if(root)root.innerHTML="";
+  await fetch("/api/newsletter",{method:"DELETE"}).catch(()=>{});
   const sbc=await authInit;
   if(sbc)await sbc.auth.signOut();
   session=null;state.member=null;state.db="loading";state.dtab="overview";
@@ -2390,24 +2398,26 @@ function go(route,keep,nav){
   const views={dashboard,reset,welcome,home,privacy,terms,refunds,contact,membership,tracker,insights,newsletters,archives,sponsors,signin};
   const ind=route.startsWith("ind-")?IND_BY_SLUG[route.slice(4)]:null;
   const pi=route.startsWith("pi-")?PI_BY[route.slice(3)]:null;
-  if(!views[route]&&!byId[route]&&!ind&&!pi)route=route.startsWith("pi-")?"insights":"home";
+  const nl=/^nl-\d{3}$/.test(route);
+  if(!nl&&!views[route]&&!byId[route]&&!ind&&!pi)route=route.startsWith("pi-")?"insights":"home";
   if(ind&&currentRoute!==route){state.iq="";state.ireg="All";state.isort="new";state.ilimit=IND_PAGE}
-  app.innerHTML=byId[route]?story(byId[route]):ind?industry(ind):pi?insightPage(pi):views[route]();
+  app.innerHTML=nl?newsletterPage(true):byId[route]?story(byId[route]):ind?industry(ind):pi?insightPage(pi):views[route]();
   if(route==="archives")newsRows();
   if(route==="insights")piRows();
   if(pi||byId[route])piMember();
   tickCountdown();
   document.body.classList.toggle("bare",route==="signin"||route==="reset"||route==="welcome");
   currentRoute=route;
+  if(nl||route==="newsletters")loadNewsletter();else cancelNewsletterLoad();
   if(route==="dashboard")loadDashboard();
   if(ind)indRows();
   if(route==="welcome")loadWelcome();
-  document.querySelectorAll("#nav>a").forEach(a=>{a.dataset.go===(pi?"insights":route)?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
+  document.querySelectorAll("#nav>a").forEach(a=>{a.dataset.go===(nl?"newsletters":pi?"insights":route)?a.setAttribute("aria-current","page"):a.removeAttribute("aria-current")});
   document.getElementById("dd-ind").dataset.on=ind?"1":"0";
   document.querySelectorAll("#nav details").forEach(d=>d.open=false);
   const url=pathOf(route)+(nav==="init"?location.search:"");
   try{if(nav==="push"){if(location.pathname!==pathOf(route))history.pushState(null,"",url)}else if(nav!=="pop")history.replaceState(null,"",url)}catch(e){}
-  document.title=byId[route]?byId[route].title.replace(/<[^>]+>/g,"")+" | Georgia Construction Insider":pi?pi.title+" | Project Insights | Georgia Construction Insider":ind?ind+" Construction News | Georgia Construction Insider":(PAGE_TITLES[route]||PAGE_TITLES.home);
+  document.title=nl?"The Georgia Build #"+route.slice(3)+" | Georgia Construction Insider":byId[route]?byId[route].title.replace(/<[^>]+>/g,"")+" | Georgia Construction Insider":pi?pi.title+" | Project Insights | Georgia Construction Insider":ind?ind+" Construction News | Georgia Construction Insider":(PAGE_TITLES[route]||PAGE_TITLES.home);
   if(!keep)window.scrollTo(0,0);
 }
 document.addEventListener("click",e=>{
