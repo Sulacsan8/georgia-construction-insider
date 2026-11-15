@@ -25,13 +25,20 @@ INSIGHTS.push({
     ["Jobs", "Approximately 2,000 at Cartersville; approximately 3,800 across Georgia"],
     ["Design-builder", "Gray"],
     ["Architect / engineer", "Stantec"],
+    ["Fire protection", "CHA"],
+    ["Commissioning", "OnQCx"],
     ["Federal support", "Up to $1.45 billion DOE loan guarantee"],
     ["Stage", "Operating; full ingot-to-cell ramp in progress"]
   ],
   glance: [
     ["Owner", "Qcells (Hanwha Qcells), subsidiary of Hanwha Solutions"],
-    ["Design-builder", "Gray (Lexington, Ky.)"],
+    ["Design-builder", "Gray"],
     ["Architecture and engineering", "Stantec (architecture, MEP, structural/civil, fire protection, environmental, water/wastewater)"],
+    ["Fire protection", "CHA (fire pumps, sprinkler and clean-agent systems)"],
+    ["Commissioning", "OnQCx (quality and commissioning, levels 2 to 5)"],
+    ["On-site substation", "Georgia Power (230 kV)"],
+    ["Water and sewer", "City of Cartersville Water Department"],
+    ["Project code name", "Project Redeemer"],
     ["Local partners", "Bartow-Cartersville JDA; Bartow-Cartersville Second JDA; Dalton-Whitfield JDA"],
     ["Other partners", "Georgia Tech; Georgia EMC; Georgia Quick Start"],
     ["Polysilicon", "REC Silicon (per 2024 Microsoft deal coverage)"],
@@ -57,7 +64,7 @@ INSIGHTS.push({
     ["Apr. 2025", "Module production starts", "Cartersville begins assembling panels."],
     ["June 2025", "Customs detentions begin", "U.S. Customs starts holding imported cells under the Uyghur Forced Labor Prevention Act. Qcells says none of its supply comes from China."],
     ["Nov. 2025", "Furloughs", "About 1,000 Georgia employees are furloughed or put on reduced hours, and roughly 300 agency workers are cut."],
-    ["Dec. 2025", "OSHA citation", "OSHA cites a construction firm after a worker's death at a Qcells site."],
+    ["Dec. 2025", "OSHA citation", "OSHA cites contractor Hyoungwon E&C America after a worker's death at the plant in May 2025, proposing $20,522 in penalties for nitrogen asphyxiation hazards."],
     ["Mar. 6, 2026", "Back to full production", "Qcells recalls furloughed workers and resumes normal output."],
     ["June 2026", "Cell production begins", "Cell lines start, and module assembly runs at full capacity."],
     ["Q3 2026 (target)", "Full ramp", "Ingot, wafer and cell lines are due to reach full output."]
@@ -69,7 +76,7 @@ INSIGHTS.push({
       "Production started later than first planned. Qcells originally aimed for 2024. Modules started in April 2025, a customs dispute halted much of the Georgia workforce over the winter, and cell production started in June 2026."
     ]},
     { h: "Project team", body: [
-      "<ul><li><b>Design-builder:</b> Gray, which also built Qcells' Dalton plant. Gray says roughly 40% to 50% of the construction work went to local contractors from the Atlanta and Chattanooga areas.</li><li><b>Architect and engineer:</b> Stantec, covering architecture, MEP, structural, civil, fire protection, environmental and water and wastewater design.</li><li><b>Economic development partners:</b> the Bartow-Cartersville Joint Development Authority, the Bartow-Cartersville Second JDA, the Dalton-Whitfield JDA and the Georgia Department of Economic Development.</li><li><b>Other partners:</b> Georgia Tech, Georgia EMC and Georgia Quick Start.</li></ul>"
+      "<ul><li><b>Design-builder:</b> Gray, which also built Qcells' Dalton plant. Gray says roughly 40% to 50% of the construction work went to local contractors from the Atlanta and Chattanooga areas.</li><li><b>Architect and engineer:</b> Stantec, covering architecture, MEP, structural, civil, fire protection, environmental and water and wastewater design.</li><li><b>Fire protection:</b> CHA, working for Gray, designed and delivered the fire pumps, more than 80 overhead wet sprinkler systems, dry and preaction systems and specialized clean-agent suppression.</li><li><b>Commissioning:</b> OnQCx, working for Gray, ran quality and commissioning from levels 2 to 5, including functional and integrated systems testing and energization coordination for Qcells.</li><li><b>Power:</b> Georgia Power is building a 230 kV substation on a 7.5-acre corner of the site that will serve every building except the module plant.</li><li><b>Water and sewer:</b> the City of Cartersville Water Department, through Bartow County, supplies construction water and up to 3.8 million gallons a day once the plant is running.</li><li><b>Other contractors:</b> Hyoungwon E&C America worked at the plant and was cited by OSHA after a worker's death in May 2025.</li><li><b>Economic development partners:</b> the Bartow-Cartersville Joint Development Authority, the Bartow-Cartersville Second JDA, the Dalton-Whitfield JDA and the Georgia Department of Economic Development.</li><li><b>Other partners:</b> Georgia Tech, Georgia EMC and Georgia Quick Start.</li></ul>"
     ]},
     { h: "Project components", body: [
       "<ul><li><b>Ingot and wafer production:</b> 3.3 GW a year once ramped.</li><li><b>Cell production:</b> 3.3 GW a year. Lines started in June 2026.</li><li><b>Module assembly:</b> 3.5 GW a year, or 16,700 panels a day at full capacity, across three lines running roughly 500 panels an hour each.</li><li><b>Recycling:</b> an EcoRecycle panel-recycling operation sized for roughly 500,000 panels a year.</li><li><b>Support:</b> warehouse space, offices and a solar carport.</li></ul>",
