@@ -1,7 +1,7 @@
 // Runs on Vercel at each deploy. Writes the site into public/ with one HTML file per clean address,
 // each carrying its own title, description and social-preview tags, plus sitemap.xml and robots.txt.
 import { readFileSync, writeFileSync, mkdirSync, cpSync, rmSync, readdirSync } from "node:fs";
-import { metadata as newsletter } from "../api/_newsletter-edition.js";
+import { editions } from "../api/_newsletter-edition.js";
 
 const SITE = "https://georgiaconstructioninsider.com";
 const OUT = "public";
@@ -81,7 +81,7 @@ for (const [path, name] of PRIVATE) {
   write(`${OUT}${path}.html`, page({ path, title: `${name} | Georgia Construction Insider`, description: DESC, noindex: true }));
 }
 
-write(`${OUT}${newsletter.url}.html`, page({
+for (const { metadata: newsletter } of editions) write(`${OUT}${newsletter.url}.html`, page({
   path: newsletter.url,
   title: `${newsletter.title}: ${newsletter.headline} | Georgia Construction Insider`,
   description: newsletter.description,
@@ -149,7 +149,7 @@ for (const p of INSIGHTS) {
 
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
-  `<url><loc>${SITE}${newsletter.url}</loc><lastmod>${newsletter.releaseAt.slice(0, 10)}</lastmod></url>`,
+  ...editions.map(({ metadata: newsletter }) => `<url><loc>${SITE}${newsletter.url}</loc><lastmod>${newsletter.releaseAt.slice(0, 10)}</lastmod></url>`),
   ...SECTIONS.map(([path]) => `<url><loc>${SITE}${path}</loc><lastmod>${today}</lastmod></url>`),
   `<url><loc>${SITE}/project-insights</loc><lastmod>${today}</lastmod></url>`,
   ...INSIGHTS.map((p) => `<url><loc>${SITE}/project-insights/${p.slug}</loc><lastmod>${p.updated}</lastmod></url>`),
