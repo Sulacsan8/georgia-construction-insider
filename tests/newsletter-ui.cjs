@@ -30,7 +30,7 @@ try{
  await page.goto(base+'/newsletter');await page.locator('.nl-card').first().waitFor();assert((await page.locator('.nl-latest').first().innerText()).toLowerCase().includes('latest issue'));await page.locator('.nl-card .pill').first().click();await page.locator('.nl-full').waitFor();
  // A signed-in free account can return from the gate to the edition.
  await context.clearCookies();await page.reload();await page.locator('#newsletter-subscribe-gate').waitFor();await page.locator('[data-newsletter-signin]').click();await page.locator('#si-email').fill('local-reader@example.test');await page.locator('#si-pass').fill('local-test-password');await page.locator('[data-auth] button[type="submit"]').click();await page.locator('.nl-full').waitFor();assert.equal(new URL(page.url()).pathname,'/newsletter/002');
- 
+
  // Restored free/paid account states and actual dashboard sign-out control.
  await page.evaluate(()=>localStorage.setItem('gci-test-auth-delay','700'));await page.reload({waitUntil:'domcontentloaded'});await page.locator('.nl-loading').waitFor();assert.equal(await page.locator('.nl-full').count(),0);await page.locator('.nl-full').waitFor();
  await page.evaluate(()=>{localStorage.removeItem('gci-test-auth-delay');localStorage.setItem('gci-test-tier','paid')});await page.reload();await page.locator('.nl-full').waitFor();
@@ -39,7 +39,7 @@ await page.goto(base+'/newsletter/002');await page.locator('#newsletter-subscrib
  // Failed/inactive signup never removes the gate.
  await scenario({subscriptionStatus:'inactive'});await page.locator('#sub-edition').fill('inactive@example.test');await page.locator('#newsletter-subscribe-gate button[type="submit"]').click();await page.locator('#newsletter-subscribe-gate .sub-note').filter({hasText:'confirm your subscription'}).waitFor();assert.equal(await page.locator('.nl-full').count(),0);
  await page.goto(base+'/');await page.locator('.px-issue').waitFor();await page.locator('.px-issue').click();await page.locator('#newsletter-subscribe-gate').waitFor();
- 
+
  // The earlier issue remains listed and protected after the new issue is added.
  await page.goto(base+'/newsletter');await page.locator('.nl-card').first().waitFor();assert.equal(await page.locator('.nl-card').count(),2);assert(/previous issue.*#001/i.test(await page.locator('.nl-latest').nth(1).innerText()));
  await page.locator('.nl-card .pill').nth(1).click();await page.locator('#newsletter-subscribe-gate').waitFor();assert.equal(new URL(page.url()).pathname,'/newsletter/001');assert((await page.locator('.nl-teaser').innerText()).includes('THE FIRST EDITION'));
