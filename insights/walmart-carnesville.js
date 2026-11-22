@@ -62,6 +62,11 @@ INSIGHTS.push({
       "Next-generation fulfillment centers combine robotics, machine learning and automated storage systems. Walmart says the technology cuts the traditional 12-step order fulfillment process down to five steps.",
       "Compared with a conventional fulfillment center, the design doubles daily order-processing capacity and doubles storage capacity. That lets the building handle far more orders from the same footprint."
     ]},
+    { h: "Project renderings", body: [
+      "<figure class=\"pi-fig\"><img src=\"/images/insights/walmart-carnesville-aerial-rendering.jpg\" alt=\"Rendering of the long white fulfillment center with truck docks, trailers and a blue entrance tower beside a large car park\" loading=\"lazy\"><figcaption class=\"caption\">Aerial rendering of the fulfillment center. Rendering: BRR Architecture.</figcaption></figure>",
+      "<figure class=\"pi-fig\"><img src=\"/images/insights/walmart-carnesville-street.jpg\" alt=\"Street-level rendering of the grey fulfillment center with a Walmart trailer, a blue office tower and a pedestrian walkway\" loading=\"lazy\"><figcaption class=\"caption\">Street-level view of the main building and blue entrance tower. Rendering: BRR Architecture.</figcaption></figure>",
+      "<figure class=\"pi-fig\"><img src=\"/images/insights/walmart-carnesville-site-plan.jpg\" alt=\"Overhead site plan rendering showing the white-roofed building, truck courts, car park, access road and stormwater pond\" loading=\"lazy\"><figcaption class=\"caption\">Overhead site plan rendering. Rendering: BRR Architecture.</figcaption></figure>"
+    ]},
     { h: "Project team", body: [
       "<ul><li><b>Owner and developer:</b> Walmart.</li><li><b>General contractor:</b> The Whiting-Turner Contracting Company.</li><li><b>Architect of record:</b> BRR Architecture.</li><li><b>Site-civil infrastructure:</b> A.L. Grading Contractors, under a contract valued at approximately $40 million.</li></ul>"
     ]},
