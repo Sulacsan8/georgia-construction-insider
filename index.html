@@ -448,6 +448,13 @@ nav.main>a:hover,nav.main summary:hover{color:#cc050d}
   .pour-x .cd-boxes div{padding-block:6px}
   .pour-x .px-when{margin-top:6px}
 }
+/* Wide screens: newsletter box in two columns (sign-up left, countdown right) so the lead photo card gets more height */
+@media (min-width:1000px){
+  .front .pour.pour-x{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);column-gap:22px;align-content:start;flex:none}
+  .front .pour.pour-x>*{grid-column:1}
+  .front .pour.pour-x .px-next{grid-column:2;grid-row:1/span 5;align-self:center;margin-top:0;padding:4px 0 0 22px;border-top:0;border-left:1px solid #8a9099}
+  .front .pour.pour-x .px-issue{grid-column:2;grid-row:6;align-self:center;margin:0;padding-left:22px;border-left:1px solid #8a9099}
+}
 .countdown{margin-top:16px}
 .pour p.cd-title{font-weight:700;color:#fff;font-size:15px;margin-bottom:8px}
 .cd-boxes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
