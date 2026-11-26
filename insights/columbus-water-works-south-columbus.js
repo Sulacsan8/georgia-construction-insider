@@ -17,13 +17,13 @@ INSIGHTS.push({
   alt: "Columbus Water Works aerial map showing the existing wastewater plant circled in red beside the Chattahoochee River and the new treatment site outlined in yellow",
   credit: "",
   related: ["story-columbus-water-works-south-columbus-plant"],
-  dek: "Columbus Water Works is planning an all-new wastewater treatment plant to replace its 1964 South Columbus facility. It is the largest water infrastructure investment in the utility's history, estimated at $600 million to $750 million, with Barge Design Solutions leading the design and completion targeted for the end of 2031.",
+  dek: "Columbus Water Works is planning an all-new wastewater treatment plant to replace its 1964 South Columbus facility. It is the largest water infrastructure investment in the utility's history, estimated at $600 million to $750 million, with Barge Design Solutions leading the electrical design and completion targeted for the end of 2031.",
   facts: [
     ["Owner", "Columbus Water Works"],
     ["Estimated cost", "$600 million to $700 million (design firm); approximately $750 million (utility's 2025 report)"],
     ["New plant capacity", "65 million gallons per day permitted, maximum month flow"],
     ["Location", "New site in South Columbus, near the existing plant on the Chattahoochee River"],
-    ["Prime design consultant", "Barge Design Solutions (leads the design, including electrical design)"],
+    ["Electrical design", "Barge Design Solutions"],
     ["Design team", "Hazen and Sawyer; Freese and Nichols"],
     ["Delivery method", "Construction manager at risk"],
     ["Design complete", "Late 2027"],
@@ -31,9 +31,8 @@ INSIGHTS.push({
   ],
   glance: [
     ["Owner", "Columbus Water Works"],
-    ["Prime engineer", "Barge Design Solutions"],
     ["Electrical design", "Barge Design Solutions"],
-    ["Design partners", "Hazen and Sawyer; Freese and Nichols"],
+    ["Design team", "Hazen and Sawyer; Freese and Nichols"],
     ["Delivery method", "Construction manager at risk (proposals were due Jan. 29, 2026)"],
     ["Estimated cost", "$600 million to $750 million"],
     ["Existing plant", "Built 1964; secondary treatment added 1974"],
@@ -48,7 +47,7 @@ INSIGHTS.push({
     ["1964", "Existing plant opens", "Columbus Water Works builds its South Columbus wastewater plant; secondary treatment is added in 1974."],
     ["Dec. 19, 2025", "Builder search opens", "The utility issues a request for proposals for a construction manager at risk to handle preconstruction and construction."],
     ["Jan. 29, 2026", "Proposals due", "Construction manager proposals are due."],
-    ["April 2026", "Designer named", "Barge Design Solutions is announced as prime engineering consultant, with Hazen and Sawyer and Freese and Nichols on the design team."],
+    ["April 2026", "Design team named", "The design team is announced, with Barge Design Solutions leading the electrical design alongside Hazen and Sawyer and Freese and Nichols."],
     ["Late 2027 (target)", "Design complete", "Design of the new facility is scheduled to finish."],
     ["2028 to 2031", "Construction", "Most construction spending is expected in this window."],
     ["End of 2031 (target)", "Completion", "The new facility is scheduled to be complete and treating flow."]
@@ -65,8 +64,8 @@ INSIGHTS.push({
       "Procurement documents put the existing plant at 84 million gallons per day of hydraulic capacity and 42 million gallons per day of treatment capacity, and project that it would exceed its hydraulic capacity by 2034 and its treatment capacity by 2039. The existing plant already runs at nearly 90% of its treatment capacity, according to the utility."
     ]},
     { h: "Design team", body: [
-      "<ul><li><b>Prime engineering consultant:</b> Barge Design Solutions, which leads the design, including the electrical design, coordinates with state regulators and developed the conceptual plan for the new facility.</li><li><b>Design partners:</b> Hazen and Sawyer; Freese and Nichols.</li><li><b>Owner:</b> Columbus Water Works.</li></ul>",
-      "Barge has worked with Columbus Water Works on earlier projects. The firm was named to the job in April 2026."
+      "<ul><li><b>Electrical design:</b> Barge Design Solutions.</li><li><b>Design team:</b> Hazen and Sawyer; Freese and Nichols.</li><li><b>Owner:</b> Columbus Water Works.</li></ul>",
+      "Barge has worked with Columbus Water Works on earlier projects. The design team was announced in April 2026."
     ]},
     { h: "Construction delivery", body: [
       "Columbus Water Works is using construction manager at risk delivery. Under that method a builder joins the team during design, helps with pricing and phasing, and then commits to a guaranteed maximum price for construction.",
